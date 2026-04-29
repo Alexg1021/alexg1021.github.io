@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Alex Gutierrez</title>
+  <meta name="description" content="Projects built by Alex Gutierrez — software engineer and engineering leader based in California's Central Valley.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/webclip.png">
+  <style>
+    :root {
+      --cream:       #FAFAF7;
+      --cream-mid:   #F2ECE3;
+      --tan:         #E8DDD0;
+      --brick:       #B94A35;
+      --brick-dark:  #9A3D2B;
+      --brick-light: #EDD5CE;
+      --charcoal:    #1C1A1A;
+      --charcoal-mid:#3A3636;
+      --grey:        #6B6360;
+      --grey-light:  #A09C97;
+      --border:      #DDD5C8;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    h1, h2, h3 { font-family: 'DM Serif Display', serif; line-height: 1.15; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn--outline { border: 1.5px solid var(--border); color: var(--charcoal-mid); }
+    .btn--outline:hover { border-color: var(--brick); color: var(--brick); }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 0;
+      background: rgba(250, 250, 247, 0.97);
+      box-shadow: 0 1px 0 var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--brick); }
+
+    .nav-links .nav-cta {
+      background: var(--brick);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+    }
+
+    .nav-links .nav-cta:hover { background: var(--brick-dark); color: #fff; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--charcoal); }
+
+    .nav-mobile {
+      display: none;
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-mobile.open { display: block; }
+
+    .nav-mobile a {
+      display: block;
+      padding: 0.875rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 160px 0 80px;
+      background: var(--cream-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--grey);
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .page-header .back-link:hover { color: var(--brick); }
+
+    .overline {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin-bottom: 0.875rem;
+      display: block;
+    }
+
+    .page-header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+
+    .page-header p {
+      font-size: 1.1rem;
+      color: var(--grey);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-section { padding: 80px 0 100px; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 10px 32px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: var(--tan);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-img-placeholder span {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--grey);
+    }
+
+    .project-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-metric {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brick);
+      background: var(--brick-light);
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      margin-bottom: 0.875rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.625rem;
+      color: var(--charcoal);
+    }
+
+    .project-card p {
+      font-size: 0.875rem;
+      color: var(--grey);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .project-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--grey);
+      background: var(--cream-mid);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--charcoal);
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .footer-nav { display: flex; gap: 2rem; }
+
+    .footer-nav a {
+      font-size: 0.85rem;
+      color: var(--grey-light);
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--brick-light); }
+
+    .footer-social { display: flex; gap: 0.75rem; }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+    }
+
+    .footer-social a:hover { border-color: var(--brick-light); }
+    .footer-social img { width: 17px; height: 17px; filter: invert(1) brightness(0.75); }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--grey-light);
+      opacity: 0.5;
+      margin-top: 1.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Alex Gutierrez</a>
+        <ul class="nav-links">
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#leadership">Leadership</a></li>
+          <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#leadership">Leadership</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to home
+      </a>
+      <span class="overline">Portfolio</span>
+      <h1>More Projects</h1>
+      <p>More products I've designed, architected, and shipped across web, mobile, and infrastructure.</p>
+    </div>
+  </header>
+
+  <!-- PROJECTS GRID -->
+  <section class="projects-section">
+    <div class="container">
+      <div class="projects-grid">
+
+        <div class="project-card fade-up">
+          <img class="project-img"
+            src="images/Screenshot-2023-06-11-at-10.25.47-PM.png"
+            srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w"
+            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+            alt="Listing Alert">
+          <div class="project-body">
+            <span class="project-metric">1,800+ Daily Active Users</span>
+            <h3>Listing Alert</h3>
+            <p>A real estate communication platform connecting buyers and sellers through intelligent listing matches. Led full technical strategy and engineering team as Technical Lead from early-stage through scale.</p>
+            <div class="project-tags">
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">React.js</span>
+              <span class="project-tag">GraphQL</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up">
+          <img class="project-img"
+            src="images/Screenshot-2023-06-12-at-9.48.02-AM-min.png"
+            srcset="images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-500.png 500w, images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-800.png 800w"
+            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+            alt="Holiday Magic">
+          <div class="project-body">
+            <span class="project-metric">$100K+ Annual Revenue</span>
+            <h3>Holiday Magic</h3>
+            <p>A scheduling and photo delivery platform redesigning the holiday photo experience. Real-time photo uploads, custom package selection, and automated fulfillment generating $100K+ in annual gross revenue.</p>
+            <div class="project-tags">
+              <span class="project-tag">Angular</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">AWS S3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up">
+          <img class="project-img"
+            src="images/Screenshot-2023-06-11-at-10.18.02-PM.png"
+            srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w"
+            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+            alt="Quark Smart Home">
+          <div class="project-body">
+            <span class="project-metric">2018 59DaysOfCode Grand Prize</span>
+            <h3>Quark: Smart Home App</h3>
+            <p>Award-winning mobile app empowering users to monitor home energy usage, set conservation budgets, and receive smart push notifications. Grand prize winner in the Smart Cities category.</p>
+            <div class="project-tags">
+              <span class="project-tag">Ionic</span>
+              <span class="project-tag">Angular</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up">
+           <img class="project-img"
+            src="images/greenraiteros3.png"
+           
+            alt="Quark Smart Home">
+          <div class="project-body">
+            <span class="project-metric">Public Rideshare Service</span>
+            <h3>Green Raiteros</h3>
+            <p>A public rideshare application built to serve rural communities with limited transportation access. Designed with equity and accessibility at its core, connecting underserved residents to reliable transportation.</p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">NestJS</span>
+              <span class="project-tag">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up">
+          <img class="project-img"
+            src="images/Screenshot-2023-06-11-at-10.11.52-PM.png"
+            srcset="images/Screenshot-2023-06-11-at-10.11.52-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-800.png 800w"
+            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+            alt="No Place Like Home">
+          <div class="project-body">
+            <span class="project-metric">1,000+ Attendees · 30+ Performers</span>
+            <h3>No Place Like Home</h3>
+            <p>The first-of-its-kind virtual music festival allowing users to enjoy a live festival experience during pandemic lockdown. 1,000+ attendees, 30+ performances, 20+ speakers, and 50+ vendors — all streamed in-browser.</p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Zoom SDK</span>
+              <span class="project-tag">Node.js</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo">Alex Gutierrez</a>
+        <nav class="footer-nav">
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#projects">Featured Work</a>
+          <a href="index.html#leadership">Leadership</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="footer-social">
+          <a href="https://github.com/alexg1021" target="_blank" rel="noopener" aria-label="GitHub">
+            <img src="images/github-mark-white.png" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <img src="images/LinkedIn.svg" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2025 Alex Gutierrez</p>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+    navToggle.addEventListener('click', () => navMobile.classList.toggle('open'));
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMobile.classList.remove('open')));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

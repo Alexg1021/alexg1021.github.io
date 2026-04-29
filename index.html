@@ -1,215 +1,1019 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Tue Jun 13 2023 00:26:13 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="64864dbb2b03814fb689f7ed" data-wf-site="64864dbb2b03814fb689f7a7" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Alex Gutierrez - Software Developer</title>
-  <meta content="Alex Gutierrez is a Software Developer from Fresno, California" name="description">
-  <meta content="Alex Gutierrez - Software Developer" property="og:title">
-  <meta content="Alex Gutierrez is a Software Developer from Fresno, California" property="og:description">
-  <meta content="Alex Gutierrez - Software Developer" property="twitter:title">
-  <meta content="Alex Gutierrez is a Software Developer from Fresno, California" property="twitter:description">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Gutierrez — Software Engineer & Engineering Leader</title>
+  <meta name="description" content="Alex Gutierrez is a Software Engineer and Engineering Leader based in California's Central Valley with 10+ years of experience building full-stack products and leading technical teams.">
+  <meta property="og:title" content="Alex Gutierrez — Software Engineer & Engineering Leader">
+  <meta property="og:description" content="Software Engineer and Engineering Leader with 10+ years building full-stack products and leading technical teams.">
   <meta property="og:type" content="website">
-  <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <meta content="Webflow" name="generator">
-  <link href="css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="css/alexs-portfolio-cd719d.webflow.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-  <script type="text/javascript">WebFont.load({  google: {    families: ["Sen:regular,700,800:latin,latin-ext"]  }});</script>
-  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/webclip.png">
+  <style>
+    :root {
+      --cream:       #FAFAF7;
+      --cream-mid:   #F2ECE3;
+      --tan:         #E8DDD0;
+      --brick:       #B94A35;
+      --brick-dark:  #9A3D2B;
+      --brick-light: #EDD5CE;
+      --charcoal:    #1C1A1A;
+      --charcoal-mid:#3A3636;
+      --grey:        #6B6360;
+      --grey-light:  #A09C97;
+      --border:      #DDD5C8;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.15; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    h3 { font-size: 1.4rem; }
+    a  { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section { padding: 100px 0; }
+    .section--alt { background: var(--cream-mid); }
+    .section--dark { background: var(--charcoal); color: var(--cream); }
+
+    .overline {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin-bottom: 0.875rem;
+      display: block;
+    }
+
+    .section--dark .overline { color: var(--brick-light); }
+
+    .section-title { margin-bottom: 0.875rem; }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--grey);
+      max-width: 580px;
+      margin-bottom: 3.5rem;
+      line-height: 1.75;
+    }
+
+    .section--dark .section-sub { color: var(--grey-light); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn--primary { background: var(--brick); color: #fff; }
+    .btn--primary:hover { background: var(--brick-dark); }
+
+    .btn--outline {
+      border: 1.5px solid var(--border);
+      color: var(--charcoal-mid);
+      background: transparent;
+    }
+
+    .btn--outline:hover { border-color: var(--brick); color: var(--brick); }
+
+    .btn--outline-light {
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn--outline-light:hover { border-color: var(--brick-light); color: var(--brick-light); }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      background: rgba(250, 250, 247, 0.97);
+      box-shadow: 0 1px 0 var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--brick); }
+
+    .nav-links .nav-cta {
+      background: var(--brick);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+    }
+
+    .nav-links .nav-cta:hover { background: var(--brick-dark); color: #fff; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      transition: all 0.3s;
+    }
+
+    .nav-mobile {
+      display: none;
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-mobile.open { display: block; }
+
+    .nav-mobile a {
+      display: block;
+      padding: 0.875rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-name { color: var(--charcoal); margin-bottom: 0.5rem; }
+
+    .hero-tagline {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--grey);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 460px;
+    }
+
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-photo-wrap {
+      position: relative;
+    }
+
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      top: 1.5rem;
+      right: -1.5rem;
+      bottom: -1.5rem;
+      left: 1.5rem;
+      border: 2px solid var(--brick-light);
+      border-radius: 6px;
+      z-index: 0;
+    }
+
+    .hero-photo-wrap img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 6px;
+      display: block;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+
+    .exp-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .exp-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .exp-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--brick);
+      margin-bottom: 0.875rem;
+    }
+
+    .exp-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-company {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brick);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--grey);
+      line-height: 1.75;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .skills-category h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin-bottom: 1rem;
+      padding-bottom: 0.625rem;
+      border-bottom: 1px solid var(--tan);
+    }
+
+    .skills-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .skill-tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--charcoal-mid);
+      background: var(--cream-mid);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 10px 32px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-img-placeholder {
+      width: 100%;
+      height: 220px;
+      background: var(--tan);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-img-placeholder span {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--grey);
+      letter-spacing: 0.03em;
+    }
+
+    .project-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+
+    .project-metric {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brick);
+      background: var(--brick-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 { margin-bottom: 0.75rem; color: var(--charcoal); }
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: var(--grey);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .project-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--grey);
+      background: var(--cream-mid);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .projects-footer { text-align: center; }
+
+    /* ── LEADERSHIP ── */
+    .leadership-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    .leadership-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .leadership-photo img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .leadership-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .highlight-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .highlight-card:hover {
+      border-color: rgba(237, 213, 206, 0.4);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .highlight-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(185, 74, 53, 0.15);
+      border: 1px solid rgba(185, 74, 53, 0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-icon svg { stroke: var(--brick-light); }
+
+    .highlight-card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-card p { font-size: 0.875rem; color: var(--grey-light); line-height: 1.7; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .contact-text h2 { margin-bottom: 1rem; }
+
+    .contact-text > p {
+      color: var(--grey);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--charcoal-mid);
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover { color: var(--brick); }
+
+    .contact-item-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--cream-mid);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--grey);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .contact-item:hover .contact-item-icon {
+      border-color: var(--brick-light);
+      color: var(--brick);
+    }
+
+    .contact-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .contact-photo img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--charcoal);
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .footer-nav { display: flex; gap: 2rem; }
+
+    .footer-nav a {
+      font-size: 0.85rem;
+      color: var(--grey-light);
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--brick-light); }
+
+    .footer-social { display: flex; gap: 0.75rem; }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+    }
+
+    .footer-social a:hover { border-color: var(--brick-light); }
+    .footer-social img { width: 17px; height: 17px; filter: invert(1) brightness(0.75); }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--grey-light);
+      opacity: 0.5;
+      margin-top: 1.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .leadership-intro,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .hero-photo-wrap { max-width: 340px; margin: 0 auto; }
+
+      .exp-grid,
+      .projects-grid,
+      .leadership-highlights { grid-template-columns: 1fr; }
+
+      .contact-photo { display: none; }
+      .leadership-photo { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .footer-top { flex-direction: column; align-items: flex-start; }
+      .footer-nav { flex-wrap: wrap; gap: 1rem; }
+    }
+  </style>
 </head>
-<body class="body">
-  <div data-collapse="small" data-animation="default" data-duration="400" data-w-id="ee744c24-2d72-fc7a-55c0-5579bd20ef0b" data-easing="ease" data-easing2="ease" role="banner" class="nav-bar w-nav">
-    <div class="wrapper">
-      <a href="index.html" aria-current="page" class="brand w-nav-brand w--current">
-        <h2 class="heading">A.GUTIERREZ</h2>
-      </a>
-      <nav role="navigation" class="nav-menu w-nav-menu">
-        <a href="#Exp" class="nav-link w-nav-link">Experience</a>
-        <a href="#Work" class="nav-link w-nav-link">Projects</a>
-        <a href="#Leadership" class="nav-link w-nav-link">Leadership</a>
-        <a href="#Contact" class="nav-link button w-nav-link">Contact</a>
-      </nav>
-      <div class="menu-button w-nav-button"><img src="images/Menu-Icon.svg" alt=""></div>
-    </div>
-  </div>
-  <div data-w-id="94f9858b-c4ab-aa43-1f77-88e8597f6136" class="progress-bar"></div>
-  <div class="hero-section wf-section">
-    <div class="wrapper grid">
-      <div id="w-node-_3cb0f931-ad23-8f11-e7c9-7467d5aa3ec3-b689f7ed" data-w-id="3cb0f931-ad23-8f11-e7c9-7467d5aa3ec3" style="-webkit-transform:translate3d(-100%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-100%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-100%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-100%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="hero-image-box"><img src="images/My-project.jpg" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 48vw, 49vw" srcset="images/My-project-p-500.jpg 500w, images/My-project-p-800.jpg 800w, images/My-project-p-1080.jpg 1080w, images/My-project.jpg 1200w" alt=""></div>
-      <div id="w-node-c07b73a0-4560-1829-def8-54c08f04f882-b689f7ed" class="hero-text-block">
-        <h1 data-w-id="b434fee8-91a2-d622-5bd9-d641a4ebd0a9" style="-webkit-transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="heading_76px">I&#x27;m Alex Gutierrez.<br>A Technologist<br>‍<span class="white_50">based in <br>California&#x27;s<br>Central Valley.</span></h1>
-        <p data-w-id="cced083d-161a-17da-b995-b9a844024b18" style="-webkit-transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(110%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="paragraph_18px">I&#x27;m passionate about work that creates positive community change. I&#x27;ve primarily worked as a full stack software developer but have vast experience in all facets of the tech industry.</p>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Alex Gutierrez</a>
+        <ul class="nav-links">
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-    <div class="hero-bg"></div>
-  </div>
-  <div id="Exp" data-w-id="9b6cb8cd-9551-102b-01b7-4b260b7d3226" class="experience-section wf-section">
-    <div class="wrapper">
-      <div class="flex-vertical_left_top">
-        <div class="overline_16px">WORK EXPERIENCE</div>
-        <h2 class="heading_55px">Roles I have worked in the past.</h2>
-      </div>
-      <div class="w-layout-grid experience-grid">
-        <div data-w-id="4e28eed4-39c1-89df-92b9-551fe582d8b2" style="-webkit-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="experience-block">
-          <div class="number">01</div>
-          <h3 class="heading_24px"><span class="green">Technical Lead</span>, Listing Alert</h3>
-          <p class="paragraph_16px">As the Technical Lead, my role was to oversee the company&#x27;s entire tech stack, strategize meaningful ways to improve our platforms, lead a team of engineers, and develop forward thinking innovations to scale our technology.</p>
-        </div>
-        <div data-w-id="64e7d109-0529-b91a-b15e-08accd24e160" style="-webkit-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="experience-block">
-          <div class="number">02</div>
-          <h3 class="heading_24px"><span class="blue">Software Engineer</span>, Bitwise Industries</h3>
-          <p class="paragraph_16px">I&#x27;ve spent the better part of the last eight years working as a Full Stack Software Engineer, building everything from Websites, Web Apps, Mobile Apps, API&#x27;s, Databases, and third party plugins for large private and public institutions.</p>
-        </div>
-        <div data-w-id="b7e1d0fe-20c6-3f36-2882-55d26141319b" style="-webkit-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-100PX, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="experience-block">
-          <div class="number">03</div>
-          <h3 class="heading_24px"><span class="pink">Community Outreach</span>, Geekwise Academy</h3>
-          <p class="paragraph_16px">With a Masters in Public Administration and a background in Public Sector work, I have served as a Community Outreach specialist for Geekwise Academy supporting their mission to connect marginalized communities into tech apprenticeships </p>
-        </div>
-      </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#contact">Contact</a>
     </div>
-  </div>
-  <div class="mid-section wf-section">
-    <div class="wrapper grid">
-      <div class="mid_left-block">
-        <div class="normal-wrapper">
-          <h2 class="heading_55px black _24px-bottom">Philosophy &amp; values</h2>
-          <p class="paragraph_18px dark-grey">As a first generation Mexican-American, I credit my parents with instilling in me the value of hard work. I truly believe in earning everything and I wake up each day with the desire and ambition to be the best version of myself. Beyond my own ambitions I also believe in opening doors for those coming behind me. And so, giving back to my community and helping others achieve their goals means everything to me. </p>
-        </div>
-      </div>
-      <div class="mid_image"></div>
-    </div>
-  </div>
-  <div class="skills-section wf-section">
-    <div class="wrapper grid-3_col">
-      <div id="w-node-_4a8f1cb8-b5cc-dca3-1f15-df569cc0e59e-b689f7ed" class="normal-wrapper _48px-right_p">
-        <h2 class="heading_55px _24px-bottom">Technical Skills</h2>
-        <p class="paragraph_18px light-grey">With over eight years of experience working full time for a rapidly growing tech company, I have had the pleasure of working various roles. Some of the roles I have undertaken are:  Technical Lead for a startup within our organization; Full Stack Software Engineer utilizing various modern and widely used programming languages; and, as an Senior Apprentice Lead teaching over 100 aspiring technologists.</p>
-      </div>
-      <div class="skills-wrapper _48px-right_p">
-        <div class="fa-icon"><span class="text-span"></span></div>
-        <h3 class="heading_24px">Business Analysis</h3>
-        <p class="paragraph_16px light-grey">I have years of experience working with clients--public and private--of all sizes creating solutions to address their needs. I am very passionate about helping others solve everyday problems through technology.</p>
-      </div>
-      <div class="skills-wrapper _48px-right_p">
-        <div class="text-block-2"><span class="fa-icon"></span></div>
-        <h3 class="heading_24px">Software Development</h3>
-        <p class="paragraph_16px light-grey">In my role as a Full Stack Software Developer I have experience in all aspects of a project&#x27;s lifecycle: From conception, architecture, design, development, testing and deployment. I can build anything from Web and Mobile Apps, API&#x27;s, Databases and more. </p>
-      </div>
-      <div class="skills-wrapper _48px-right_p">
-        <div class="text-block-3"><span class="fa-icon"></span></div>
-        <h3 class="heading_24px">Backend Architecture</h3>
-        <p class="paragraph_16px light-grey">I understand the importance of a well architected API and a clean Database. I can help you design and architect a backend that makes sense for your specific needs, or rebuild an existing backend that needs optimization. </p>
-      </div>
-      <div class="skills-wrapper _48px-right_p">
-        <div class="fa-icon"><span></span></div>
-        <h3 class="heading_24px">Mobile Development</h3>
-        <p class="paragraph_16px light-grey">I have years of experience developing mobile applications. I can certainly help get your ideas designed, developed and deployed to the Apple App Store and the Google Play Store!</p>
-      </div>
-    </div>
-  </div>
-  <div id="Work" class="projects-section wf-section">
-    <div class="wrapper projects-grid">
-      <div class="normal-wrapper">
-        <div class="normal-wrapper _48px-right_p _80px-bottom_m">
-          <div class="overline_16px">MY PROJECTS</div>
-          <h2 class="heading_55px">Some projects that I’ve built over the past 8 years</h2>
-        </div>
-        <a data-w-id="f8f793d3-58bd-f512-c602-9d09cbd39316" href="#" class="project-wrapper _24px-bottom_m w-inline-block"><img src="images/Screenshot-2023-06-11-at-10.25.47-PM.png" width="960" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 45vw" srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-1080.png 1080w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-1600.png 1600w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-2000.png 2000w, images/Screenshot-2023-06-11-at-10.25.47-PM.png 2554w" alt="" class="project-image">
-          <div class="project-description">
-            <h3 class="heading_24px">Listing Alert</h3>
-            <p class="paragraph_18px light-grey">A Real Estate Communication tool meant to help brokerages create listing matches between sellers and buyers! The tech stack consisted of a mobile app built with React Native, an Admin Dashboard built with React.js, an API built with GraphQL and Node/Express, and a MongoDB database. The app served over 1800+ active users on a daily basis</p>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-label">Software Engineer &amp; Engineering Leader</span>
+          <h1 class="hero-name">Alex Gutierrez</h1>
+          <p class="hero-tagline">Building products. Growing teams.</p>
+          <p class="hero-bio">
+            Software engineer and technical leader with 10+ years shipping scalable web and mobile products — and developing the engineers who build them. Based in California's Central Valley.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn--primary">View My Work</a>
+            <a href="#contact" class="btn btn--outline">Get in Touch</a>
           </div>
-        </a>
-        <a data-w-id="06dd5fec-2b9f-8dc4-de7b-978e5277f3b3" href="#" class="project-wrapper w-inline-block"><img src="images/Screenshot-2023-06-11-at-10.18.02-PM.png" width="960" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 45vw" srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-1080.png 1080w, images/Screenshot-2023-06-11-at-10.18.02-PM.png 1584w" alt="" class="project-image">
-          <div class="project-description">
-            <h3 class="heading_24px">Quark: Smart Home Mobile App</h3>
-            <p class="paragraph_18px light-grey">The Quark App, was the 2018 grand prize winner of the 59DaysOfCode startup competition in the Smart Cities category! The app was designed to help users monitor their home&#x27;s daily energy expenditure, giving users the ability to set budgets with push notifications helping them conserve energy on a daily and monthly basis! The app consisted of a Mobile App built with Ionic, a web app app built with Angular, and a Node/Express/MongoDB backend. </p>
-          </div>
-        </a>
-      </div>
-      <div class="normal-wrapper">
-        <a href="#" class="project-wrapper _24px-bottom_m w-inline-block"><img src="images/Screenshot-2023-06-11-at-10.11.52-PM.png" width="960" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 45vw" srcset="images/Screenshot-2023-06-11-at-10.11.52-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-800.png 800w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-1080.png 1080w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-1600.png 1600w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-2000.png 2000w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-2600.png 2600w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-3200.png 3200w, images/Screenshot-2023-06-11-at-10.11.52-PM.png 3240w" alt="" class="project-image">
-          <div class="project-description">
-            <h3 class="heading_24px">No Place Like Home - Virtual Festival</h3>
-            <p class="paragraph_18px light-grey">No Place Like Home was the first of its kind Virtual Music Festival meant to allow users the ability to enjoy a music festival from the comfort of their homes during the pandemic lockdown. The festival attracted over 1000+ attendees and featured over 30+ performances, 20+ speakers and over 50 different vendors! The app was built with a React frontend tapping into the Zoom SDK to bring the events to users homes!</p>
-          </div>
-        </a>
-        <a href="#" class="project-wrapper w-inline-block"><img src="images/Screenshot-2023-06-12-at-9.48.02-AM-min.png" width="960" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 45vw" srcset="images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-500.png 500w, images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-800.png 800w, images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-1080.png 1080w, images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-1600.png 1600w, images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-2000.png 2000w, images/Screenshot-2023-06-12-at-9.48.02-AM-min.png 2298w" alt="" class="project-image">
-          <div class="project-description">
-            <h3 class="heading_24px">Holiday Magic - Web Application</h3>
-            <p class="paragraph_18px light-grey">Holiday Magic is a unique user experience that redesigns how families take their holiday photos! The app allows users to schedule their photo session at their convenience, uploads their photos to a web app in real time, then creates custom packages for families to choose from. The front end is built using Angular and utilizes the efficiency of AWS S3 buckets for photo storage, while the backend is built using Node/Express and PostgresQL. The app generates over $100,000 in gross revenue on a yearly basis!</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div id="Leadership" class="dribbble-section wf-section">
-    <div class="wrapper-v2">
-      <div class="normal-wrapper _120px-bottom_m">
-        <h2 class="heading_55px _24px-bottom">Leadership</h2>
-        <p class="paragraph_18px light-grey _40px-bottom_m">Over the last 15 years I have held numerous positions of leadership in various capacities. Prior to working in the technology sector I received my Master of Public Administration degree from Fresno State University. During that time I worked with multiple community based organizations leading local and statewide initiatives to create policy changes to improve the living conditions for communities in Fresno County. Beyond my public sector work, I developed a Club Soccer program to provide a path for youth from the Southeast Fresno community to play competitive soccer, develop as students and ultimately go on to college. This coaching path led me to running the Sanger High School Mens Soccer program where I would lead the team to its first Section Championship and California State Championship in 2020. Aside from positions of leadership I have held professionally, I have also spoken at various conferences and banquets discussing topics related to community, social justice, policy, athletics, youth development, and, of course, technology. </p>
-        <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" class="animated-link-button white">Connect with me on LinkedIn</a>
-      </div>
-    </div>
-    <div class="wrapper-v2">
-      <div class="dribbble-image"></div>
-    </div>
-  </div>
-  <div id="Contact" class="forms-section wf-section">
-    <div class="wrapper-v2 forms-grid">
-      <div class="normal-wrapper">
-        <h2 class="heading_55px _24px-bottom">Let’s talk business</h2>
-        <p class="paragraph_18px light-grey">Now that you know a little about me, let me know if you are interested to work with me. Connect with me via email, phone or linkedin!</p>
-        <div><span class="fa-icon fa-white"> </span>
-          <a href="mailto:alex@oranjcreative.com?subject=I&#x27;m%20Ready%20to%20Talk%20Business!" class="link">alex@oranjcreative.com</a>
         </div>
-        <div class="text-block-5" style="padding-top: 5px;">
-          <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" style="text-decoration: none; color: #fff;">
-            <span class="fa-brand"></span>
-            <span>Connect with me on LinkedIn</span>
+        <div class="hero-photo-wrap">
+          <img
+            src="images/My-project.jpg"
+            srcset="images/My-project-p-500.jpg 500w, images/My-project-p-800.jpg 800w, images/My-project-p-1080.jpg 1080w, images/My-project.jpg 1200w"
+            sizes="(max-width: 900px) 340px, 50vw"
+            alt="Alex Gutierrez"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section section--alt" id="experience">
+    <div class="container">
+      <span class="overline">Work Experience</span>
+      <h2 class="section-title">Where I've built and led.</h2>
+      <p class="section-sub">A decade of roles spanning engineering, product leadership, and community — each one sharpening how I think about technology and people.</p>
+      <div class="exp-grid">
+        <div class="exp-card fade-up">
+          <div class="exp-num">01</div>
+          <div class="exp-role">Technology Consultant</div>
+          <div class="exp-company">Oranj Technologies</div>
+          <p class="exp-desc">Independent technology consultancy delivering digital products and technical strategy for clients across industries. Full project lifecycle ownership from architecture and design through development and deployment.</p>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-num">02</div>
+          <div class="exp-role">Technical Lead</div>
+          <div class="exp-company">Listing Alert</div>
+          <p class="exp-desc">Owned the company's entire tech stack and led a team of engineers to scale the platform to 1,800+ daily active users. Defined technical roadmap, drove architectural decisions, and mentored junior engineers across the organization.</p>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-num">03</div>
+          <div class="exp-role">Software Engineer</div>
+          <div class="exp-company">Bitwise Industries</div>
+          <p class="exp-desc">Built full-stack web applications, mobile apps, APIs, and databases for large public and private institutions. Led development on high-impact products across the full engineering stack over nearly a decade.</p>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-num">04</div>
+          <div class="exp-role">Apprentice Lead &amp; Community Outreach</div>
+          <div class="exp-company">Geekwise Academy</div>
+          <p class="exp-desc">Instructed and mentored 100+ aspiring technologists through hands-on software development training. Led community outreach initiatives connecting underrepresented communities to tech apprenticeship pathways.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="container">
+      <span class="overline">Technical Skills</span>
+      <h2 class="section-title">Full-stack, front to back.</h2>
+      <p class="section-sub">A decade working across the entire stack — from pixel-perfect interfaces to database architecture, cloud infrastructure, and team leadership.</p>
+      <div class="skills-grid">
+        <div class="skills-category fade-up">
+          <h4>Frontend</h4>
+          <div class="skills-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML / CSS</span>
+          </div>
+        </div>
+        <div class="skills-category fade-up">
+          <h4>Backend</h4>
+          <div class="skills-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">NestJS</span>
+            <span class="skill-tag">Express</span>
+            <span class="skill-tag">GraphQL</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Python</span>
+          </div>
+        </div>
+        <div class="skills-category fade-up">
+          <h4>Mobile</h4>
+          <div class="skills-tags">
+            <span class="skill-tag">React Native</span>
+            <span class="skill-tag">Ionic</span>
+            <span class="skill-tag">iOS &amp; Android</span>
+          </div>
+        </div>
+        <div class="skills-category fade-up">
+          <h4>Data &amp; Infra</h4>
+          <div class="skills-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">AWS S3</span>
+            <span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skills-category fade-up">
+          <h4>Leadership</h4>
+          <div class="skills-tags">
+            <span class="skill-tag">Engineering Management</span>
+            <span class="skill-tag">Technical Strategy</span>
+            <span class="skill-tag">Mentorship</span>
+            <span class="skill-tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section--alt" id="projects">
+    <div class="container">
+      <span class="overline">Featured Work</span>
+      <h2 class="section-title">Products I've shipped.</h2>
+      <p class="section-sub">A selection of projects built with real users, real stakes, and measurable impact.</p>
+      <div class="projects-grid">
+        <div class="project-card fade-up">
+          <img class="project-img" src="images/Screenshot-2023-06-11-at-10.25.47-PM.png"
+            srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-1080.png 1080w"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            alt="Listing Alert">
+          <div class="project-body">
+            <span class="project-metric">1,800+ Daily Active Users</span>
+            <h3>Listing Alert</h3>
+            <p>A real estate communication platform connecting buyers and sellers through intelligent listing matches. Led the full technical strategy and engineering team as Technical Lead from early-stage through scale.</p>
+            <div class="project-tags">
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">React.js</span>
+              <span class="project-tag">GraphQL</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card fade-up">
+          <img class="project-img" src="images/holidaymagic.png"
+            alt="Holiday Magic">
+          <div class="project-body">
+            <span class="project-metric">$100K+ Annual Revenue</span>
+            <h3>Holiday Magic</h3>
+            <p>A scheduling and photo delivery platform that reimagines how families take holiday photos. Real-time photo uploads, custom package selection, and automated fulfillment — generating over $100K in gross revenue annually.</p>
+            <div class="project-tags">
+              <span class="project-tag">Angular</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">AWS S3</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card fade-up">
+          <img class="project-img" src="images/Screenshot-2023-06-11-at-10.18.02-PM.png"
+            srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-1080.png 1080w"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            alt="Quark Smart Home">
+          <div class="project-body">
+            <span class="project-metric">2018 59DaysOfCode Grand Prize</span>
+            <h3>Quark: Smart Home App</h3>
+            <p>Award-winning smart home mobile app empowering users to monitor home energy usage, set conservation budgets, and receive intelligent push notifications. Grand prize winner in the Smart Cities category.</p>
+            <div class="project-tags">
+              <span class="project-tag">Ionic</span>
+              <span class="project-tag">Angular</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card fade-up">
+          <img class="project-img" src="images/greenraiteros3.png"
+            alt="Green Raiteros">
+          <div class="project-body">
+            <span class="project-metric">Public Rideshare Service</span>
+            <h3>Green Raiteros</h3>
+            <p>A public rideshare application built specifically to serve rural communities with limited transportation access. Designed with equity, accessibility, and community need at its core.</p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">NestJS</span>
+              <span class="project-tag">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="projects-footer">
+        <a href="projects.html" class="btn btn--outline">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="section section--dark" id="leadership">
+    <div class="container">
+      <span class="overline">Leadership</span>
+      <h2 class="section-title">More than an engineer.</h2>
+      <div class="leadership-intro">
+        <div>
+          <p class="section-sub">Leadership isn't a title — it's a practice. Across technology, athletics, and community, I've built programs, developed talent, and driven lasting change. That same instinct is what makes me effective as a technical leader.</p>
+          <p style="color: var(--grey-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">As a first-generation Mexican-American, I believe deeply in opening doors for those coming behind me. My work in technology has always been inseparable from my commitment to community.</p>
+          <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" class="btn btn--outline-light">Connect on LinkedIn</a>
+        </div>
+        <div class="leadership-photo">
+          <img src="images/sangerchamps.jpeg"
+            alt="Alex Gutierrez coaching">
+        </div>
+      </div>
+      <div class="leadership-highlights">
+        <div class="highlight-card fade-up">
+          <div class="highlight-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M17 3H7l-2 7h14l-2-7z"/><path d="M5 10c0 3.866 3.134 7 7 7s7-3.134 7-7"/></svg>
+          </div>
+          <h4>California State Champion Head Coach</h4>
+          <p>Built and led the Sanger High School Men's Soccer program to its first-ever Section Championship and California State Championship in 2020 — coaching a team and culture I built from the ground up.</p>
+        </div>
+        <div class="highlight-card fade-up">
+          <div class="highlight-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/><path d="M16 11c2.21 0 4 1.79 4 4v1"/><circle cx="18" cy="7" r="3"/></svg>
+          </div>
+          <h4>Youth Development Program Founder</h4>
+          <p>Founded a Club Soccer program for youth in Southeast Fresno, creating a competitive pathway for underserved student athletes to develop, compete, and pursue higher education.</p>
+        </div>
+        <div class="highlight-card fade-up">
+          <div class="highlight-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h4>Master of Public Administration</h4>
+          <p>Graduate degree from Fresno State University. Led local and statewide policy initiatives to improve living conditions across Fresno County — work that still informs how I think about the impact of technology on communities.</p>
+        </div>
+        <div class="highlight-card fade-up">
+          <div class="highlight-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/><path d="M2 12h4"/><path d="M4 10v4"/></svg>
+          </div>
+          <h4>Public Speaker &amp; Community Advocate</h4>
+          <p>Speaker at conferences and events on community, social justice, policy, athletics, youth development, and technology. A longtime advocate for connecting underrepresented communities to careers in tech.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <span class="overline">Contact</span>
+          <h2>Let's build something together.</h2>
+          <p>Whether you're looking for an engineer, a technical leader, or a collaborator who cares about what the work actually does in the world — I'd love to connect.</p>
+          <div class="contact-items">
+            <a href="mailto:alex@oranjtechnologies.com?subject=Let's Connect" class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              alex@oranjtechnologies.com
+            </a>
+            <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              linkedin.com/in/alex-gutierrez-mpa
+            </a>
+            <a href="https://github.com/alexg1021" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </div>
+              github.com/alexg1021
+            </a>
+          </div>
+        </div>
+        <div class="contact-photo">
+          <img
+            src="images/IMG_AEF038AA2735-1.jpeg"
+            srcset="images/IMG_AEF038AA2735-1-p-500.jpeg 500w, images/IMG_AEF038AA2735-1-p-800.jpeg 800w, images/IMG_AEF038AA2735-1-p-1080.jpeg 1080w"
+            sizes="(max-width: 900px) 100vw, 50vw"
+            alt="Alex Gutierrez"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo">Alex Gutierrez</a>
+        <nav class="footer-nav">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#leadership">Leadership</a>
+          <a href="projects.html">All Projects</a>
+        </nav>
+        <div class="footer-social">
+          <a href="https://github.com/alexg1021" target="_blank" rel="noopener" aria-label="GitHub">
+            <img src="images/github-mark-white.png" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <img src="images/LinkedIn.svg" alt="LinkedIn">
           </a>
         </div>
       </div>
-      <div class="contact-image"><img src="images/IMG_AEF038AA2735-1.jpeg" loading="lazy" sizes="(max-width: 479px) 92vw, (max-width: 767px) 95vw, (max-width: 991px) 45vw, 43vw" srcset="images/IMG_AEF038AA2735-1.jpeg 500w, images/IMG_AEF038AA2735-1.jpeg 800w, images/IMG_AEF038AA2735-1.jpeg 1080w, images/IMG_AEF038AA2735-1.jpeg 1170w" alt=""></div>
+      <p class="footer-copy">&copy; 2025 Alex Gutierrez</p>
     </div>
-  </div>
-  <div class="footer wf-section">
-    <div class="wrapper footer-grid">
-      <div class="normal-wrapper flex-vertical_left_space-betwen">
-        <div class="normal-wrapper">
-          <a href="index.html" aria-current="page" class="footer-logo w-inline-block w--current">
-            <h3 class="heading-2">A.GUTIERREZ</h3>
-          </a>
-          <div class="normal-wrapper">
-            <a href="https://github.com/alexg1021" target="_blank" class="social-link-block w-inline-block"><img src="images/github-mark-white.png" alt="" class="social-icons"></a>
-            <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" class="social-link-block w-inline-block"><img src="images/LinkedIn.svg" alt="" class="social-icons"></a>
-          </div>
-        </div>
-      </div>
-      <div class="normal-wrapper flex-horizontal_left_top">
-        <a href="#Exp" class="footer-link-block w-inline-block">
-          <div class="footer-link">Experience</div>
-        </a>
-        <a href="#Work" class="footer-link-block w-inline-block">
-          <div class="footer-link">Projects</div>
-        </a>
-        <a href="#Leadership" class="footer-link-block w-inline-block">
-          <div class="footer-link">Leadership</div>
-        </a>
-      </div>
-      <div id="w-node-_2a9716ca-4096-3850-2d15-28cc733fbdd4-1e7d8e5d">
-        <div class="paragraph_16px light-grey">No Copyright 2020 • Alex Gutierrez</div>
-      </div>
-    </div>
-  </div>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=64864dbb2b03814fb689f7a7" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="js/webflow.js" type="text/javascript"></script>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+    navToggle.addEventListener('click', () => navMobile.classList.toggle('open'));
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMobile.classList.remove('open')));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
