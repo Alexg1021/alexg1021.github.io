@@ -10,22 +10,19 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="images/webclip.png">
   <style>
     :root {
-      --cream:       #FAFAF7;
-      --cream-mid:   #F2ECE3;
-      --tan:         #E8DDD0;
-      --brick:       #1D3E6E;
-      --brick-dark:  #152D52;
-      --brick-light: #C4D3E8;
-      --charcoal:    #1C1A1A;
-      --charcoal-mid:#3A3636;
-      --grey:        #6B6360;
-      --grey-light:  #A09C97;
-      --border:      #DDD5C8;
+      --off-white: #F5F4EF;
+      --white:     #FAFAF8;
+      --black:     #0C0C0C;
+      --amber:     #E8B84B;
+      --amber-dk:  #C99E30;
+      --grey:      #5A5658;
+      --grey-lt:   #9A9698;
+      --border:    #E0DDD8;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,98 +30,35 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--cream);
-      color: var(--charcoal);
+      background: var(--off-white);
+      color: var(--black);
       line-height: 1.6;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.15; }
-    h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
-    h2 { font-size: clamp(2rem, 4vw, 3rem); }
-    h3 { font-size: 1.4rem; }
-    a  { text-decoration: none; color: inherit; }
+    a { text-decoration: none; color: inherit; }
 
     .container {
-      max-width: 1100px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 0 2rem;
     }
-
-    .section { padding: 100px 0; }
-    .section--alt { background: var(--cream-mid); }
-    .section--dark { background: var(--charcoal); color: var(--cream); }
-
-    .overline {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--brick);
-      margin-bottom: 0.875rem;
-      display: block;
-    }
-
-    .section--dark .overline { color: var(--brick-light); }
-
-    .section-title { margin-bottom: 0.875rem; }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--grey);
-      max-width: 580px;
-      margin-bottom: 3.5rem;
-      line-height: 1.75;
-    }
-
-    .section--dark .section-sub { color: var(--grey-light); }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-block;
-      padding: 0.875rem 2rem;
-      border-radius: 4px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
-      cursor: pointer;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn--primary { background: var(--brick); color: #fff; }
-    .btn--primary:hover { background: var(--brick-dark); }
-
-    .btn--outline {
-      border: 1.5px solid var(--border);
-      color: var(--charcoal-mid);
-      background: transparent;
-    }
-
-    .btn--outline:hover { border-color: var(--brick); color: var(--brick); }
-
-    .btn--outline-light {
-      border: 1.5px solid rgba(255,255,255,0.3);
-      color: #fff;
-      background: transparent;
-    }
-
-    .btn--outline-light:hover { border-color: var(--brick-light); color: var(--brick-light); }
 
     /* ── NAV ── */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.25rem 0;
-      transition: background 0.3s, box-shadow 0.3s;
+      padding: 1.5rem 0;
+      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
     }
 
     .nav.scrolled {
-      background: rgba(250, 250, 247, 0.97);
-      box-shadow: 0 1px 0 var(--border);
-      backdrop-filter: blur(8px);
+      background: rgba(245,244,239,0.95);
+      border-color: var(--border);
+      backdrop-filter: blur(10px);
     }
 
     .nav-inner {
@@ -134,10 +68,10 @@
     }
 
     .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      color: var(--charcoal);
-      letter-spacing: 0.02em;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
     }
 
     .nav-links {
@@ -150,20 +84,25 @@
     .nav-links a {
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--charcoal-mid);
+      color: var(--grey);
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--brick); }
+    .nav-links a:hover { color: var(--black); }
 
-    .nav-links .nav-cta {
-      background: var(--brick);
-      color: #fff;
-      padding: 0.5rem 1.25rem;
-      border-radius: 4px;
+    .nav-cta {
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase;
+      color: var(--black) !important;
+      border: 1.5px solid var(--black);
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s !important;
     }
 
-    .nav-links .nav-cta:hover { background: var(--brick-dark); color: #fff; }
+    .nav-cta:hover { background: var(--black) !important; color: var(--off-white) !important; }
 
     .nav-toggle {
       display: none;
@@ -172,20 +111,19 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: 4px;
     }
 
     .nav-toggle span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
-      background: var(--charcoal);
+      background: var(--black);
       transition: all 0.3s;
     }
 
     .nav-mobile {
       display: none;
-      background: var(--cream);
+      background: var(--off-white);
       border-top: 1px solid var(--border);
     }
 
@@ -196,230 +134,400 @@
       padding: 0.875rem 2rem;
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--charcoal-mid);
+      color: var(--grey);
       border-bottom: 1px solid var(--border);
     }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
+      padding-top: 90px;
       display: flex;
       align-items: center;
-      padding-top: 80px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .hero-grid {
+    .hero-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
       align-items: center;
+      padding: 4rem 0;
     }
 
     .hero-label {
       display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--brick);
-      margin-bottom: 1.25rem;
+      color: var(--grey);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
     }
 
-    .hero-name { color: var(--charcoal); margin-bottom: 0.5rem; }
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(4.5rem, 10vw, 9.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.035em;
+      color: var(--black);
+      margin-bottom: 2rem;
+    }
 
     .hero-tagline {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
       color: var(--grey);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+      max-width: 420px;
+      line-height: 1.55;
     }
 
-    .hero-bio {
-      font-size: 1.05rem;
-      color: var(--grey);
-      line-height: 1.8;
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
       margin-bottom: 2.5rem;
-      max-width: 460px;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .hero-stat-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--grey-lt);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-top: 0.3rem;
     }
 
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    .hero-photo-wrap {
+    .btn-primary {
+      display: inline-block;
+      background: var(--black);
+      color: var(--off-white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.875rem;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #2a2a2a; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid var(--border);
+      color: var(--grey);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.875rem;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-outline:hover { border-color: var(--black); color: var(--black); transform: translateY(-1px); }
+
+    .btn-outline-light {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.65);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.875rem;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline-light:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* ── HERO PHOTO ── */
+    .hero-photo-card {
+      background: var(--amber);
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
       position: relative;
     }
 
-    .hero-photo-wrap::after {
-      content: '';
-      position: absolute;
-      top: 1.5rem;
-      right: -1.5rem;
-      bottom: -1.5rem;
-      left: 1.5rem;
-      border: 2px solid var(--brick-light);
-      border-radius: 6px;
-      z-index: 0;
-    }
-
-    .hero-photo-wrap img {
-      position: relative;
-      z-index: 1;
+    .hero-photo-card img {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      height: 100%;
       object-fit: cover;
       object-position: top center;
-      border-radius: 6px;
       display: block;
     }
 
+    .hero-badge {
+      position: absolute;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      width: 48px;
+      height: 48px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-badge svg { stroke: var(--off-white); }
+
+    /* ── MARQUEE ── */
+    .marquee-band {
+      background: var(--black);
+      padding: 1.1rem 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 24s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2.5vw, 1.875rem);
+      letter-spacing: -0.01em;
+      color: var(--off-white);
+      padding: 0 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .marquee-dot { color: var(--amber); }
+
     /* ── EXPERIENCE ── */
-    .exp-grid {
+    .exp-section {
+      background: var(--black);
+      padding-bottom: 5rem;
+    }
+
+    .exp-section-head {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      letter-spacing: -0.03em;
+      color: var(--off-white);
+      padding: 4rem 0 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .exp-list { list-style: none; }
+
+    .exp-item {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.75rem;
+      grid-template-columns: 52px 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 2.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s;
+      cursor: default;
     }
 
-    .exp-card {
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2rem;
-      transition: box-shadow 0.25s, transform 0.25s;
-    }
-
-    .exp-card:hover {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-      transform: translateY(-2px);
-    }
+    .exp-item:hover { background: rgba(255,255,255,0.02); margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem; }
 
     .exp-num {
       font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--brick);
-      margin-bottom: 0.875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.25);
+      padding-top: 0.4rem;
+      letter-spacing: 0.06em;
     }
 
     .exp-role {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      color: var(--charcoal);
-      margin-bottom: 0.2rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+      color: var(--off-white);
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
     }
 
     .exp-company {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--brick);
-      margin-bottom: 1rem;
-      letter-spacing: 0.02em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.875rem;
     }
 
     .exp-desc {
-      font-size: 0.9rem;
-      color: var(--grey);
-      line-height: 1.75;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.8;
+      max-width: 500px;
     }
 
+    .exp-badge {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.45);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      white-space: nowrap;
+      margin-top: 0.25rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .exp-item:hover .exp-badge { border-color: var(--amber); color: var(--amber); }
+
     /* ── SKILLS ── */
+    .skills-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-overline {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-lt);
+      margin-bottom: 1rem;
+    }
+
+    .section-head {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: var(--black);
+      margin-bottom: 3.5rem;
+    }
+
+    .section-head--light { color: var(--off-white); }
+
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 2.5rem;
     }
 
-    .skills-category h4 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
+    .skills-cat h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--brick);
+      color: var(--black);
       margin-bottom: 1rem;
       padding-bottom: 0.625rem;
-      border-bottom: 1px solid var(--tan);
+      border-bottom: 1.5px solid var(--border);
     }
 
-    .skills-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skills-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 
     .skill-tag {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      color: var(--charcoal-mid);
-      background: var(--cream-mid);
+      color: var(--grey);
       border: 1px solid var(--border);
-      padding: 0.3rem 0.75rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
     }
 
+    .skill-tag:hover { border-color: var(--black); color: var(--black); }
+
     /* ── PROJECTS ── */
+    .projects-section {
+      padding: 5rem 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
       margin-bottom: 3rem;
     }
 
     .project-card {
-      background: var(--cream);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
-      transition: box-shadow 0.3s, transform 0.3s;
+      background: var(--off-white);
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .project-card:hover {
-      box-shadow: 0 10px 32px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.09);
     }
 
     .project-img {
       width: 100%;
-      height: 220px;
+      height: 210px;
       object-fit: cover;
       object-position: top;
       display: block;
       border-bottom: 1px solid var(--border);
     }
 
-    .project-img-placeholder {
-      width: 100%;
-      height: 220px;
-      background: var(--tan);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .project-img-placeholder span {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      color: var(--grey);
-      letter-spacing: 0.03em;
-    }
-
     .project-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
 
     .project-metric {
       display: inline-block;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--brick);
-      background: var(--brick-light);
-      padding: 0.25rem 0.75rem;
+      color: var(--black);
+      background: var(--amber);
+      padding: 0.28rem 0.8rem;
       border-radius: 100px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.875rem;
     }
 
-    .project-card h3 { margin-bottom: 0.75rem; color: var(--charcoal); }
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 0.625rem;
+    }
 
-    .project-card p {
-      font-size: 0.9rem;
+    .project-desc {
+      font-size: 0.875rem;
       color: var(--grey);
       line-height: 1.75;
       margin-bottom: 1.25rem;
@@ -429,10 +537,9 @@
     .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     .project-tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      color: var(--grey);
-      background: var(--cream-mid);
+      color: var(--grey-lt);
       border: 1px solid var(--border);
       padding: 0.2rem 0.6rem;
       border-radius: 4px;
@@ -441,128 +548,132 @@
     .projects-footer { text-align: center; }
 
     /* ── LEADERSHIP ── */
+    .leadership-section {
+      background: var(--black);
+      padding: 5rem 0;
+    }
+
+    .leadership-section .section-overline { color: rgba(255,255,255,0.25); }
+
     .leadership-intro {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-bottom: 4rem;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.85;
+      max-width: 560px;
+      margin: 1.25rem 0 2.5rem;
     }
 
-    .leadership-photo {
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .leadership-photo img {
-      width: 100%;
-      height: 420px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-
-    .leadership-highlights {
+    .leadership-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 3rem;
     }
 
     .highlight-card {
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      padding: 1.75rem;
-      transition: border-color 0.2s, background 0.2s;
+      background: var(--black);
+      padding: 2.25rem;
+      transition: background 0.2s;
     }
 
-    .highlight-card:hover {
-      border-color: rgba(237, 213, 206, 0.4);
-      background: rgba(255,255,255,0.03);
-    }
+    .highlight-card:hover { background: rgba(255,255,255,0.025); }
 
-    .highlight-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(185, 74, 53, 0.15);
-      border: 1px solid rgba(185, 74, 53, 0.3);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .highlight-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
       margin-bottom: 1rem;
     }
 
-    .highlight-icon svg { stroke: var(--brick-light); }
-
     .highlight-card h4 {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
       font-size: 1.1rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
     }
 
-    .highlight-card p { font-size: 0.875rem; color: var(--grey-light); line-height: 1.7; }
+    .highlight-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.8;
+    }
 
     /* ── CONTACT ── */
+    .contact-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      gap: 6rem;
       align-items: center;
     }
 
-    .contact-text h2 { margin-bottom: 1rem; }
+    .contact-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: var(--black);
+      margin: 1rem 0 1.25rem;
+    }
 
-    .contact-text > p {
+    .contact-sub {
+      font-size: 0.95rem;
       color: var(--grey);
-      font-size: 1.05rem;
-      line-height: 1.8;
+      line-height: 1.85;
       margin-bottom: 2.5rem;
     }
 
-    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 0.875rem; }
 
     .contact-item {
       display: flex;
       align-items: center;
       gap: 1rem;
-      font-size: 0.95rem;
+      font-size: 0.875rem;
       font-weight: 500;
-      color: var(--charcoal-mid);
-      transition: color 0.2s;
+      color: var(--grey);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.875rem 1.25rem;
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .contact-item:hover { color: var(--brick); }
+    .contact-item:hover { border-color: var(--black); color: var(--black); }
 
     .contact-item-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--cream-mid);
+      width: 34px;
+      height: 34px;
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      color: var(--grey);
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .contact-item:hover .contact-item-icon {
-      border-color: var(--brick-light);
-      color: var(--brick);
+      color: var(--grey-lt);
     }
 
     .contact-photo {
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid var(--border);
     }
 
     .contact-photo img {
       width: 100%;
-      height: 460px;
+      height: 500px;
       object-fit: cover;
       object-position: top;
       display: block;
@@ -570,8 +681,9 @@
 
     /* ── FOOTER ── */
     .footer {
-      background: var(--charcoal);
-      padding: 2.5rem 0 1.5rem;
+      background: var(--black);
+      padding: 3rem 0 0;
+      overflow: hidden;
     }
 
     .footer-top {
@@ -580,80 +692,93 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
     .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--off-white);
+      letter-spacing: -0.01em;
     }
 
     .footer-nav { display: flex; gap: 2rem; }
 
     .footer-nav a {
-      font-size: 0.85rem;
-      color: var(--grey-light);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
       transition: color 0.2s;
     }
 
-    .footer-nav a:hover { color: var(--brick-light); }
+    .footer-nav a:hover { color: var(--off-white); }
 
-    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social { display: flex; gap: 0.625rem; }
 
     .footer-social a {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 6px;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: border-color 0.2s;
     }
 
-    .footer-social a:hover { border-color: var(--brick-light); }
-    .footer-social img { width: 17px; height: 17px; filter: invert(1) brightness(0.75); }
+    .footer-social a:hover { border-color: var(--amber); }
+    .footer-social img { width: 15px; height: 15px; filter: invert(1) brightness(0.65); }
+
+    .footer-wordmark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(5rem, 15vw, 14rem);
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+      color: rgba(255,255,255,0.035);
+      padding-top: 1.5rem;
+      white-space: nowrap;
+    }
 
     .footer-copy {
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--grey-light);
-      opacity: 0.5;
-      margin-top: 1.5rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.18);
+      padding: 1.5rem 0;
+      margin-top: -1.75rem;
+      position: relative;
     }
 
     /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
 
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .hero-grid,
-      .leadership-intro,
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-inner,
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
-      .hero-photo-wrap { max-width: 340px; margin: 0 auto; }
+      .hero-photo-card { max-width: 320px; }
 
-      .exp-grid,
       .projects-grid,
-      .leadership-highlights { grid-template-columns: 1fr; }
+      .leadership-grid { grid-template-columns: 1fr; }
 
       .contact-photo { display: none; }
-      .leadership-photo { display: none; }
+
+      .exp-item { grid-template-columns: 40px 1fr; }
+      .exp-badge { display: none; }
     }
 
     @media (max-width: 640px) {
-      .section { padding: 72px 0; }
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
-
+      .hero-stats { gap: 1.5rem; }
       .footer-top { flex-direction: column; align-items: flex-start; }
       .footer-nav { flex-wrap: wrap; gap: 1rem; }
     }
@@ -665,7 +790,7 @@
   <nav class="nav" id="navbar">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">Alex Gutierrez</a>
+        <a href="index.html" class="nav-logo">AG</a>
         <ul class="nav-links">
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -688,74 +813,117 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-grid">
+      <div class="hero-inner">
         <div>
           <span class="hero-label">Software Engineer &amp; Engineering Leader</span>
-          <h1 class="hero-name">Alex Gutierrez</h1>
-          <p class="hero-tagline">Building products. Growing teams.</p>
-          <p class="hero-bio">
-            Software engineer and technical leader with 10+ years shipping scalable web and mobile products — and developing the engineers who build them. Based in California's Central Valley.
-          </p>
+          <h1 class="hero-name">alex<br>gutierrez</h1>
+          <p class="hero-tagline">Building products. Growing teams. Based in California's Central Valley.</p>
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-num">10+</div>
+              <div class="hero-stat-label">Years Experience</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">1.8k</div>
+              <div class="hero-stat-label">Daily Active Users</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">100+</div>
+              <div class="hero-stat-label">Engineers Mentored</div>
+            </div>
+          </div>
           <div class="hero-ctas">
-            <a href="#projects" class="btn btn--primary">View My Work</a>
-            <a href="#contact" class="btn btn--outline">Get in Touch</a>
+            <a href="#projects" class="btn-primary">View My Work</a>
+            <a href="#contact" class="btn-outline">Get in Touch</a>
           </div>
         </div>
-        <div class="hero-photo-wrap">
-          <img
-            src="images/My-project.jpg"
-            srcset="images/My-project-p-500.jpg 500w, images/My-project-p-800.jpg 800w, images/My-project-p-1080.jpg 1080w, images/My-project.jpg 1200w"
-            sizes="(max-width: 900px) 340px, 50vw"
-            alt="Alex Gutierrez"
-          >
+        <div>
+          <div class="hero-photo-card">
+            <img
+              src="images/My-project.jpg"
+              srcset="images/My-project-p-500.jpg 500w, images/My-project-p-800.jpg 800w, images/My-project-p-1080.jpg 1080w, images/My-project.jpg 1200w"
+              sizes="(max-width: 900px) 320px, 400px"
+              alt="Alex Gutierrez"
+            >
+            <div class="hero-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 17 17 7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- MARQUEE -->
+  <div class="marquee-band">
+    <div class="marquee-track">
+      <span class="marquee-item">engineer <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">builder <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">technical leader <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">mentor <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">coach <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">full-stack <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">engineer <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">builder <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">technical leader <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">mentor <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">coach <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">full-stack <span class="marquee-dot">·</span></span>
+    </div>
+  </div>
+
   <!-- EXPERIENCE -->
-  <section class="section section--alt" id="experience">
+  <section class="exp-section" id="experience">
     <div class="container">
-      <span class="overline">Work Experience</span>
-      <h2 class="section-title">Where I've built and led.</h2>
-      <p class="section-sub">A decade of roles spanning engineering, product leadership, and community — each one sharpening how I think about technology and people.</p>
-      <div class="exp-grid">
-        <div class="exp-card fade-up">
+      <div class="exp-section-head">work experience.</div>
+      <ul class="exp-list">
+        <li class="exp-item fade-up">
           <div class="exp-num">01</div>
-          <div class="exp-role">Technology Consultant</div>
-          <div class="exp-company">Oranj Technologies</div>
-          <p class="exp-desc">Independent technology consultancy delivering digital products and technical strategy for clients across industries. Full project lifecycle ownership from architecture and design through development and deployment.</p>
-        </div>
-        <div class="exp-card fade-up">
+          <div>
+            <div class="exp-role">Technology Consultant</div>
+            <div class="exp-company">Oranj Technologies</div>
+            <p class="exp-desc">Independent technology consultancy delivering digital products and technical strategy for clients across industries. Full project lifecycle ownership from architecture and design through development and deployment.</p>
+          </div>
+          <span class="exp-badge">Consulting</span>
+        </li>
+        <li class="exp-item fade-up">
           <div class="exp-num">02</div>
-          <div class="exp-role">Technical Lead</div>
-          <div class="exp-company">Listing Alert</div>
-          <p class="exp-desc">Owned the company's entire tech stack and led a team of engineers to scale the platform to 1,800+ daily active users. Defined technical roadmap, drove architectural decisions, and mentored junior engineers across the organization.</p>
-        </div>
-        <div class="exp-card fade-up">
+          <div>
+            <div class="exp-role">Technical Lead</div>
+            <div class="exp-company">Listing Alert</div>
+            <p class="exp-desc">Owned the company's entire tech stack and led a team of engineers to scale the platform to 1,800+ daily active users. Defined technical roadmap, drove architectural decisions, and mentored junior engineers.</p>
+          </div>
+          <span class="exp-badge">1,800+ DAUs</span>
+        </li>
+        <li class="exp-item fade-up">
           <div class="exp-num">03</div>
-          <div class="exp-role">Software Engineer</div>
-          <div class="exp-company">Bitwise Industries</div>
-          <p class="exp-desc">Built full-stack web applications, mobile apps, APIs, and databases for large public and private institutions. Led development on high-impact products across the full engineering stack over nearly a decade.</p>
-        </div>
-        <div class="exp-card fade-up">
+          <div>
+            <div class="exp-role">Software Engineer</div>
+            <div class="exp-company">Bitwise Industries</div>
+            <p class="exp-desc">Built full-stack web applications, mobile apps, APIs, and databases for large public and private institutions. Led development on high-impact products across the full engineering stack over nearly a decade.</p>
+          </div>
+          <span class="exp-badge">~10 Years</span>
+        </li>
+        <li class="exp-item fade-up">
           <div class="exp-num">04</div>
-          <div class="exp-role">Apprentice Lead &amp; Community Outreach</div>
-          <div class="exp-company">Geekwise Academy</div>
-          <p class="exp-desc">Instructed and mentored 100+ aspiring technologists through hands-on software development training. Led community outreach initiatives connecting underrepresented communities to tech apprenticeship pathways.</p>
-        </div>
-      </div>
+          <div>
+            <div class="exp-role">Apprentice Lead &amp; Community Outreach</div>
+            <div class="exp-company">Geekwise Academy</div>
+            <p class="exp-desc">Instructed and mentored 100+ aspiring technologists through hands-on software development training. Led community outreach connecting underrepresented communities to tech apprenticeship pathways.</p>
+          </div>
+          <span class="exp-badge">100+ Mentees</span>
+        </li>
+      </ul>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section class="section" id="skills">
+  <section class="skills-section" id="skills">
     <div class="container">
-      <span class="overline">Technical Skills</span>
-      <h2 class="section-title">Full-stack, front to back.</h2>
-      <p class="section-sub">A decade working across the entire stack — from pixel-perfect interfaces to database architecture, cloud infrastructure, and team leadership.</p>
+      <span class="section-overline fade-up">Technical Skills</span>
+      <div class="section-head fade-up">Full-stack,<br>front to back.</div>
       <div class="skills-grid">
-        <div class="skills-category fade-up">
+        <div class="skills-cat fade-up">
           <h4>Frontend</h4>
           <div class="skills-tags">
             <span class="skill-tag">React</span>
@@ -765,7 +933,7 @@
             <span class="skill-tag">HTML / CSS</span>
           </div>
         </div>
-        <div class="skills-category fade-up">
+        <div class="skills-cat fade-up">
           <h4>Backend</h4>
           <div class="skills-tags">
             <span class="skill-tag">Node.js</span>
@@ -776,7 +944,7 @@
             <span class="skill-tag">Python</span>
           </div>
         </div>
-        <div class="skills-category fade-up">
+        <div class="skills-cat fade-up">
           <h4>Mobile</h4>
           <div class="skills-tags">
             <span class="skill-tag">React Native</span>
@@ -784,7 +952,7 @@
             <span class="skill-tag">iOS &amp; Android</span>
           </div>
         </div>
-        <div class="skills-category fade-up">
+        <div class="skills-cat fade-up">
           <h4>Data &amp; Infra</h4>
           <div class="skills-tags">
             <span class="skill-tag">PostgreSQL</span>
@@ -793,7 +961,7 @@
             <span class="skill-tag">REST APIs</span>
           </div>
         </div>
-        <div class="skills-category fade-up">
+        <div class="skills-cat fade-up">
           <h4>Leadership</h4>
           <div class="skills-tags">
             <span class="skill-tag">Engineering Management</span>
@@ -807,21 +975,20 @@
   </section>
 
   <!-- PROJECTS -->
-  <section class="section section--alt" id="projects">
+  <section class="projects-section" id="projects">
     <div class="container">
-      <span class="overline">Featured Work</span>
-      <h2 class="section-title">Products I've shipped.</h2>
-      <p class="section-sub">A selection of projects built with real users, real stakes, and measurable impact.</p>
+      <span class="section-overline fade-up">Featured Work</span>
+      <div class="section-head fade-up">Products I've shipped.</div>
       <div class="projects-grid">
         <div class="project-card fade-up">
           <img class="project-img" src="images/Screenshot-2023-06-11-at-10.25.47-PM.png"
-            srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-1080.png 1080w"
+            srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w"
             sizes="(max-width: 640px) 100vw, 50vw"
             alt="Listing Alert">
           <div class="project-body">
             <span class="project-metric">1,800+ Daily Active Users</span>
-            <h3>Listing Alert</h3>
-            <p>A real estate communication platform connecting buyers and sellers through intelligent listing matches. Led the full technical strategy and engineering team as Technical Lead from early-stage through scale.</p>
+            <div class="project-title">Listing Alert</div>
+            <p class="project-desc">A real estate communication platform connecting buyers and sellers through intelligent listing matches. Led the full technical strategy and engineering team as Technical Lead from early-stage through scale.</p>
             <div class="project-tags">
               <span class="project-tag">React Native</span>
               <span class="project-tag">React.js</span>
@@ -832,12 +999,11 @@
           </div>
         </div>
         <div class="project-card fade-up">
-          <img class="project-img" src="images/holidaymagic.png"
-            alt="Holiday Magic">
+          <img class="project-img" src="images/holidaymagic.png" alt="Holiday Magic">
           <div class="project-body">
             <span class="project-metric">$100K+ Annual Revenue</span>
-            <h3>Holiday Magic</h3>
-            <p>A scheduling and photo delivery platform that reimagines how families take holiday photos. Real-time photo uploads, custom package selection, and automated fulfillment — generating over $100K in gross revenue annually.</p>
+            <div class="project-title">Holiday Magic</div>
+            <p class="project-desc">A scheduling and photo delivery platform that reimagines how families take holiday photos. Real-time uploads, custom package selection, and automated fulfillment — generating over $100K in gross revenue annually.</p>
             <div class="project-tags">
               <span class="project-tag">Angular</span>
               <span class="project-tag">Node.js</span>
@@ -848,13 +1014,13 @@
         </div>
         <div class="project-card fade-up">
           <img class="project-img" src="images/Screenshot-2023-06-11-at-10.18.02-PM.png"
-            srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-1080.png 1080w"
+            srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w"
             sizes="(max-width: 640px) 100vw, 50vw"
             alt="Quark Smart Home">
           <div class="project-body">
             <span class="project-metric">2018 59DaysOfCode Grand Prize</span>
-            <h3>Quark: Smart Home App</h3>
-            <p>Award-winning smart home mobile app empowering users to monitor home energy usage, set conservation budgets, and receive intelligent push notifications. Grand prize winner in the Smart Cities category.</p>
+            <div class="project-title">Quark: Smart Home App</div>
+            <p class="project-desc">Award-winning smart home app empowering users to monitor home energy usage, set conservation budgets, and receive intelligent push notifications. Grand prize winner in the Smart Cities category.</p>
             <div class="project-tags">
               <span class="project-tag">Ionic</span>
               <span class="project-tag">Angular</span>
@@ -864,12 +1030,11 @@
           </div>
         </div>
         <div class="project-card fade-up">
-          <img class="project-img" src="images/greenraiteros3.png"
-            alt="Green Raiteros">
+          <img class="project-img" src="images/greenraiteros3.png" alt="Green Raiteros">
           <div class="project-body">
             <span class="project-metric">Public Rideshare Service</span>
-            <h3>Green Raiteros</h3>
-            <p>A public rideshare application built specifically to serve rural communities with limited transportation access. Designed with equity, accessibility, and community need at its core.</p>
+            <div class="project-title">Green Raiteros</div>
+            <p class="project-desc">A public rideshare application built specifically to serve rural communities with limited transportation access. Designed with equity, accessibility, and community need at its core.</p>
             <div class="project-tags">
               <span class="project-tag">React</span>
               <span class="project-tag">NestJS</span>
@@ -879,84 +1044,67 @@
         </div>
       </div>
       <div class="projects-footer">
-        <a href="projects.html" class="btn btn--outline">View All Projects</a>
+        <a href="projects.html" class="btn-outline">View All Projects</a>
       </div>
     </div>
   </section>
 
   <!-- LEADERSHIP -->
-  <section class="section section--dark" id="leadership">
+  <section class="leadership-section" id="leadership">
     <div class="container">
-      <span class="overline">Leadership</span>
-      <h2 class="section-title">More than an engineer.</h2>
-      <div class="leadership-intro">
-        <div>
-          <p class="section-sub">Leadership isn't a title — it's a practice. Across technology, athletics, and community, I've built programs, developed talent, and driven lasting change. That same instinct is what makes me effective as a technical leader.</p>
-          <p style="color: var(--grey-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">As a first-generation Mexican-American, I believe deeply in opening doors for those coming behind me. My work in technology has always been inseparable from my commitment to community.</p>
-          <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" class="btn btn--outline-light">Connect on LinkedIn</a>
-        </div>
-        <div class="leadership-photo">
-          <img src="images/sangerchamps.jpeg"
-            alt="Alex Gutierrez coaching">
-        </div>
-      </div>
-      <div class="leadership-highlights">
+      <span class="section-overline fade-up">Leadership</span>
+      <div class="section-head section-head--light fade-up">More than<br>an engineer.</div>
+      <p class="leadership-intro fade-up">Leadership isn't a title — it's a practice. Across technology, athletics, and community, I've built programs, developed talent, and driven lasting change. As a first-generation Mexican-American, I believe deeply in opening doors for those coming behind me.</p>
+      <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" class="btn-outline-light fade-up">Connect on LinkedIn</a>
+      <div class="leadership-grid">
         <div class="highlight-card fade-up">
-          <div class="highlight-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M17 3H7l-2 7h14l-2-7z"/><path d="M5 10c0 3.866 3.134 7 7 7s7-3.134 7-7"/></svg>
-          </div>
+          <div class="highlight-num">01 · Achievement</div>
           <h4>California State Champion Head Coach</h4>
-          <p>Built and led the Sanger High School Men's Soccer program to its first-ever Section Championship and California State Championship in 2020 — coaching a team and culture I built from the ground up.</p>
+          <p>Built and led the Sanger High School Men's Soccer program to its first-ever Section Championship and California State Championship in 2020 — a team and culture I built from the ground up.</p>
         </div>
         <div class="highlight-card fade-up">
-          <div class="highlight-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/><path d="M16 11c2.21 0 4 1.79 4 4v1"/><circle cx="18" cy="7" r="3"/></svg>
-          </div>
+          <div class="highlight-num">02 · Community</div>
           <h4>Youth Development Program Founder</h4>
           <p>Founded a Club Soccer program for youth in Southeast Fresno, creating a competitive pathway for underserved student athletes to develop, compete, and pursue higher education.</p>
         </div>
         <div class="highlight-card fade-up">
-          <div class="highlight-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
+          <div class="highlight-num">03 · Education</div>
           <h4>Master of Public Administration</h4>
-          <p>Graduate degree from Fresno State University. Led local and statewide policy initiatives to improve living conditions across Fresno County — work that still informs how I think about the impact of technology on communities.</p>
+          <p>Graduate degree from Fresno State University. Led local and statewide policy initiatives to improve living conditions across Fresno County — work that still informs how I think about technology's impact on communities.</p>
         </div>
         <div class="highlight-card fade-up">
-          <div class="highlight-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/><path d="M2 12h4"/><path d="M4 10v4"/></svg>
-          </div>
+          <div class="highlight-num">04 · Advocacy</div>
           <h4>Public Speaker &amp; Community Advocate</h4>
-          <p>Speaker at conferences and events on community, social justice, policy, athletics, youth development, and technology. A longtime advocate for connecting underrepresented communities to careers in tech.</p>
+          <p>Speaker at conferences on community, social justice, policy, athletics, youth development, and technology — advocating to connect underrepresented communities to careers in tech.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact">
+  <section class="contact-section" id="contact">
     <div class="container">
       <div class="contact-grid">
-        <div class="contact-text">
-          <span class="overline">Contact</span>
-          <h2>Let's build something together.</h2>
-          <p>Whether you're looking for an engineer, a technical leader, or a collaborator who cares about what the work actually does in the world — I'd love to connect.</p>
+        <div>
+          <span class="section-overline">Contact</span>
+          <div class="contact-headline">Let's build something together.</div>
+          <p class="contact-sub">Whether you're looking for an engineer, a technical leader, or a collaborator who cares about what the work actually does in the world — I'd love to connect.</p>
           <div class="contact-items">
             <a href="mailto:alex@oranjtechnologies.com?subject=Let's Connect" class="contact-item">
               <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               alex@oranjtechnologies.com
             </a>
             <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener" class="contact-item">
               <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               </div>
               linkedin.com/in/alex-gutierrez-mpa
             </a>
             <a href="https://github.com/alexg1021" target="_blank" rel="noopener" class="contact-item">
               <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               </div>
               github.com/alexg1021
             </a>
@@ -965,7 +1113,7 @@
         <div class="contact-photo">
           <img
             src="images/IMG_AEF038AA2735-1.jpeg"
-            srcset="images/IMG_AEF038AA2735-1-p-500.jpeg 500w, images/IMG_AEF038AA2735-1-p-800.jpeg 800w, images/IMG_AEF038AA2735-1-p-1080.jpeg 1080w"
+            srcset="images/IMG_AEF038AA2735-1-p-500.jpeg 500w, images/IMG_AEF038AA2735-1-p-1080.jpeg 1080w"
             sizes="(max-width: 900px) 100vw, 50vw"
             alt="Alex Gutierrez"
           >
@@ -994,8 +1142,9 @@
           </a>
         </div>
       </div>
-      <p class="footer-copy">&copy; 2025 Alex Gutierrez</p>
+      <div class="footer-wordmark">gutierrez</div>
     </div>
+    <p class="footer-copy">&copy; 2025 Alex Gutierrez</p>
   </footer>
 
   <script>
