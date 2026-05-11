@@ -196,10 +196,15 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1fr minmax(280px, 420px);
+      /* minmax(0, 1fr): column width follows layout, not rotating headline min-content */
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
       gap: clamp(2rem, 5vw, 4.5rem);
       align-items: center;
       padding: clamp(2.5rem, 6vw, 5rem) 0;
+    }
+
+    .hero-inner > div:first-child {
+      min-width: 0;
     }
 
     .hero-label {
@@ -215,6 +220,18 @@
       margin-bottom: 1.5rem;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     .hero-name {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
@@ -224,6 +241,44 @@
       text-transform: lowercase;
       color: var(--black);
       margin-bottom: 1.75rem;
+    }
+
+    .hero-name-rotator {
+      display: grid;
+      grid-template-areas: 'stack';
+      justify-items: start;
+      align-items: start;
+      max-width: 100%;
+    }
+
+    .hero-name-sizer,
+    .hero-name-word {
+      grid-area: stack;
+      line-height: 0.92;
+    }
+
+    .hero-name-sizer {
+      visibility: hidden;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-name-word {
+      position: relative;
+      z-index: 1;
+      display: block;
+      transition: opacity 0.5s ease;
+      opacity: 1;
+    }
+
+    .hero-name-word.is-hidden {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-name-word {
+        transition: none;
+      }
     }
 
     .hero-tagline {
@@ -1169,8 +1224,13 @@
     <div class="container">
       <div class="hero-inner">
         <div>
-          <span class="hero-label">Software Engineer &amp; Engineering Leader</span>
-          <h1 class="hero-name">alex<br>gutierrez</h1>
+          <h1 class="hero-name">
+            <span class="sr-only">Alex Gutierrez</span>
+            <span class="hero-name-rotator" aria-hidden="true">
+              <span class="hero-name-sizer">technical</span>
+              <span class="hero-name-word" id="heroRotatingWord">engineer</span>
+            </span>
+          </h1>
           <p class="hero-tagline">Building products. Growing teams. Based in California's Central Valley.</p>
           <div class="hero-social">
             <a href="https://github.com/alexg1021" target="_blank" rel="noopener" class="hero-social-link" aria-label="GitHub">
@@ -1225,18 +1285,18 @@
   <!-- MARQUEE -->
   <div class="marquee-band">
     <div class="marquee-track">
-      <span class="marquee-item">engineer <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">builder <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">technical leader <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">mentor <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">coach <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">full-stack <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">engineer <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">builder <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">technical leader <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">mentor <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">coach <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">full-stack <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item"> about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
     </div>
   </div>
 
@@ -1548,6 +1608,74 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const MARQUEE_WORDS = ['builder', 'leader', 'mentor', 'creative'];
+
+    function longestMarqueeWord() {
+      return MARQUEE_WORDS.reduce((longest, w) => (w.length > longest.length ? w : longest));
+    }
+
+    function syncHeroRotatorLayout() {
+      const rotator = document.querySelector('.hero-name-rotator');
+      const h1 = document.querySelector('.hero-name');
+      const sizer = document.querySelector('.hero-name-sizer');
+      if (!rotator || !h1) return;
+
+      if (sizer) sizer.textContent = longestMarqueeWord();
+
+      const cs = getComputedStyle(h1);
+      const probe = document.createElement('span');
+      probe.setAttribute('aria-hidden', 'true');
+      probe.style.cssText =
+        'position:absolute;left:-9999px;top:0;visibility:hidden;pointer-events:none;white-space:nowrap;' +
+        `font-family:${cs.fontFamily};font-weight:${cs.fontWeight};font-size:${cs.fontSize};` +
+        `letter-spacing:${cs.letterSpacing};text-transform:${cs.textTransform};`;
+
+      document.body.appendChild(probe);
+      let maxW = 0;
+      MARQUEE_WORDS.forEach(w => {
+        probe.textContent = w;
+        maxW = Math.max(maxW, probe.offsetWidth);
+      });
+      document.body.removeChild(probe);
+
+      const col = rotator.closest('.hero-inner')?.children[0];
+      const cap = col ? col.getBoundingClientRect().width : maxW;
+      rotator.style.maxWidth = `${Math.min(maxW, cap)}px`;
+    }
+
+    let heroRotatorResizeTimer;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(heroRotatorResizeTimer);
+      heroRotatorResizeTimer = window.setTimeout(syncHeroRotatorLayout, 120);
+    });
+
+    syncHeroRotatorLayout();
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncHeroRotatorLayout);
+    }
+
+    const heroWordEl = document.getElementById('heroRotatingWord');
+    const ROTATE_MS = 2800;
+    const FADE_MS = 500;
+
+    function initHeroWordRotate() {
+      if (!heroWordEl || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let i = 0;
+      const tick = () => {
+        heroWordEl.classList.add('is-hidden');
+        window.setTimeout(() => {
+          i = (i + 1) % MARQUEE_WORDS.length;
+          heroWordEl.textContent = MARQUEE_WORDS[i];
+          heroWordEl.classList.remove('is-hidden');
+        }, FADE_MS);
+      };
+      window.setInterval(tick, ROTATE_MS);
+    }
+
+    initHeroWordRotate();
   </script>
 </body>
 </html>
