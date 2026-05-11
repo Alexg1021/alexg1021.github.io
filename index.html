@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="images/webclip.png">
   <style>
@@ -40,7 +40,13 @@
     a { text-decoration: none; color: inherit; }
 
     .container {
-      max-width: 1160px;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .container-wide {
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 2rem;
     }
@@ -50,7 +56,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.5rem 0;
+      padding: 1.25rem 0;
       transition: background 0.3s, border-color 0.3s;
       border-bottom: 1px solid transparent;
     }
@@ -62,9 +68,10 @@
     }
 
     .nav-inner {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: center;
-      justify-content: space-between;
+      gap: 1rem;
     }
 
     .nav-logo {
@@ -72,17 +79,19 @@
       font-weight: 700;
       font-size: 1.1rem;
       letter-spacing: -0.02em;
+      justify-self: start;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
+      justify-self: center;
     }
 
     .nav-links a {
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       color: var(--grey);
       transition: color 0.2s;
@@ -104,6 +113,42 @@
 
     .nav-cta:hover { background: var(--black) !important; color: var(--off-white) !important; }
 
+    .nav-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      justify-self: end;
+    }
+
+    .nav-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--black);
+    }
+
+    .nav-identity {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .nav-identity strong {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-identity span {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--grey-lt);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .nav-toggle {
       display: none;
       flex-direction: column;
@@ -111,6 +156,8 @@
       background: none;
       border: none;
       cursor: pointer;
+      justify-self: end;
+      grid-column: 3;
     }
 
     .nav-toggle span {
@@ -141,7 +188,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      padding-top: 90px;
+      padding-top: 88px;
       display: flex;
       align-items: center;
       border-bottom: 1px solid var(--border);
@@ -149,10 +196,10 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 4rem;
+      grid-template-columns: 1fr minmax(280px, 420px);
+      gap: clamp(2rem, 5vw, 4.5rem);
       align-items: center;
-      padding: 4rem 0;
+      padding: clamp(2.5rem, 6vw, 5rem) 0;
     }
 
     .hero-label {
@@ -165,56 +212,94 @@
       border: 1px solid var(--border);
       padding: 0.35rem 0.9rem;
       border-radius: 100px;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-name {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: clamp(4.5rem, 10vw, 9.5rem);
-      line-height: 0.88;
-      letter-spacing: -0.035em;
+      font-size: clamp(4.75rem, 11vw, 10rem);
+      line-height: 0.86;
+      letter-spacing: -0.045em;
+      text-transform: lowercase;
       color: var(--black);
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
 
     .hero-tagline {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.95rem, 1.5vw, 1.125rem);
+      font-weight: 400;
       color: var(--grey);
-      margin-bottom: 2.5rem;
-      max-width: 420px;
-      line-height: 1.55;
+      margin-bottom: 1.75rem;
+      max-width: 26rem;
+      line-height: 1.65;
     }
 
-    .hero-stats {
+    .hero-social {
       display: flex;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-      padding-bottom: 2.5rem;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--grey);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .hero-social-link:hover {
+      border-color: var(--black);
+      color: var(--black);
+      background: rgba(12,12,12,0.04);
+    }
+
+    .hero-social-link svg { width: 17px; height: 17px; }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem 3rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
       border-bottom: 1px solid var(--border);
+      max-width: 22rem;
     }
 
     .hero-stat-num {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: -0.03em;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      letter-spacing: -0.04em;
       line-height: 1;
       color: var(--black);
     }
 
     .hero-stat-label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 500;
       color: var(--grey-lt);
       text-transform: uppercase;
-      letter-spacing: 0.09em;
-      margin-top: 0.3rem;
+      letter-spacing: 0.1em;
+      margin-top: 0.35rem;
     }
 
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-stat-note {
+      grid-column: 1 / -1;
+      font-size: 0.78rem;
+      color: var(--grey);
+      line-height: 1.5;
+      margin-top: -0.25rem;
+    }
+
+    .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
     .btn-primary {
       display: inline-block;
@@ -262,12 +347,18 @@
     .btn-outline-light:hover { border-color: var(--amber); color: var(--amber); }
 
     /* ── HERO PHOTO ── */
+    .hero-photo-wrap {
+      position: relative;
+      isolation: isolate;
+    }
+
     .hero-photo-card {
       background: var(--amber);
-      border-radius: 20px;
+      border-radius: clamp(22px, 4vw, 36px);
       overflow: hidden;
       aspect-ratio: 3 / 4;
       position: relative;
+      box-shadow: 0 28px 80px rgba(12,12,12,0.12);
     }
 
     .hero-photo-card img {
@@ -278,18 +369,51 @@
       display: block;
     }
 
+    .hero-float {
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid var(--off-white);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .hero-float--sm {
+      width: 52px;
+      height: 52px;
+      top: 12%;
+      right: -8%;
+    }
+
+    .hero-float--xs {
+      width: 40px;
+      height: 40px;
+      bottom: 18%;
+      left: -6%;
+    }
+
+    .hero-float img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .hero-badge {
       position: absolute;
-      bottom: 1.25rem;
-      right: 1.25rem;
-      width: 48px;
-      height: 48px;
+      bottom: 1.35rem;
+      right: 1.35rem;
+      width: 52px;
+      height: 52px;
       background: var(--black);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 3;
+      transition: transform 0.2s;
     }
+
+    .hero-photo-card:hover .hero-badge { transform: scale(1.06); }
 
     .hero-badge svg { stroke: var(--off-white); }
 
@@ -304,6 +428,10 @@
       display: flex;
       white-space: nowrap;
       animation: marquee 24s linear infinite;
+    }
+
+    .marquee-track--slow {
+      animation-duration: 36s;
     }
 
     @keyframes marquee {
@@ -323,6 +451,130 @@
 
     .marquee-dot { color: var(--amber); }
 
+    .marquee-band--light {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marquee-band--light .marquee-item {
+      color: var(--black);
+      font-size: clamp(1.5rem, 4vw, 2.75rem);
+      letter-spacing: -0.03em;
+    }
+
+    .marquee-band--light .marquee-dot { color: var(--grey-lt); }
+
+    /* ── ABOUT SPOTLIGHT ── */
+    .about-spotlight {
+      background: var(--black);
+      padding: clamp(4rem, 10vw, 7rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-spotlight-inner {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .about-spotlight-visual {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .about-spotlight-petals {
+      position: absolute;
+      inset: -15% -10% auto -10%;
+      height: 120%;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 45% 35% at 50% 45%, rgba(255,255,255,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 38% 30% at 30% 55%, rgba(255,255,255,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse 38% 30% at 70% 55%, rgba(255,255,255,0.05) 0%, transparent 50%);
+      filter: blur(2px);
+    }
+
+    .about-spotlight-cross {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      opacity: 0.35;
+      color: var(--off-white);
+      pointer-events: none;
+    }
+
+    .about-spotlight-cross::before,
+    .about-spotlight-cross::after {
+      content: '';
+      position: absolute;
+      background: currentColor;
+    }
+
+    .about-spotlight-cross::before {
+      left: 50%;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+
+    .about-spotlight-cross::after {
+      top: 50%;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      transform: translateY(-50%);
+    }
+
+    .about-spotlight-cross--tl { top: 0.5rem; left: 0.5rem; }
+    .about-spotlight-cross--tr { top: 0.5rem; right: 0.5rem; }
+    .about-spotlight-cross--bl { bottom: 0.5rem; left: 0.5rem; }
+    .about-spotlight-cross--br { bottom: 0.5rem; right: 0.5rem; }
+
+    .about-spotlight-photo {
+      position: relative;
+      border-radius: clamp(20px, 3vw, 32px);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+    }
+
+    .about-spotlight-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(1);
+      display: block;
+      transition: filter 0.5s ease;
+    }
+
+    .about-spotlight-visual:hover .about-spotlight-photo img {
+      filter: grayscale(0);
+    }
+
+    .about-spotlight-kicker {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.04em;
+      text-transform: lowercase;
+      color: var(--off-white);
+      margin-bottom: 1rem;
+    }
+
+    .about-spotlight-copy {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.42);
+      max-width: 34rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
     /* ── EXPERIENCE ── */
     .exp-section {
       background: var(--black);
@@ -332,8 +584,9 @@
     .exp-section-head {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: clamp(2.5rem, 6vw, 5.5rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(2.75rem, 7vw, 6rem);
+      letter-spacing: -0.045em;
+      text-transform: lowercase;
       color: var(--off-white);
       padding: 4rem 0 2.5rem;
       border-bottom: 1px solid rgba(255,255,255,0.07);
@@ -363,9 +616,10 @@
     }
 
     .exp-role {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-style: italic;
-      font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+      font-weight: 500;
+      font-size: clamp(1.2rem, 2.3vw, 1.75rem);
       color: var(--off-white);
       line-height: 1.2;
       margin-bottom: 0.35rem;
@@ -423,14 +677,18 @@
     .section-head {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-      letter-spacing: -0.03em;
-      line-height: 0.95;
+      font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      text-transform: lowercase;
       color: var(--black);
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
     }
 
-    .section-head--light { color: var(--off-white); }
+    .section-head--light {
+      color: var(--off-white);
+      text-transform: none;
+    }
 
     .skills-grid {
       display: grid;
@@ -464,88 +722,129 @@
 
     .skill-tag:hover { border-color: var(--black); color: var(--black); }
 
-    /* ── PROJECTS ── */
+    /* ── PROJECTS (mosaic) ── */
     .projects-section {
-      padding: 5rem 0;
-      background: var(--white);
+      padding: 0;
+      background: var(--off-white);
       border-top: 1px solid var(--border);
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .project-card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
+    .projects-showcase {
+      position: relative;
+      padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(4rem, 10vw, 6rem);
       overflow: hidden;
-      background: var(--off-white);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.09);
+    .projects-showcase-inner {
+      position: relative;
     }
 
-    .project-img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
-
-    .project-metric {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--amber);
-      padding: 0.28rem 0.8rem;
-      border-radius: 100px;
-      margin-bottom: 0.875rem;
-    }
-
-    .project-title {
+    .projects-mega {
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%);
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
+      font-size: clamp(4.5rem, 17vw, 13rem);
+      letter-spacing: -0.055em;
+      line-height: 0.85;
+      text-transform: lowercase;
       color: var(--black);
-      margin-bottom: 0.625rem;
+      opacity: 0.06;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 0;
+      user-select: none;
     }
 
-    .project-desc {
-      font-size: 0.875rem;
-      color: var(--grey);
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
-      flex: 1;
+    .projects-mosaic {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: end;
     }
 
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-    .project-tag {
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--grey-lt);
-      border: 1px solid var(--border);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
+    .projects-cell {
+      position: relative;
+      border-radius: clamp(18px, 2.5vw, 28px);
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      display: block;
+      background: var(--border);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .projects-footer { text-align: center; }
+    .projects-cell:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(12,12,12,0.14);
+    }
+
+    .projects-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(1);
+      transition: filter 0.45s ease, transform 0.6s ease;
+    }
+
+    .projects-cell:hover img {
+      filter: grayscale(0);
+      transform: scale(1.04);
+    }
+
+    .projects-cell--accent {
+      background: var(--amber);
+    }
+
+    .projects-cell--accent img {
+      filter: grayscale(0);
+    }
+
+    .projects-cell-cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.1rem 1.15rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      background: linear-gradient(transparent, rgba(12,12,12,0.82));
+      transform: translateY(100%);
+      transition: transform 0.35s ease;
+    }
+
+    .projects-cell:hover .projects-cell-cap {
+      transform: translateY(0);
+    }
+
+    .projects-cell--accent .projects-cell-cap {
+      color: var(--black);
+      background: linear-gradient(transparent, rgba(245,244,239,0.95));
+    }
+
+    .projects-strip {
+      padding: 0 0 4rem;
+      text-align: center;
+    }
+
+    .projects-strip .btn-outline {
+      border-color: var(--black);
+      color: var(--black);
+    }
+
+    .projects-strip .btn-outline:hover {
+      background: var(--black);
+      color: var(--off-white);
+      border-color: var(--black);
+    }
 
     /* ── LEADERSHIP ── */
     .leadership-section {
@@ -623,9 +922,10 @@
     .contact-headline {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: clamp(2.25rem, 4vw, 3.25rem);
-      letter-spacing: -0.03em;
-      line-height: 0.95;
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      text-transform: lowercase;
       color: var(--black);
       margin: 1rem 0 1.25rem;
     }
@@ -680,9 +980,31 @@
     }
 
     /* ── FOOTER ── */
-    .footer {
+    .footer-wordmark-band {
+      background: var(--off-white);
+      padding: clamp(2rem, 5vw, 3rem) 0 0;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-wordmark-band .footer-wordmark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(5.5rem, 18vw, 15rem);
+      letter-spacing: -0.055em;
+      line-height: 0.72;
+      text-transform: lowercase;
+      color: var(--black);
+      display: block;
+      margin: 0;
+      padding-bottom: clamp(0.5rem, 2vw, 1.25rem);
+      transform: translateY(18%);
+      user-select: none;
+    }
+
+    .footer-bar {
       background: var(--black);
-      padding: 3rem 0 0;
+      padding: 2.5rem 0 0;
       overflow: hidden;
     }
 
@@ -701,14 +1023,15 @@
       font-weight: 700;
       font-size: 1rem;
       color: var(--off-white);
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
+      text-transform: none;
     }
 
-    .footer-nav { display: flex; gap: 2rem; }
+    .footer-nav { display: flex; gap: 2rem; flex-wrap: wrap; }
 
     .footer-nav a {
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.35);
       transition: color 0.2s;
     }
 
@@ -717,10 +1040,10 @@
     .footer-social { display: flex; gap: 0.625rem; }
 
     .footer-social a {
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -730,24 +1053,12 @@
     .footer-social a:hover { border-color: var(--amber); }
     .footer-social img { width: 15px; height: 15px; filter: invert(1) brightness(0.65); }
 
-    .footer-wordmark {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: clamp(5rem, 15vw, 14rem);
-      letter-spacing: -0.04em;
-      line-height: 0.85;
-      color: rgba(255,255,255,0.035);
-      padding-top: 1.5rem;
-      white-space: nowrap;
-    }
-
     .footer-copy {
       text-align: center;
       font-size: 0.72rem;
-      color: rgba(255,255,255,0.18);
-      padding: 1.5rem 0;
-      margin-top: -1.75rem;
-      position: relative;
+      color: rgba(255,255,255,0.22);
+      padding: 1.5rem 0 2rem;
+      margin: 0;
     }
 
     /* ── ANIMATIONS ── */
@@ -760,13 +1071,27 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .projects-mosaic {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .projects-mega {
+        top: 38%;
+      }
+    }
+
     @media (max-width: 900px) {
+      .nav-profile { display: none; }
+
       .hero-inner,
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
-      .hero-photo-card { max-width: 320px; }
+      .hero-photo-wrap {
+        max-width: 340px;
+        margin: 0 auto;
+      }
 
-      .projects-grid,
       .leadership-grid { grid-template-columns: 1fr; }
 
       .contact-photo { display: none; }
@@ -776,11 +1101,33 @@
     }
 
     @media (max-width: 640px) {
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
-      .hero-stats { gap: 1.5rem; }
+
+      .hero-stats { max-width: none; }
+
+      .hero-float { display: none; }
+
+      .projects-mosaic {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .projects-mega {
+        font-size: clamp(3.5rem, 22vw, 8rem);
+        top: 35%;
+      }
+
       .footer-top { flex-direction: column; align-items: flex-start; }
-      .footer-nav { flex-wrap: wrap; gap: 1rem; }
+      .footer-nav { gap: 1rem; }
     }
   </style>
 </head>
@@ -797,6 +1144,13 @@
           <li><a href="#leadership">Leadership</a></li>
           <li><a href="#contact" class="nav-cta">Contact</a></li>
         </ul>
+        <div class="nav-profile">
+          <img class="nav-avatar" src="images/My-project-p-500.jpg" width="72" height="72" alt="">
+          <div class="nav-identity">
+            <strong>Alex</strong>
+            <span>Central Valley</span>
+          </div>
+        </div>
         <button class="nav-toggle" id="navToggle" aria-label="Open navigation">
           <span></span><span></span><span></span>
         </button>
@@ -818,26 +1172,40 @@
           <span class="hero-label">Software Engineer &amp; Engineering Leader</span>
           <h1 class="hero-name">alex<br>gutierrez</h1>
           <p class="hero-tagline">Building products. Growing teams. Based in California's Central Valley.</p>
+          <div class="hero-social">
+            <a href="https://github.com/alexg1021" target="_blank" rel="noopener" class="hero-social-link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener" class="hero-social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="mailto:alex@oranjtechnologies.com" class="hero-social-link" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            </a>
+          </div>
           <div class="hero-stats">
             <div>
               <div class="hero-stat-num">10+</div>
-              <div class="hero-stat-label">Years Experience</div>
+              <div class="hero-stat-label">Years experience</div>
             </div>
             <div>
               <div class="hero-stat-num">1.8k</div>
-              <div class="hero-stat-label">Daily Active Users</div>
+              <div class="hero-stat-label">Daily active users</div>
             </div>
-            <div>
-              <div class="hero-stat-num">100+</div>
-              <div class="hero-stat-label">Engineers Mentored</div>
-            </div>
+            <p class="hero-stat-note">Including 100+ engineers mentored through teaching and leadership.</p>
           </div>
           <div class="hero-ctas">
             <a href="#projects" class="btn-primary">View My Work</a>
             <a href="#contact" class="btn-outline">Get in Touch</a>
           </div>
         </div>
-        <div>
+        <div class="hero-photo-wrap">
+          <div class="hero-float hero-float--sm" aria-hidden="true">
+            <img src="images/My-project-p-500.jpg" alt="">
+          </div>
+          <div class="hero-float hero-float--xs" aria-hidden="true">
+            <img src="images/IMG_AEF038AA2735-1-p-500.jpeg" alt="">
+          </div>
           <div class="hero-photo-card">
             <img
               src="images/My-project.jpg"
@@ -871,6 +1239,29 @@
       <span class="marquee-item">full-stack <span class="marquee-dot">·</span></span>
     </div>
   </div>
+
+  <!-- ABOUT (editorial) -->
+  <section class="about-spotlight" id="about" aria-labelledby="about-heading">
+    <div class="about-spotlight-inner">
+      <div class="about-spotlight-visual fade-up">
+        <span class="about-spotlight-petals" aria-hidden="true"></span>
+        <span class="about-spotlight-cross about-spotlight-cross--tl" aria-hidden="true"></span>
+        <span class="about-spotlight-cross about-spotlight-cross--tr" aria-hidden="true"></span>
+        <span class="about-spotlight-cross about-spotlight-cross--bl" aria-hidden="true"></span>
+        <span class="about-spotlight-cross about-spotlight-cross--br" aria-hidden="true"></span>
+        <div class="about-spotlight-photo">
+          <img
+            src="images/IMG_AEF038AA2735-1.jpeg"
+            srcset="images/IMG_AEF038AA2735-1-p-500.jpeg 500w, images/IMG_AEF038AA2735-1-p-1080.jpeg 1080w"
+            sizes="(max-width: 720px) 100vw, 720px"
+            alt="Alex Gutierrez portrait"
+          >
+        </div>
+      </div>
+      <h2 class="about-spotlight-kicker" id="about-heading">about.</h2>
+      <p class="about-spotlight-copy">Engineering leader and builder focused on products that hold up in the real world — from scalable platforms to teams that grow together.</p>
+    </div>
+  </section>
 
   <!-- EXPERIENCE -->
   <section class="exp-section" id="experience">
@@ -921,7 +1312,7 @@
   <section class="skills-section" id="skills">
     <div class="container">
       <span class="section-overline fade-up">Technical Skills</span>
-      <div class="section-head fade-up">Full-stack,<br>front to back.</div>
+      <div class="section-head fade-up">full-stack,<br>front to back.</div>
       <div class="skills-grid">
         <div class="skills-cat fade-up">
           <h4>Frontend</h4>
@@ -976,76 +1367,67 @@
 
   <!-- PROJECTS -->
   <section class="projects-section" id="projects">
-    <div class="container">
-      <span class="section-overline fade-up">Featured Work</span>
-      <div class="section-head fade-up">Products I've shipped.</div>
-      <div class="projects-grid">
-        <div class="project-card fade-up">
-          <img class="project-img" src="images/Screenshot-2023-06-11-at-10.25.47-PM.png"
-            srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w"
-            sizes="(max-width: 640px) 100vw, 50vw"
-            alt="Listing Alert">
-          <div class="project-body">
-            <span class="project-metric">1,800+ Daily Active Users</span>
-            <div class="project-title">Listing Alert</div>
-            <p class="project-desc">A real estate communication platform connecting buyers and sellers through intelligent listing matches. Led the full technical strategy and engineering team as Technical Lead from early-stage through scale.</p>
-            <div class="project-tags">
-              <span class="project-tag">React Native</span>
-              <span class="project-tag">React.js</span>
-              <span class="project-tag">GraphQL</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">MongoDB</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card fade-up">
-          <img class="project-img" src="images/holidaymagic.png" alt="Holiday Magic">
-          <div class="project-body">
-            <span class="project-metric">$100K+ Annual Revenue</span>
-            <div class="project-title">Holiday Magic</div>
-            <p class="project-desc">A scheduling and photo delivery platform that reimagines how families take holiday photos. Real-time uploads, custom package selection, and automated fulfillment — generating over $100K in gross revenue annually.</p>
-            <div class="project-tags">
-              <span class="project-tag">Angular</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">AWS S3</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card fade-up">
-          <img class="project-img" src="images/Screenshot-2023-06-11-at-10.18.02-PM.png"
-            srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w"
-            sizes="(max-width: 640px) 100vw, 50vw"
-            alt="Quark Smart Home">
-          <div class="project-body">
-            <span class="project-metric">2018 59DaysOfCode Grand Prize</span>
-            <div class="project-title">Quark: Smart Home App</div>
-            <p class="project-desc">Award-winning smart home app empowering users to monitor home energy usage, set conservation budgets, and receive intelligent push notifications. Grand prize winner in the Smart Cities category.</p>
-            <div class="project-tags">
-              <span class="project-tag">Ionic</span>
-              <span class="project-tag">Angular</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">MongoDB</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card fade-up">
-          <img class="project-img" src="images/greenraiteros3.png" alt="Green Raiteros">
-          <div class="project-body">
-            <span class="project-metric">Public Rideshare Service</span>
-            <div class="project-title">Green Raiteros</div>
-            <p class="project-desc">A public rideshare application built specifically to serve rural communities with limited transportation access. Designed with equity, accessibility, and community need at its core.</p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">NestJS</span>
-              <span class="project-tag">PostgreSQL</span>
-            </div>
-          </div>
+    <div class="marquee-band marquee-band--light">
+      <div class="marquee-track marquee-track--slow">
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">portfolio <span class="marquee-dot">·</span></span>
+      </div>
+    </div>
+
+    <div class="projects-showcase">
+      <div class="projects-showcase-inner container-wide">
+        <span class="projects-mega" aria-hidden="true">portfolio</span>
+        <div class="projects-mosaic">
+          <a href="projects.html" class="projects-cell fade-up">
+            <img src="images/Screenshot-2023-06-11-at-10.25.47-PM.png"
+              srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w"
+              sizes="(max-width: 1100px) 50vw, 25vw"
+              alt="Listing Alert product screenshot">
+            <span class="projects-cell-cap">Listing Alert — 1.8k+ DAUs</span>
+          </a>
+          <a href="projects.html" class="projects-cell projects-cell--accent fade-up">
+            <img src="images/holidaymagic.png" alt="Holiday Magic">
+            <span class="projects-cell-cap">Holiday Magic — $100k+ revenue</span>
+          </a>
+          <a href="projects.html" class="projects-cell fade-up">
+            <img src="images/Screenshot-2023-06-11-at-10.18.02-PM.png"
+              srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w"
+              sizes="(max-width: 1100px) 50vw, 25vw"
+              alt="Quark smart home app">
+            <span class="projects-cell-cap">Quark — 59DaysOfCode winner</span>
+          </a>
+          <a href="projects.html" class="projects-cell fade-up">
+            <img src="images/greenraiteros3.png" alt="Green Raiteros">
+            <span class="projects-cell-cap">Green Raiteros — rural transit</span>
+          </a>
         </div>
       </div>
-      <div class="projects-footer">
-        <a href="projects.html" class="btn-outline">View All Projects</a>
-      </div>
+    </div>
+
+    <div class="container projects-strip">
+      <a href="projects.html" class="btn-outline">View all projects</a>
     </div>
   </section>
 
@@ -1122,8 +1504,12 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+  <div class="footer-wordmark-band">
+    <div class="container-wide">
+      <span class="footer-wordmark">gutierrez</span>
+    </div>
+  </div>
+  <footer class="footer-bar">
     <div class="container">
       <div class="footer-top">
         <a href="index.html" class="footer-logo">Alex Gutierrez</a>
@@ -1135,16 +1521,15 @@
         </nav>
         <div class="footer-social">
           <a href="https://github.com/alexg1021" target="_blank" rel="noopener" aria-label="GitHub">
-            <img src="images/github-mark-white.png" alt="GitHub">
+            <img src="images/github-mark-white.png" alt="">
           </a>
           <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <img src="images/LinkedIn.svg" alt="LinkedIn">
+            <img src="images/LinkedIn.svg" alt="">
           </a>
         </div>
       </div>
-      <div class="footer-wordmark">gutierrez</div>
+      <p class="footer-copy">&copy; 2026 Alex Gutierrez</p>
     </div>
-    <p class="footer-copy">&copy; 2025 Alex Gutierrez</p>
   </footer>
 
   <script>
