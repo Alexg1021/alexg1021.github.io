@@ -235,7 +235,7 @@
     .hero-name {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: clamp(4.75rem, 11vw, 10rem);
+      font-size: clamp(4.75rem, 10vw, 10rem);
       line-height: 0.86;
       letter-spacing: -0.045em;
       text-transform: lowercase;
@@ -407,6 +407,10 @@
       isolation: isolate;
     }
 
+    .text-amber {
+      color: var(--amber);
+    }
+
     .hero-photo-card {
       background: var(--amber);
       border-radius: clamp(22px, 4vw, 36px);
@@ -452,6 +456,9 @@
       height: 100%;
       object-fit: cover;
     }
+
+    .hero-float--clylp-1 img { object-position: 55% 72%; }
+    .hero-float--clylp-2 img { object-position: center 42%; }
 
     .hero-badge {
       position: absolute;
@@ -601,8 +608,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
-      filter: grayscale(1);
+      object-position: 55% 72%;
+      /* filter: grayscale(1); */
       display: block;
       transition: filter 0.5s ease;
     }
@@ -624,10 +631,10 @@
     .about-spotlight-copy {
       font-size: 0.95rem;
       line-height: 1.85;
-      color: rgba(255,255,255,0.42);
+      color: var(--amber);
       max-width: 34rem;
       margin: 0 auto;
-      text-align: center;
+      /* text-align: center; */
     }
 
     /* ── EXPERIENCE ── */
@@ -913,8 +920,39 @@
       font-size: 1rem;
       color: rgba(255,255,255,0.45);
       line-height: 1.85;
-      max-width: 560px;
-      margin: 1.25rem 0 2.5rem;
+      max-width: 520px;
+      margin: 1.25rem 0 2rem;
+    }
+
+    .leadership-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .leadership-copy {
+      order: 1;
+      min-width: 0;
+    }
+
+    .leadership-copy .section-head {
+      margin-bottom: 0;
+    }
+
+    .leadership-visual {
+      order: 2;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .leadership-visual img {
+      width: 100%;
+      height: clamp(320px, 36vw, 520px);
+      object-fit: cover;
+      object-position: center 42%;
+      display: block;
     }
 
     .leadership-grid {
@@ -1149,6 +1187,14 @@
 
       .leadership-grid { grid-template-columns: 1fr; }
 
+      .leadership-hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .leadership-copy,
+      .leadership-visual { order: unset; }
+
       .contact-photo { display: none; }
 
       .exp-item { grid-template-columns: 40px 1fr; }
@@ -1192,7 +1238,7 @@
   <nav class="nav" id="navbar">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">AG</a>
+        <a href="index.html" class="nav-logo">Alex Gutierrez</a>
         <ul class="nav-links">
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -1202,7 +1248,7 @@
         <div class="nav-profile">
           <img class="nav-avatar" src="images/My-project-p-500.jpg" width="72" height="72" alt="">
           <div class="nav-identity">
-            <strong>Alex</strong>
+            <strong>Software Engineer</strong>
             <span>Central Valley</span>
           </div>
         </div>
@@ -1225,13 +1271,13 @@
       <div class="hero-inner">
         <div>
           <h1 class="hero-name">
+            <span class="text-amber">build</span>
             <span class="sr-only">Alex Gutierrez</span>
             <span class="hero-name-rotator" aria-hidden="true">
-              <span class="hero-name-sizer">technical</span>
-              <span class="hero-name-word" id="heroRotatingWord">engineer</span>
+              <span class="hero-name-word" id="heroRotatingWord">community</span>
             </span>
           </h1>
-          <p class="hero-tagline">Building products. Growing teams. Based in California's Central Valley.</p>
+          <p class="hero-tagline">Technology can empower communities, let's build systems to make that happen.</p>
           <div class="hero-social">
             <a href="https://github.com/alexg1021" target="_blank" rel="noopener" class="hero-social-link" aria-label="GitHub">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1248,24 +1294,27 @@
               <div class="hero-stat-num">10+</div>
               <div class="hero-stat-label">Years experience</div>
             </div>
+            
             <div>
-              <div class="hero-stat-num">1.8k</div>
-              <div class="hero-stat-label">Daily active users</div>
+              <div class="hero-stat-num">300k+</div>
+              <div class="hero-stat-label">Users impacted</div>
             </div>
-            <p class="hero-stat-note">Including 100+ engineers mentored through teaching and leadership.</p>
+            <p class="hero-stat-note">Born and raised in California's Central Valley.</p>
           </div>
           <div class="hero-ctas">
-            <a href="#projects" class="btn-primary">View My Work</a>
+            <a href="#about" class="btn-primary">Who I am</a>
             <a href="#contact" class="btn-outline">Get in Touch</a>
           </div>
         </div>
         <div class="hero-photo-wrap">
-          <div class="hero-float hero-float--sm" aria-hidden="true">
-            <img src="images/My-project-p-500.jpg" alt="">
+          <!-- <div class="hero-float hero-float--sm hero-float--clylp-1" aria-hidden="true">
+            <img src="images/alex-clylp-p-500.jpg" alt="">
           </div>
-          <div class="hero-float hero-float--xs" aria-hidden="true">
-            <img src="images/IMG_AEF038AA2735-1-p-500.jpeg" alt="">
-          </div>
+          <div class="hero-float hero-float--xs hero-float--clylp-2" aria-hidden="true">
+            <img src="images/alex-clylp-2-p-500.jpg" alt="">
+          </div> -->
+
+          
           <div class="hero-photo-card">
             <img
               src="images/My-project.jpg"
@@ -1293,7 +1342,7 @@
       <span class="marquee-item">about <span class="marquee-dot">·</span></span>
       <span class="marquee-item">about <span class="marquee-dot">·</span></span>
       <span class="marquee-item">about <span class="marquee-dot">·</span></span>
-      <span class="marquee-item"> about <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">about <span class="marquee-dot">·</span></span>
       <span class="marquee-item">about <span class="marquee-dot">·</span></span>
       <span class="marquee-item">about <span class="marquee-dot">·</span></span>
       <span class="marquee-item">about <span class="marquee-dot">·</span></span>
@@ -1311,15 +1360,19 @@
         <span class="about-spotlight-cross about-spotlight-cross--br" aria-hidden="true"></span>
         <div class="about-spotlight-photo">
           <img
-            src="images/IMG_AEF038AA2735-1.jpeg"
-            srcset="images/IMG_AEF038AA2735-1-p-500.jpeg 500w, images/IMG_AEF038AA2735-1-p-1080.jpeg 1080w"
+            src="images/alex-clylp.jpg"
+            srcset="images/alex-clylp-p-500.jpg 500w, images/alex-clylp-p-800.jpg 800w, images/alex-clylp-p-1080.jpg 1080w, images/alex-clylp.jpg 1440w"
             sizes="(max-width: 720px) 100vw, 720px"
-            alt="Alex Gutierrez portrait"
+            alt="Alex Gutierrez presenting to a community group"
           >
         </div>
       </div>
-      <h2 class="about-spotlight-kicker" id="about-heading">about.</h2>
-      <p class="about-spotlight-copy">Engineering leader and builder focused on products that hold up in the real world — from scalable platforms to teams that grow together.</p>
+      <h2 class="about-spotlight-kicker" id="about-heading">what I'm about.</h2>
+      <p class="about-spotlight-copy">I grew up in California’s Central Valley in communities where technology careers rarely felt visible or accessible. My path into engineering began through public education, mentorship, and community work — experiences that shaped how I think about technology today.
+
+        I believe software is most meaningful when it helps people navigate systems more effectively, creates access to opportunity, and strengthens communities rather than simply optimizing engagement or growth metrics.
+        
+        My work today focuses on building systems that are practical, scalable, and grounded in real human needs — from civic and nonprofit platforms to AI-assisted operational tools and modern product infrastructure.</p>
     </div>
   </section>
 
@@ -1358,9 +1411,9 @@
         <li class="exp-item fade-up">
           <div class="exp-num">04</div>
           <div>
-            <div class="exp-role">Apprentice Lead &amp; Community Outreach</div>
-            <div class="exp-company">Geekwise Academy</div>
-            <p class="exp-desc">Instructed and mentored 100+ aspiring technologists through hands-on software development training. Led community outreach connecting underrepresented communities to tech apprenticeship pathways.</p>
+            <div class="exp-role">Program Director</div>
+            <div class="exp-company">Youth Leadership Institute</div>
+            <p class="exp-desc">Leadership empowerment programs for youth through the praxis of research, community organizing and policy implementation. </p>
           </div>
           <span class="exp-badge">100+ Mentees</span>
         </li>
@@ -1375,50 +1428,67 @@
       <div class="section-head fade-up">full-stack,<br>front to back.</div>
       <div class="skills-grid">
         <div class="skills-cat fade-up">
-          <h4>Frontend</h4>
+          <h4>Programming Languages</h4>
+          <div class="skills-tags">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+          </div>
+        </div>
+        <div class="skills-cat fade-up">
+          <h4>Frontend Frameworks</h4>
           <div class="skills-tags">
             <span class="skill-tag">React</span>
+            <span class="skill-tag">React Native</span>
+            <span class="skill-tag">Next.js</span>
             <span class="skill-tag">Angular</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">Vue</span>
+            <span class="skill-tag">Ionic</span>
           </div>
         </div>
         <div class="skills-cat fade-up">
-          <h4>Backend</h4>
+          <h4>Backend Development</h4>
           <div class="skills-tags">
             <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">NestJS</span>
             <span class="skill-tag">Express</span>
+            <span class="skill-tag">NestJS</span>
             <span class="skill-tag">GraphQL</span>
-            <span class="skill-tag">Django</span>
+            <span class="skill-tag">REST APIs</span>
             <span class="skill-tag">Python</span>
+            <span class="skill-tag">Django</span>
           </div>
         </div>
         <div class="skills-cat fade-up">
-          <h4>Mobile</h4>
+          <h4>AI Integration</h4>
           <div class="skills-tags">
-            <span class="skill-tag">React Native</span>
-            <span class="skill-tag">Ionic</span>
-            <span class="skill-tag">iOS &amp; Android</span>
+            <span class="skill-tag">LLM Integrations</span>
+            <span class="skill-tag">OpenAI APIs</span>
+            <span class="skill-tag">Claude APIs</span>
+            <span class="skill-tag">AI-Assisted Development</span>
           </div>
         </div>
         <div class="skills-cat fade-up">
-          <h4>Data &amp; Infra</h4>
+          <h4>Cloud &amp; Infrastructure</h4>
+          <div class="skills-tags">
+            <span class="skill-tag">Amazon Web Services</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">Vercel</span>
+          </div>
+        </div>
+        <div class="skills-cat fade-up">
+          <h4>Databases</h4>
           <div class="skills-tags">
             <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
             <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">AWS S3</span>
-            <span class="skill-tag">REST APIs</span>
-          </div>
-        </div>
-        <div class="skills-cat fade-up">
-          <h4>Leadership</h4>
-          <div class="skills-tags">
-            <span class="skill-tag">Engineering Management</span>
-            <span class="skill-tag">Technical Strategy</span>
-            <span class="skill-tag">Mentorship</span>
-            <span class="skill-tag">Agile / Scrum</span>
+            <span class="skill-tag">DynamoDB</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">Supabase</span>
           </div>
         </div>
       </div>
@@ -1495,9 +1565,21 @@
   <section class="leadership-section" id="leadership">
     <div class="container">
       <span class="section-overline fade-up">Leadership</span>
-      <div class="section-head section-head--light fade-up">More than<br>an engineer.</div>
-      <p class="leadership-intro fade-up">Leadership isn't a title — it's a practice. Across technology, athletics, and community, I've built programs, developed talent, and driven lasting change. As a first-generation Mexican-American, I believe deeply in opening doors for those coming behind me.</p>
-      <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" class="btn-outline-light fade-up">Connect on LinkedIn</a>
+      <div class="leadership-hero">
+        <div class="leadership-visual fade-up">
+          <img
+            src="images/alex-clylp-2.jpg"
+            srcset="images/alex-clylp-2-p-500.jpg 500w, images/alex-clylp-2-p-800.jpg 800w, images/alex-clylp-2-p-1080.jpg 1080w, images/alex-clylp-2.jpg 1440w"
+            sizes="(max-width: 900px) 100vw, 50vw"
+            alt="Alex Gutierrez speaking at the Chicano Latino Youth Leadership Project"
+          >
+        </div>
+        <div class="leadership-copy">
+          <div class="section-head section-head--light fade-up">More than<br>an engineer.</div>
+          <p class="leadership-intro fade-up">Leadership isn't a title — it's a practice. Across technology, athletics, and community, I've built programs, developed talent, and driven lasting change. As a first-generation Mexican-American, I believe deeply in opening doors for those coming behind me.</p>
+          <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" class="btn-outline-light fade-up">Connect on LinkedIn</a>
+        </div>
+      </div>
       <div class="leadership-grid">
         <div class="highlight-card fade-up">
           <div class="highlight-num">01 · Achievement</div>
@@ -1609,7 +1691,37 @@
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    const MARQUEE_WORDS = ['builder', 'leader', 'mentor', 'creative'];
+    function initMarqueeTracks() {
+      document.querySelectorAll('.marquee-track').forEach(track => {
+        if (!track.dataset.marqueeTemplate) {
+          track.dataset.marqueeTemplate = track.innerHTML;
+        } else {
+          track.innerHTML = track.dataset.marqueeTemplate;
+        }
+
+        const band = track.parentElement;
+        const template = [...track.children];
+
+        while (track.scrollWidth < band.offsetWidth) {
+          template.forEach(item => track.appendChild(item.cloneNode(true)));
+        }
+
+        [...track.children].forEach(item => track.appendChild(item.cloneNode(true)));
+      });
+    }
+
+    let marqueeResizeTimer;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(marqueeResizeTimer);
+      marqueeResizeTimer = window.setTimeout(initMarqueeTracks, 120);
+    });
+
+    initMarqueeTracks();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(initMarqueeTracks);
+    }
+
+    const MARQUEE_WORDS = ['community', 'technology', 'the future'];
 
     function longestMarqueeWord() {
       return MARQUEE_WORDS.reduce((longest, w) => (w.length > longest.length ? w : longest));
