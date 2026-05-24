@@ -801,6 +801,24 @@
       position: relative;
     }
 
+    .projects-intro {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .projects-intro .section-head {
+      margin-bottom: 1.25rem;
+    }
+
+    .projects-intro-copy {
+      font-size: 1.05rem;
+      color: var(--grey);
+      line-height: 1.85;
+      max-width: 52ch;
+    }
+
     .projects-mega {
       position: absolute;
       left: 50%;
@@ -1528,6 +1546,11 @@
 
     <div class="projects-showcase">
       <div class="projects-showcase-inner container-wide">
+        <header class="projects-intro fade-up">
+          <span class="section-overline">Portfolio</span>
+          <h2 class="section-head">building with AI.</h2>
+          <p class="projects-intro-copy">As I expand my experience, I frequently leverage artificial intelligence across the full product lifecycle — from rapid prototyping and architecture to code generation and iteration — to ship faster without sacrificing quality. It's how I turn ambitious ideas into production systems that serve real communities.</p>
+        </header>
         <span class="projects-mega" aria-hidden="true">portfolio</span>
         <div class="projects-mosaic">
           <a href="projects.html" class="projects-cell fade-up">

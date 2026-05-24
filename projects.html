@@ -7,22 +7,19 @@
   <meta name="description" content="Projects built by Alex Gutierrez — software engineer and engineering leader based in California's Central Valley.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="images/webclip.png">
   <style>
     :root {
-      --cream:       #FAFAF7;
-      --cream-mid:   #F2ECE3;
-      --tan:         #E8DDD0;
-      --brick:       #1D3E6E;
-      --brick-dark:  #152D52;
-      --brick-light: #C4D3E8;
-      --charcoal:    #1C1A1A;
-      --charcoal-mid:#3A3636;
-      --grey:        #6B6360;
-      --grey-light:  #A09C97;
-      --border:      #DDD5C8;
+      --off-white: #F5F4EF;
+      --white:     #FAFAF8;
+      --black:     #0C0C0C;
+      --amber:     #E8B84B;
+      --amber-dk:  #C99E30;
+      --grey:      #5A5658;
+      --grey-lt:   #9A9698;
+      --border:    #E0DDD8;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,34 +27,26 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--cream);
-      color: var(--charcoal);
+      background: var(--off-white);
+      color: var(--black);
       line-height: 1.6;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
-    h1, h2, h3 { font-family: 'DM Serif Display', serif; line-height: 1.15; }
     a { text-decoration: none; color: inherit; }
 
     .container {
-      max-width: 1100px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 0.875rem 2rem;
-      border-radius: 4px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    .container-wide {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn--outline { border: 1.5px solid var(--border); color: var(--charcoal-mid); }
-    .btn--outline:hover { border-color: var(--brick); color: var(--brick); }
 
     /* ── NAV ── */
     .nav {
@@ -65,47 +54,97 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 1.25rem 0;
-      background: rgba(250, 250, 247, 0.97);
-      box-shadow: 0 1px 0 var(--border);
-      backdrop-filter: blur(8px);
+      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      background: rgba(245,244,239,0.95);
+      border-color: var(--border);
+      backdrop-filter: blur(10px);
     }
 
     .nav-inner {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: center;
-      justify-content: space-between;
+      gap: 1rem;
     }
 
     .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      color: var(--charcoal);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      justify-self: start;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
+      justify-self: center;
     }
 
     .nav-links a {
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
-      color: var(--charcoal-mid);
+      color: var(--grey);
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--brick); }
+    .nav-links a:hover { color: var(--black); }
 
-    .nav-links .nav-cta {
-      background: var(--brick);
-      color: #fff;
-      padding: 0.5rem 1.25rem;
-      border-radius: 4px;
+    .nav-cta {
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase;
+      color: var(--black) !important;
+      border: 1.5px solid var(--black);
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s !important;
     }
 
-    .nav-links .nav-cta:hover { background: var(--brick-dark); color: #fff; }
+    .nav-cta:hover { background: var(--black) !important; color: var(--off-white) !important; }
+
+    .nav-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      justify-self: end;
+    }
+
+    .nav-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--black);
+    }
+
+    .nav-identity {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .nav-identity strong {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-identity span {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--grey-lt);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
 
     .nav-toggle {
       display: none;
@@ -114,14 +153,21 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: 4px;
+      justify-self: end;
+      grid-column: 3;
     }
 
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--charcoal); }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--black);
+      transition: all 0.3s;
+    }
 
     .nav-mobile {
       display: none;
-      background: var(--cream);
+      background: var(--off-white);
       border-top: 1px solid var(--border);
     }
 
@@ -132,100 +178,173 @@
       padding: 0.875rem 2rem;
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--charcoal-mid);
+      color: var(--grey);
       border-bottom: 1px solid var(--border);
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-band {
+      background: var(--black);
+      padding: 1.1rem 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 24s linear infinite;
+    }
+
+    .marquee-track--slow {
+      animation-duration: 36s;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2.5vw, 1.875rem);
+      letter-spacing: -0.01em;
+      color: var(--off-white);
+      padding: 0 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .marquee-dot { color: var(--amber); }
+
+    .marquee-band--light {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marquee-band--light .marquee-item {
+      color: var(--black);
+      font-size: clamp(1.5rem, 4vw, 2.75rem);
+      letter-spacing: -0.03em;
+    }
+
+    .marquee-band--light .marquee-dot { color: var(--grey-lt); }
+
+    .nav + .marquee-band {
+      margin-top: 72px;
     }
 
     /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 160px 0 80px;
-      background: var(--cream-mid);
+    .page-hero {
+      padding: clamp(7rem, 14vw, 9rem) 0 clamp(2.5rem, 6vw, 4rem);
       border-bottom: 1px solid var(--border);
     }
 
-    .page-header .back-link {
+    .back-link {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 500;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--grey);
       margin-bottom: 2rem;
       transition: color 0.2s;
     }
 
-    .page-header .back-link:hover { color: var(--brick); }
+    .back-link:hover { color: var(--black); }
 
-    .overline {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--brick);
-      margin-bottom: 0.875rem;
+    .section-overline {
       display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-lt);
+      margin-bottom: 1rem;
     }
 
-    .page-header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+    .section-head {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      text-transform: lowercase;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
 
-    .page-header p {
-      font-size: 1.1rem;
+    .page-intro-copy {
+      font-size: 1.05rem;
       color: var(--grey);
-      max-width: 560px;
-      line-height: 1.75;
+      line-height: 1.85;
+      max-width: 52ch;
     }
 
-    /* ── PROJECTS ── */
-    .projects-section { padding: 80px 0 100px; }
+    /* ── PROJECTS GRID ── */
+    .projects-section {
+      padding: clamp(3rem, 8vw, 5rem) 0 clamp(4rem, 10vw, 6rem);
+    }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
     }
 
     .project-card {
-      background: var(--cream);
+      background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: clamp(18px, 2.5vw, 28px);
       overflow: hidden;
-      transition: box-shadow 0.3s, transform 0.3s;
       display: flex;
       flex-direction: column;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
     .project-card:hover {
-      box-shadow: 0 10px 32px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(12,12,12,0.14);
+    }
+
+    .project-card--accent {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .project-img-wrap {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--border);
+    }
+
+    .project-card--accent .project-img-wrap {
+      background: var(--amber-dk);
     }
 
     .project-img {
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
-      object-position: top;
+      object-position: top center;
       display: block;
-      border-bottom: 1px solid var(--border);
+      filter: grayscale(1);
+      transition: filter 0.45s ease, transform 0.6s ease;
     }
 
-    .project-img-placeholder {
-      width: 100%;
-      height: 200px;
-      background: var(--tan);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .project-card--accent .project-img {
+      filter: grayscale(0);
     }
 
-    .project-img-placeholder span {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      color: var(--grey);
+    .project-card:hover .project-img {
+      filter: grayscale(0);
+      transform: scale(1.04);
     }
 
     .project-body {
-      padding: 1.5rem;
+      padding: 1.35rem 1.4rem 1.5rem;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -233,21 +352,28 @@
 
     .project-metric {
       display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--brick);
-      background: var(--brick-light);
-      padding: 0.2rem 0.65rem;
-      border-radius: 100px;
-      margin-bottom: 0.875rem;
+      color: var(--amber-dk);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card--accent .project-metric {
+      color: var(--black);
+      opacity: 0.65;
     }
 
     .project-card h3 {
-      font-size: 1.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
       margin-bottom: 0.625rem;
-      color: var(--charcoal);
+      color: var(--black);
     }
 
     .project-card p {
@@ -258,22 +384,87 @@
       flex: 1;
     }
 
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-card--accent p {
+      color: rgba(12,12,12,0.65);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
 
     .project-tag {
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 500;
       color: var(--grey);
-      background: var(--cream-mid);
       border: 1px solid var(--border);
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .project-card--accent .project-tag {
+      border-color: rgba(12,12,12,0.15);
+      color: rgba(12,12,12,0.65);
+    }
+
+    .project-card:hover .project-tag {
+      border-color: var(--black);
+      color: var(--black);
+    }
+
+    .projects-footer-cta {
+      text-align: center;
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid var(--black);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.875rem;
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--black);
+      color: var(--off-white);
+      transform: translateY(-1px);
     }
 
     /* ── FOOTER ── */
-    .footer {
-      background: var(--charcoal);
-      padding: 2.5rem 0 1.5rem;
+    .footer-wordmark-band {
+      background: var(--off-white);
+      padding: clamp(2rem, 5vw, 3rem) 0 0;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-wordmark-band .footer-wordmark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(5.5rem, 18vw, 15rem);
+      letter-spacing: -0.055em;
+      line-height: 0.72;
+      text-transform: lowercase;
+      color: var(--black);
+      display: block;
+      margin: 0;
+      padding-bottom: clamp(0.5rem, 2vw, 1.25rem);
+      transform: translateY(18%);
+      user-select: none;
+    }
+
+    .footer-bar {
+      background: var(--black);
+      padding: 2.5rem 0 0;
+      overflow: hidden;
     }
 
     .footer-top {
@@ -282,76 +473,91 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
     .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
     }
 
-    .footer-nav { display: flex; gap: 2rem; }
+    .footer-nav { display: flex; gap: 2rem; flex-wrap: wrap; }
 
     .footer-nav a {
-      font-size: 0.85rem;
-      color: var(--grey-light);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
       transition: color 0.2s;
     }
 
-    .footer-nav a:hover { color: var(--brick-light); }
+    .footer-nav a:hover { color: var(--off-white); }
 
-    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social { display: flex; gap: 0.625rem; }
 
     .footer-social a {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 6px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: border-color 0.2s;
     }
 
-    .footer-social a:hover { border-color: var(--brick-light); }
-    .footer-social img { width: 17px; height: 17px; filter: invert(1) brightness(0.75); }
+    .footer-social a:hover { border-color: var(--amber); }
+    .footer-social img { width: 15px; height: 15px; filter: invert(1) brightness(0.65); }
 
     .footer-copy {
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--grey-light);
-      opacity: 0.5;
-      margin-top: 1.5rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.22);
+      padding: 1.5rem 0 2rem;
+      margin: 0;
     }
 
     /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
 
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     @media (max-width: 900px) {
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-profile { display: none; }
     }
 
     @media (max-width: 640px) {
-      .projects-grid { grid-template-columns: 1fr; }
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
+
+      .projects-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+
       .footer-top { flex-direction: column; align-items: flex-start; }
+      .footer-nav { gap: 1rem; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav class="nav">
+  <nav class="nav scrolled" id="navbar">
     <div class="container">
       <div class="nav-inner">
         <a href="index.html" class="nav-logo">Alex Gutierrez</a>
@@ -361,6 +567,13 @@
           <li><a href="index.html#leadership">Leadership</a></li>
           <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
         </ul>
+        <div class="nav-profile">
+          <img class="nav-avatar" src="images/My-project-p-500.jpg" width="72" height="72" alt="">
+          <div class="nav-identity">
+            <strong>Software Engineer</strong>
+            <span>Central Valley</span>
+          </div>
+        </div>
         <button class="nav-toggle" id="navToggle" aria-label="Open navigation">
           <span></span><span></span><span></span>
         </button>
@@ -374,16 +587,34 @@
     </div>
   </nav>
 
+  <!-- MARQUEE -->
+  <div class="marquee-band marquee-band--light">
+    <div class="marquee-track marquee-track--slow">
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+      <span class="marquee-item">projects <span class="marquee-dot">·</span></span>
+    </div>
+  </div>
+
   <!-- PAGE HEADER -->
-  <header class="page-header">
+  <header class="page-hero">
     <div class="container">
-      <a href="index.html" class="back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      <a href="index.html#projects" class="back-link fade-up">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
         Back to home
       </a>
-      <span class="overline">Portfolio</span>
-      <h1>More Projects</h1>
-      <p>More products I've designed, architected, and shipped across web, mobile, and infrastructure.</p>
+      <span class="section-overline fade-up">Portfolio</span>
+      <h1 class="section-head fade-up">all projects.</h1>
+      <p class="page-intro-copy fade-up">As I expand my experience, I frequently leverage artificial intelligence across the full product lifecycle — from rapid prototyping and architecture to code generation and iteration — to ship faster without sacrificing quality. More products I've designed, architected, and shipped across web, mobile, and infrastructure.</p>
     </div>
   </header>
 
@@ -392,12 +623,14 @@
     <div class="container">
       <div class="projects-grid">
 
-        <div class="project-card fade-up">
-          <img class="project-img"
-            src="images/Screenshot-2023-06-11-at-10.25.47-PM.png"
-            srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w"
-            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-            alt="Listing Alert">
+        <article class="project-card fade-up">
+          <div class="project-img-wrap">
+            <img class="project-img"
+              src="images/Screenshot-2023-06-11-at-10.25.47-PM.png"
+              srcset="images/Screenshot-2023-06-11-at-10.25.47-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.25.47-PM-p-800.png 800w"
+              sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+              alt="Listing Alert">
+          </div>
           <div class="project-body">
             <span class="project-metric">1,800+ Daily Active Users</span>
             <h3>Listing Alert</h3>
@@ -410,14 +643,14 @@
               <span class="project-tag">MongoDB</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card fade-up">
-          <img class="project-img"
-            src="images/Screenshot-2023-06-12-at-9.48.02-AM-min.png"
-            srcset="images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-500.png 500w, images/Screenshot-2023-06-12-at-9.48.02-AM-min-p-800.png 800w"
-            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-            alt="Holiday Magic">
+        <article class="project-card project-card--accent fade-up">
+          <div class="project-img-wrap">
+            <img class="project-img"
+              src="images/holidaymagic.png"
+              alt="Holiday Magic">
+          </div>
           <div class="project-body">
             <span class="project-metric">$100K+ Annual Revenue</span>
             <h3>Holiday Magic</h3>
@@ -429,14 +662,16 @@
               <span class="project-tag">AWS S3</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card fade-up">
-          <img class="project-img"
-            src="images/Screenshot-2023-06-11-at-10.18.02-PM.png"
-            srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w"
-            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-            alt="Quark Smart Home">
+        <article class="project-card fade-up">
+          <div class="project-img-wrap">
+            <img class="project-img"
+              src="images/Screenshot-2023-06-11-at-10.18.02-PM.png"
+              srcset="images/Screenshot-2023-06-11-at-10.18.02-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.18.02-PM-p-800.png 800w"
+              sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+              alt="Quark Smart Home">
+          </div>
           <div class="project-body">
             <span class="project-metric">2018 59DaysOfCode Grand Prize</span>
             <h3>Quark: Smart Home App</h3>
@@ -448,13 +683,14 @@
               <span class="project-tag">MongoDB</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card fade-up">
-           <img class="project-img"
-            src="images/greenraiteros3.png"
-           
-            alt="Quark Smart Home">
+        <article class="project-card fade-up">
+          <div class="project-img-wrap">
+            <img class="project-img"
+              src="images/greenraiteros3.png"
+              alt="Green Raiteros">
+          </div>
           <div class="project-body">
             <span class="project-metric">Public Rideshare Service</span>
             <h3>Green Raiteros</h3>
@@ -465,14 +701,16 @@
               <span class="project-tag">PostgreSQL</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card fade-up">
-          <img class="project-img"
-            src="images/Screenshot-2023-06-11-at-10.11.52-PM.png"
-            srcset="images/Screenshot-2023-06-11-at-10.11.52-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-800.png 800w"
-            sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-            alt="No Place Like Home">
+        <article class="project-card fade-up">
+          <div class="project-img-wrap">
+            <img class="project-img"
+              src="images/Screenshot-2023-06-11-at-10.11.52-PM.png"
+              srcset="images/Screenshot-2023-06-11-at-10.11.52-PM-p-500.png 500w, images/Screenshot-2023-06-11-at-10.11.52-PM-p-800.png 800w"
+              sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+              alt="No Place Like Home">
+          </div>
           <div class="project-body">
             <span class="project-metric">1,000+ Attendees · 30+ Performers</span>
             <h3>No Place Like Home</h3>
@@ -483,37 +721,50 @@
               <span class="project-tag">Node.js</span>
             </div>
           </div>
-        </div>
+        </article>
 
+      </div>
+
+      <div class="projects-footer-cta fade-up">
+        <a href="index.html#contact" class="btn-outline">Let's build something</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+  <div class="footer-wordmark-band">
+    <div class="container-wide">
+      <span class="footer-wordmark">gutierrez</span>
+    </div>
+  </div>
+  <footer class="footer-bar">
     <div class="container">
       <div class="footer-top">
         <a href="index.html" class="footer-logo">Alex Gutierrez</a>
         <nav class="footer-nav">
           <a href="index.html#experience">Experience</a>
-          <a href="index.html#projects">Featured Work</a>
+          <a href="index.html#projects">Projects</a>
           <a href="index.html#leadership">Leadership</a>
           <a href="index.html#contact">Contact</a>
         </nav>
         <div class="footer-social">
           <a href="https://github.com/alexg1021" target="_blank" rel="noopener" aria-label="GitHub">
-            <img src="images/github-mark-white.png" alt="GitHub">
+            <img src="images/github-mark-white.png" alt="">
           </a>
           <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <img src="images/LinkedIn.svg" alt="LinkedIn">
+            <img src="images/LinkedIn.svg" alt="">
           </a>
         </div>
       </div>
-      <p class="footer-copy">&copy; 2025 Alex Gutierrez</p>
+      <p class="footer-copy">&copy; 2026 Alex Gutierrez</p>
     </div>
   </footer>
 
   <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
     const navToggle = document.getElementById('navToggle');
     const navMobile = document.getElementById('navMobile');
     navToggle.addEventListener('click', () => navMobile.classList.toggle('open'));
@@ -524,6 +775,36 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    function initMarqueeTracks() {
+      document.querySelectorAll('.marquee-track').forEach(track => {
+        if (!track.dataset.marqueeTemplate) {
+          track.dataset.marqueeTemplate = track.innerHTML;
+        } else {
+          track.innerHTML = track.dataset.marqueeTemplate;
+        }
+
+        const band = track.parentElement;
+        const template = [...track.children];
+
+        while (track.scrollWidth < band.offsetWidth) {
+          template.forEach(item => track.appendChild(item.cloneNode(true)));
+        }
+
+        [...track.children].forEach(item => track.appendChild(item.cloneNode(true)));
+      });
+    }
+
+    let marqueeResizeTimer;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(marqueeResizeTimer);
+      marqueeResizeTimer = window.setTimeout(initMarqueeTracks, 120);
+    });
+
+    initMarqueeTracks();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(initMarqueeTracks);
+    }
   </script>
 </body>
 </html>
