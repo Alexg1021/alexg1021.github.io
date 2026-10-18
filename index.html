@@ -109,8 +109,6 @@
     .link-arrow:hover { color: var(--amber); }
 
     /* ── SKILLS / CONTACT ── */
-    .skills { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 5rem; text-align: center; }
-    .skills h3 { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-family: 'Inter'; font-weight: 600; margin-bottom: 1.25rem; }
     .chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
     .chip { font-size: .8rem; padding: .4rem .9rem; border: 1px solid var(--line); border-radius: 100px; background: var(--card); opacity: 0; transform: translateY(12px); transition: opacity .5s, transform .5s; }
     .chips.in .chip { opacity: 1; transform: none; }
@@ -125,23 +123,66 @@
     .socials a:hover { color: var(--ink); }
     footer { text-align: center; font-size: .75rem; color: var(--muted); padding: 0 0 2rem; }
 
+    /* hero portrait */
+    .hero-portrait { width: 124px; height: 124px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--amber); opacity: 0; transform: scale(.7); animation: pop .8s cubic-bezier(.3,1.5,.5,1) .05s forwards; box-shadow: 0 18px 40px -18px rgba(0,0,0,.5); }
+    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+    @keyframes pop { to { opacity: 1; transform: none; } }
+
+    /* story pieces */
+    .degrees { margin-top: 1.5rem; display: grid; gap: .9rem; }
+    .degrees div { border-left: 3px solid var(--amber); padding-left: .9rem; }
+    .degrees b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; letter-spacing: -.02em; }
+    .degrees span { font-size: .8rem; color: var(--muted); letter-spacing: .04em; }
+    .pull { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(2rem, 4.4vw, 3.4rem); line-height: 1.02; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--ink); padding-left: 1.25rem; border-left: 4px solid var(--amber); }
+    .photo.square { aspect-ratio: 1; max-width: 340px; margin: 0 auto; }
+    .photo.square img { height: 100%; object-fit: cover; }
+    .mission h2 { font-size: clamp(2rem, 5.2vw, 4rem); max-width: 18ch; margin: 0 auto 1.5rem; }
+    .mission p { font-size: clamp(1.05rem, 1.6vw, 1.25rem); max-width: 36rem; }
+    .chapter.solo { min-height: 80vh; }
+    .chapter.solo .node { top: 1.5rem; }
+
+    /* what I bring */
+    .bring { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+    .bring-title { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: lowercase; text-align: center; margin-bottom: 3rem; }
+    .bring-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
+    .bring-item { padding: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+    .bring-item h3 { font-size: 1.25rem; margin-bottom: .6rem; }
+    .bring-item p { color: var(--muted); font-size: .95rem; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .bring-item:nth-child(2) { transition-delay: .08s; } .bring-item:nth-child(3) { transition-delay: .16s; } .bring-item:nth-child(4) { transition-delay: .24s; }
+    .contact .chips { max-width: 760px; margin: 0 auto 2rem; }
+    .cta-row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    .btn.ghost { margin-left: 0; }
+
+    /* photo lightbox */
+    .zoomable img { cursor: zoom-in; }
+    .lb { position: fixed; inset: 0; z-index: 100; background: rgba(8,8,8,0); transition: background .45s ease; cursor: zoom-out; }
+    .lb.on { background: rgba(8,8,8,.93); }
+    .lb img { position: absolute; object-fit: cover; box-shadow: 0 30px 80px -20px rgba(0,0,0,.8); transition: left .55s cubic-bezier(.2,.8,.2,1), top .55s cubic-bezier(.2,.8,.2,1), width .55s cubic-bezier(.2,.8,.2,1), height .55s cubic-bezier(.2,.8,.2,1), border-radius .55s ease; }
+    .lb-x { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; opacity: 0; transition: opacity .4s .2s; }
+    .lb.on .lb-x { opacity: 1; }
+
     /* ── MOBILE ── */
     @media (max-width: 860px) {
       :root { --spine: 22px; }
       .chapter, .chapter.flip { grid-template-columns: 1fr; gap: 1.75rem; min-height: 0; padding: 3rem 0 3rem 3rem; }
       .chapter .text, .chapter .media, .chapter.flip .text, .chapter.flip .media { grid-column: 1; grid-row: auto; padding: 0; transform: translateY(36px); }
       .chapter.solo { text-align: left; }
+      .mission h2 { margin-left: 0; }
+      .pull { font-size: 2.1rem; }
+      .hero-portrait { width: 104px; height: 104px; }
       .chapter.solo p { margin: 0; }
       .chapter .media { order: 2; }
       .timeline { padding-left: 1rem; padding-right: 1rem; }
       .photo.tall { max-width: 300px; margin: 0; }
     }
     @media (min-width: 861px) { .edu-stats { justify-content: center; } }
-    @media (max-width: 860px) { .chapter .node { top: 4.6rem; } .chapter.solo .node { top: 4.6rem; } }
+    @media (max-width: 860px) { .chapter .node { top: 4.6rem; } .chapter.solo .node { top: 1.5rem; } }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .hero h1 span, .hero-sub, .chapter .text, .chapter .media, .chip { opacity: 1 !important; transform: none !important; }
+      .hero h1 span, .hero-sub, .hero-portrait, .reveal, .chapter .text, .chapter .media, .chip { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
@@ -154,7 +195,7 @@
       <span class="era-pill" id="era">The story</span>
       <ul class="nav-links">
         <li><a href="#experience">Career</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="#leadership">Coaching</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
@@ -163,9 +204,10 @@
 
   <header class="hero" data-bg="#F3EBDD" data-era="The story">
     <div>
+      <div class="hero-portrait zoomable"><img src="images/My-project-p-500.jpg" data-full="images/My-project.jpg" alt="Portrait of Alex Gutierrez" tabindex="0"></div>
       <span class="hero-kicker">Fresno, California · Central Valley</span>
       <h1><span>alex</span><span>gutiérrez</span></h1>
-      <p class="hero-sub">Policy advocate turned engineer turned founder. This is the path, scroll to follow it.</p>
+      <p class="hero-sub">policy advocate · engineer · founder</p>
     </div>
     <div class="scroll-cue"><span>Scroll</span><i></i></div>
   </header>
@@ -173,17 +215,17 @@
   <main class="timeline" id="timeline">
     <div class="spine"></div><div class="spine-fill" id="fill"></div>
 
-    <!-- ROOTS -->
+    <!-- HOME -->
     <section class="chapter" data-bg="#EBDDC3" data-era="Roots" id="roots">
       <div class="node"></div>
       <div class="text">
         <div class="year">Home</div>
         <span class="tag">Where it starts</span>
         <h2>Born and raised in the Central Valley.</h2>
-        <p>Orchards, farm roads and the people who work them shaped how I see the world. Everything since has been about the same question: how do we make life better for the communities that raised us?</p>
+        <p>I'm the son of immigrant parents, and I grew up working in the fields alongside farmworkers. That early life shaped how I see the world, and who I want to work for.</p>
       </div>
       <div class="media">
-        <div class="photo"><img src="images/13435574_651059878378062_5223582632151471342_n.jpg" alt="A rural Central Valley road at dusk" loading="lazy" data-parallax><span class="photo-cap">Central California</span></div>
+        <div class="photo zoomable"><img src="images/13435574_651059878378062_5223582632151471342_n.jpg" data-full="images/13435574_651059878378062_5223582632151471342_n.jpg" alt="A rural Central Valley road at dusk" loading="lazy" tabindex="0" data-parallax><span class="photo-cap">Central California</span></div>
       </div>
     </section>
 
@@ -193,15 +235,15 @@
       <div class="text">
         <div class="year">2011 → 2013</div>
         <span class="tag">Fresno State</span>
-        <h2>History, then public administration.</h2>
-        <p>A Bachelor of Arts in History with a minor in Mathematics in 2011, then a Master of Public Administration in 2013, focused on public policy, organizational management and civic systems.</p>
-        <p>Learning how cities, counties and states actually work, and why they sometimes don't.</p>
+        <h2>A Master of Public Administration.</h2>
+        <p>My college path started in the social sciences, studying society and the systems of government. It led to a Master of Public Administration in 2013, where I gained a deeper understanding of public policy, organizational management and civic systems.</p>
+        <div class="degrees">
+          <div><b>Bachelor of Arts</b><span>History · 2011</span></div>
+          <div><b>Master of Public Administration</b><span>Public Administration · 2013</span></div>
+        </div>
       </div>
       <div class="media">
-        <div class="stats edu-stats">
-          <div class="stat"><b>BA</b><span>History · Math minor</span></div>
-          <div class="stat"><b>MPA</b><span>Public Administration</span></div>
-        </div>
+        <div class="photo tall zoomable"><img src="images/fresno-state-graduation.jpg" data-full="images/fresno-state-graduation.jpg" alt="Alex on the day he received his master's degree" loading="lazy" tabindex="0"><span class="photo-cap">Master's graduation day</span></div>
       </div>
     </section>
 
@@ -212,32 +254,25 @@
         <div class="year">Impact</div>
         <span class="tag">Policy &amp; nonprofits</span>
         <h2>Working for change on the ground.</h2>
-        <p>I worked in the community impact sector alongside nonprofits pushing for local and state policy changes that improve living conditions in marginalized communities. That included youth leadership programs built on research, community organizing and policy implementation.</p>
+        <p>I worked in the community impact sector alongside nonprofits pushing for local and state policy changes that improve living conditions in marginalized communities, including youth leadership programs built on research, community organizing and policy.</p>
       </div>
       <div class="media">
-        <div class="photo"><img src="images/IMG_AEF038AA2735-1-p-800.jpeg" alt="Alex speaking at a public meeting" loading="lazy" data-parallax><span class="photo-cap">Speaking up for the community</span></div>
+        <div class="photo zoomable"><img src="images/IMG_AEF038AA2735-1-p-800.jpeg" data-full="images/IMG_AEF038AA2735-1.jpeg" alt="Alex speaking at a public meeting" loading="lazy" tabindex="0" data-parallax><span class="photo-cap">Speaking up for the community</span></div>
       </div>
     </section>
 
-    <!-- PIVOT TO TECH -->
+    <!-- BITWISE -->
     <section class="chapter flip" data-bg="#14120F" data-dark="1" data-era="Into tech" id="experience">
       <div class="node"></div>
       <div class="text">
         <div class="year">2015</div>
         <span class="tag">Bitwise Industries</span>
-        <h2>Taking that mission into technology.</h2>
-        <p>I joined Bitwise Industries in Fresno to build software for the kinds of organizations I'd been advocating alongside: government agencies, healthcare providers, nonprofits and growing companies.</p>
-        <ul>
-          <li>20+ full-stack projects in React, Angular, Node.js, GraphQL, PostgreSQL and AWS</li>
-          <li>HIPAA-compliant systems for healthcare organizations</li>
-          <li>Engineering standards, code review and Agile practices across client teams</li>
-        </ul>
+        <h2>Taking the mission into technology.</h2>
+        <p>In 2015 I joined Bitwise Industries in Fresno and found a new way to do the same work. I built software with government agencies, healthcare providers, nonprofits and growing companies, translating what people and communities actually needed into something that worked.</p>
+        <p>I came to technology through policy, and that has never stopped shaping how I build.</p>
       </div>
       <div class="media">
-        <div class="stats">
-          <div class="stat"><b data-count="20" data-suffix="+">0</b><span>projects shipped</span></div>
-          <div class="stat"><b data-count="8" data-suffix="+ yrs">0</b><span>at Bitwise</span></div>
-        </div>
+        <blockquote class="pull">Same mission.<br>New tools.</blockquote>
       </div>
     </section>
 
@@ -248,129 +283,89 @@
         <div class="year">Mentor</div>
         <span class="tag">Growing others</span>
         <h2>Lifting people into the industry.</h2>
-        <p>As a senior engineer I mentored software engineering apprentices in JavaScript frameworks, TypeScript and REST API integration, helping people from my own community see a career in tech as something within reach.</p>
-        <div class="stats">
-          <div class="stat"><b data-count="30" data-suffix="+">0</b><span>apprentices mentored</span></div>
-          <div class="stat"><b data-count="20" data-suffix="+">0</b><span>became junior engineers</span></div>
-        </div>
+        <p>As a senior engineer I mentored more than 30 apprentices, and over 20 of them went on to become junior engineers. I wanted people from communities like mine to see a career in tech as something within reach.</p>
       </div>
       <div class="media">
-        <div class="photo tall"><img src="images/alex-clylp-p-800.jpg" alt="Alex presenting to a community audience" loading="lazy" data-parallax></div>
+        <div class="photo tall zoomable"><img src="images/alex-clylp-p-800.jpg" data-full="images/alex-clylp.jpg" alt="Alex presenting to a community audience" loading="lazy" tabindex="0" data-parallax></div>
+      </div>
+    </section>
+
+    <!-- PRODUCT LEADERSHIP -->
+    <section class="chapter flip" data-bg="#14120F" data-dark="1" data-era="Product leadership" id="lead">
+      <div class="node"></div>
+      <div class="text">
+        <div class="year">2022</div>
+        <span class="tag">Product Leadership</span>
+        <h2>Owning the whole picture.</h2>
+        <p>When Bitwise acquired Listing Alert, my role changed. I wasn't only building anymore. I was accountable for the entire product: where it was headed, who we needed on the team to get there, and whether the thousands of people relying on it every day were better off for it.</p>
+        <p>It's where I learned to hold the full picture, the technology, the people, and the promise to the customer.</p>
+      </div>
+      <div class="media">
+        <blockquote class="pull">Accountable for<br>where it goes.</blockquote>
       </div>
     </section>
 
     <!-- COACH -->
-    <section class="chapter flip" data-bg="#7A1620" data-dark="1" data-era="On the pitch" id="leadership">
+    <section class="chapter" data-bg="#7A1620" data-dark="1" data-era="On the pitch" id="leadership">
       <div class="node"></div>
       <div class="text">
         <div class="year">Coach</div>
         <span class="tag">Sanger High School</span>
         <h2>Section champions. State champions.</h2>
-        <p>Off the clock, I coach high school soccer. I built the Sanger Apaches boys program into a multi-time section champion and a California state champion, a culture built on discipline, belonging and showing kids what they're capable of.</p>
-        <a class="link-arrow" href="#contact">Want to talk leadership? Say hi →</a>
+        <p>Off the clock, I coach high school soccer. I built the Sanger Apaches boys program into a multi-time section champion and a California state champion, with a culture built on discipline, belonging and showing kids what they're capable of.</p>
       </div>
       <div class="media">
-        <div class="photo"><img src="images/sangerchamps.jpeg" alt="Sanger Apaches soccer team holding a CIF championship plaque" loading="lazy" data-parallax><span class="photo-cap">CIF champions, Sanger Apaches</span></div>
-      </div>
-    </section>
-
-    <!-- TECH LEAD -->
-    <section class="chapter" data-bg="#14120F" data-dark="1" data-era="Technical lead" id="lead">
-      <div class="node"></div>
-      <div class="text">
-        <div class="year">2022</div>
-        <span class="tag">Technical Lead · Listing Alert</span>
-        <h2>Owning the whole platform.</h2>
-        <p>When Bitwise acquired Listing Alert, I became technical lead for a B2B real estate communication product, covering the React Native app, admin dashboard, API layer and AWS infrastructure.</p>
-        <ul>
-          <li>Led a full mobile rebuild across iOS and Android</li>
-          <li>Overhauled the GraphQL API for 30% better query efficiency</li>
-          <li>Helped a brokerage partnership grow the user base 5x</li>
-        </ul>
-      </div>
-      <div class="media">
-        <div class="stats">
-          <div class="stat"><b data-count="15000" data-suffix="+">0</b><span>users</span></div>
-          <div class="stat"><b data-count="5" data-suffix="x">0</b><span>user growth</span></div>
-          <div class="stat"><b data-count="30" data-suffix="%">0</b><span>faster queries</span></div>
-        </div>
+        <div class="photo zoomable"><img src="images/sangerchamps-1080.jpeg" data-full="images/sangerchamps-2400.jpeg" alt="Sanger Apaches soccer team holding a CIF championship plaque" loading="lazy" tabindex="0" data-parallax><span class="photo-cap">CIF champions, Sanger Apaches</span></div>
       </div>
     </section>
 
     <!-- ORANJ -->
-    <section class="chapter flip" data-bg="#E8B84B" data-bgtext="dark" data-era="Oranj Technologies" id="oranj">
+    <section class="chapter flip" data-bg="#E8B84B" data-era="Oranj Technologies" id="oranj">
       <div class="node"></div>
       <div class="text">
         <div class="year">2023</div>
-        <span class="tag">Founder &amp; Principal Product Engineer</span>
+        <span class="tag">Founder</span>
         <h2>Founding Oranj Technologies.</h2>
-        <p>I started Oranj to do this work on my own terms: a product engineering and business development consultancy working with agriculture, construction, nonprofits, government and startups. It's referral-driven, because the work and the relationships speak for themselves.</p>
-        <div class="stats">
-          <div class="stat"><b data-count="10" data-suffix="+">0</b><span>systems delivered</span></div>
-          <div class="stat"><b data-count="30" data-suffix="+">0</b><span>projects, career-wide</span></div>
-        </div>
+        <p>In 2023 I started Oranj to do this work on my own terms. I partner with organizations in agriculture, construction, nonprofits, government and startups, helping turn their ideas into products and staying alongside them as they grow.</p>
+        <p>The work travels mostly by referral, because the relationships matter as much as the code.</p>
+        <a class="link-arrow" href="projects.html">See some of the work →</a>
       </div>
       <div class="media">
-        <div class="photo tall"><img src="images/My-project-p-800.jpg" alt="Portrait of Alex Gutierrez" loading="lazy" data-parallax></div>
+        <div class="photo square zoomable"><img src="images/oranj-logo.png" data-full="images/oranj-logo.png" alt="Oranj Consulting &amp; Technologies logo" loading="lazy" tabindex="0"></div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section class="chapter" data-bg="#14120F" data-dark="1" data-era="Recent work" id="projects">
+    <!-- MISSION -->
+    <section class="chapter solo mission" data-bg="#0C0C0C" data-dark="1" data-era="Mission">
       <div class="node"></div>
       <div class="text">
-        <div class="year">2025</div>
-        <span class="tag">Back to community</span>
-        <h2>Green Raiteros</h2>
-        <p>A nonprofit rideshare platform improving transportation access for underserved rural California communities, with real-time ride coordination, SMS verification and payments. Angular, NestJS, PostgreSQL and AWS.</p>
-        <a class="link-arrow" href="projects.html">See all projects →</a>
-      </div>
-      <div class="media">
-        <div class="photo shot"><img src="images/greenraiteros.png" alt="Green Raiteros platform" loading="lazy"></div>
-      </div>
-    </section>
-
-    <section class="chapter flip" data-bg="#14120F" data-dark="1" data-era="Recent work">
-      <div class="node"></div>
-      <div class="text">
-        <div class="year">Dec 2025</div>
-        <span class="tag">Booking &amp; commerce</span>
-        <h2>Holiday Magic Studios</h2>
-        <p>A high-volume holiday photo booking platform built to survive seasonal traffic spikes across multiple studios: dynamic pricing, automated booking, QR photo delivery and Stripe Connect payouts.</p>
-      </div>
-      <div class="media">
-        <div class="photo shot"><img src="images/holidaymagic.png" alt="Holiday Magic Studios platform" loading="lazy"></div>
-      </div>
-    </section>
-
-    <!-- NOW -->
-    <section class="chapter solo" data-bg="#0C0C0C" data-dark="1" data-era="Now">
-      <div class="node"></div>
-      <div class="text">
-        <div class="year">Now</div>
-        <span class="tag">Today</span>
-        <h2>Building with AI, leading with heart.</h2>
-        <p>I design AI workflows and LLM integrations with OpenAI and Claude to help lean teams move faster, while still coaching on Friday nights and building for the places I come from. The next chapter is open.</p>
+        <span class="tag">Mission</span>
+        <h2>Technology should serve the people it's built for.</h2>
+        <p>I build systems, teams and opportunities that open doors for the communities that raised me. I lead with heart, with intention, and with the belief that the work only matters if people are better off for it.</p>
       </div>
     </section>
   </main>
 
-  <section class="skills" data-bg="#0C0C0C" data-dark="1" data-era="Toolbox">
-    <h3>The toolbox</h3>
-    <div class="chips" id="chips">
-      <span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Python</span>
-      <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">React Native</span><span class="chip">Angular</span>
-      <span class="chip">Node.js</span><span class="chip">NestJS</span><span class="chip">GraphQL</span><span class="chip">PostgreSQL</span>
-      <span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">Docker</span><span class="chip">Supabase</span>
-      <span class="chip">OpenAI &amp; Claude APIs</span><span class="chip">HIPAA systems</span><span class="chip">Technical leadership</span>
+  <section class="bring" data-bg="#0C0C0C" data-dark="1" data-era="Strengths">
+    <h2 class="bring-title reveal">what I bring.</h2>
+    <div class="bring-grid">
+      <div class="bring-item reveal"><h3>Bridging worlds</h3><p>I speak both community and code, and I translate between the people who need something and the people who build it.</p></div>
+      <div class="bring-item reveal"><h3>Building people</h3><p>Mentoring, coaching and leading teams is where I do my best work.</p></div>
+      <div class="bring-item reveal"><h3>Owning outcomes</h3><p>I take responsibility for the whole picture, not only my part of it.</p></div>
+      <div class="bring-item reveal"><h3>Leading with heart</h3><p>Intention, honesty and a drive to bring out the best in the people around me.</p></div>
     </div>
   </section>
 
   <section class="contact" id="contact" data-bg="#0C0C0C" data-dark="1" data-era="Let's talk">
-    <h2>let's build.</h2>
-    <p>Looking for an engineer, a technical leader or a partner who cares what the work does in the world? I'd love to hear from you.</p>
-    <a class="btn" href="mailto:alex@oranjtechnologies.com?subject=Let's Connect">Email me</a>
-    <a class="btn ghost" href="projects.html">View projects</a>
+    <h2>let's work together.</h2>
+    <p>I'm open to a range of opportunities. If something here resonates, I'd love to hear what you have in mind.</p>
+    <div class="chips" id="chips">
+      <span class="chip">Consulting &amp; product engineering</span><span class="chip">Technical &amp; product leadership</span><span class="chip">Speaking &amp; mentoring</span><span class="chip">Community partnerships</span><span class="chip">Something else entirely</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="mailto:alex@oranjtechnologies.com?subject=Let's work together">Start a conversation</a>
+      <a class="btn ghost" href="projects.html">See the work</a>
+    </div>
     <div class="socials">
       <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/alexg1021" target="_blank" rel="noopener">GitHub</a>
@@ -429,6 +424,64 @@
         document.body.classList.toggle('dark', !!el.dataset.dark);
         if (el.dataset.era) eraEl.textContent = el.dataset.era;
       }
+
+      // generic reveals
+      var rv = new IntersectionObserver(function (en) {
+        en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } });
+      }, { threshold: 0.2 });
+      [].forEach.call(document.querySelectorAll('.reveal'), function (el) { rv.observe(el); });
+
+      // photo lightbox: grows from the thumbnail, never upscaled past natural size, contained to the viewport
+      var lbOpen = false;
+      function openZoom(img) {
+        if (lbOpen) return; lbOpen = true;
+        var box = img.parentElement;
+        var r = box.getBoundingClientRect();
+        var radius = getComputedStyle(box).borderRadius;
+        var lb = document.createElement('div');
+        lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', img.alt || 'Photo');
+        var big = document.createElement('img');
+        big.alt = img.alt; big.src = img.currentSrc || img.src;
+        function place(l, t, w, h, rad) { big.style.left = l + 'px'; big.style.top = t + 'px'; big.style.width = w + 'px'; big.style.height = h + 'px'; big.style.borderRadius = rad; }
+        place(r.left, r.top, r.width, r.height, radius);
+        var x = document.createElement('button');
+        x.className = 'lb-x'; x.type = 'button'; x.setAttribute('aria-label', 'Close photo'); x.textContent = '\u00d7';
+        lb.appendChild(big); lb.appendChild(x); document.body.appendChild(lb);
+        document.documentElement.style.overflow = 'hidden';
+        img.style.visibility = 'hidden';
+        requestAnimationFrame(function () { lb.classList.add('on'); });
+
+        var full = new Image(), fit = null, closed = false;
+        full.onload = function () {
+          if (closed) return;
+          fit = function () {
+            var vw = window.innerWidth, vh = window.innerHeight;
+            var k = Math.min(1, (vw * 0.94) / full.naturalWidth, (vh * 0.9) / full.naturalHeight);
+            var w = full.naturalWidth * k, h = full.naturalHeight * k;
+            place((vw - w) / 2, (vh - h) / 2, w, h, '14px');
+          };
+          big.src = full.src; fit();
+        };
+        full.src = img.dataset.full || img.src;
+
+        function onResize() { if (!fit) return; big.style.transition = 'none'; fit(); void big.offsetWidth; big.style.transition = ''; }
+        function close() {
+          if (closed) return; closed = true;
+          window.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize);
+          var b = box.getBoundingClientRect();
+          place(b.left, b.top, b.width, b.height, radius);
+          lb.classList.remove('on');
+          setTimeout(function () { lb.remove(); img.style.visibility = ''; document.documentElement.style.overflow = ''; lbOpen = false; img.focus({ preventScroll: true }); }, reduce ? 0 : 560);
+        }
+        function onKey(e) { if (e.key === 'Escape') close(); }
+        lb.addEventListener('click', close);
+        window.addEventListener('keydown', onKey); window.addEventListener('resize', onResize);
+        x.focus({ preventScroll: true });
+      }
+      [].forEach.call(document.querySelectorAll('.zoomable img'), function (img) {
+        img.addEventListener('click', function () { openZoom(img); });
+        img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openZoom(img); } });
+      });
 
       var ticking = false;
       function update() {
