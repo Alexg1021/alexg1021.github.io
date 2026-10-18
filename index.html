@@ -113,7 +113,7 @@
     /* closing sunrise: the road ends here */
     .contact { padding-bottom: 0; overflow: hidden; }
     .contact-inner { max-width: 48rem; margin: 0 auto; padding: 1rem 1.5rem; }
-    .horizon { --sw: min(520px, 80vw); position: relative; height: calc(var(--sw) / 2); margin-top: 6rem; clip-path: inset(-200% -100% 0 -100%); }
+    .horizon { --sw: min(520px, 80vw); position: relative; height: calc(var(--sw) / 2); margin-top: 6rem; clip-path: inset(-200% -100% 0 -100%); pointer-events: none; }
     .horizon::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: color-mix(in srgb, var(--ink) 18%, transparent); }
     .sunrise { position: absolute; left: 50%; top: 0; width: var(--sw); aspect-ratio: 1; margin-left: calc(var(--sw) / -2); transform: translateY(var(--rise, 100%)); will-change: transform; }
     .sunrise::before { content: ''; position: absolute; inset: -45%; border-radius: 50%; background: radial-gradient(circle, rgba(255,201,112,.6) 28%, rgba(255,168,88,.22) 46%, transparent 68%); opacity: var(--glow, 0); }
@@ -226,7 +226,8 @@
     .book-link { font-weight: 600; border-bottom: 2px solid var(--amber); padding-bottom: 2px; }
     .alt-row { display: flex; gap: 1.5rem; align-items: center; color: var(--muted); flex-wrap: wrap; justify-content: center; }
     .alt-row a:hover, .copy-email:hover { color: var(--ink); }
-    .copy-email { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; border-bottom: 1px dashed currentColor; }
+    .email-row { display: inline-flex; align-items: center; gap: .5rem; }
+    .copy-email { font: inherit; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 100px; padding: .2rem .6rem; cursor: pointer; }
     .cta-row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
     .btn.ghost { margin-left: 0; }
 
@@ -498,7 +499,7 @@
     <div class="connect-alt">
       <a class="book-link" id="bookLink" href="#" target="_blank" rel="noopener" hidden>Or book a time with me →</a>
       <span class="alt-row">
-        <button type="button" class="copy-email" id="copyEmail" data-email="alex@oranjtechnologies.com">alex@oranjtechnologies.com</button>
+        <span class="email-row"><a href="mailto:alex@oranjtechnologies.com">alex@oranjtechnologies.com</a><button type="button" class="copy-email" id="copyEmail" data-email="alex@oranjtechnologies.com" aria-label="Copy email address">Copy</button></span>
         <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener">LinkedIn</a>
       </span>
     </div>
@@ -723,7 +724,7 @@
       var copyBtn = document.getElementById('copyEmail');
       copyBtn.addEventListener('click', function () {
         var email = copyBtn.dataset.email;
-        function done() { copyBtn.textContent = 'Copied to clipboard'; setTimeout(function () { copyBtn.textContent = email; }, 1800); }
+        function done() { copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800); }
         if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(done, function () { location.href = 'mailto:' + email; });
         else location.href = 'mailto:' + email;
       });
