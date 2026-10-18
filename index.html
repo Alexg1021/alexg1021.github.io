@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Gutierrez — A Life Built in the Central Valley</title>
-  <meta name="description" content="Alex Gutierrez: Central Valley born and raised, public policy to product engineering, founder of Oranj Technologies, and state-champion soccer coach. Scroll the timeline.">
+  <meta name="description" content="Son of immigrant parents from California's Central Valley. Policy advocate, engineer, founder and coach. Scroll the story.">
   <meta property="og:title" content="Alex Gutierrez — A Life Built in the Central Valley">
-  <meta property="og:description" content="From community policy work to engineering leadership to founding Oranj Technologies. Scroll the story.">
+  <meta property="og:description" content="Son of immigrant parents from California's Central Valley. Policy advocate, engineer, founder and coach. Scroll the story.">
+  <meta property="og:url" content="https://alexgutierrez.tech/">
+  <meta property="og:image" content="https://alexgutierrez.tech/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alex Gutiérrez, policy advocate, engineer, founder">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://alexgutierrez.tech/images/og-card.png">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +102,25 @@
     .stars { position: absolute; inset: 0; opacity: 0; }
     .star { position: absolute; border-radius: 50%; background: #fff; animation: twinkle 3.5s ease-in-out infinite; }
     @keyframes twinkle { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+    .journey { position: relative; }
     .hero, .timeline, .bring, .contact, footer { position: relative; z-index: 1; }
+    /* centred blocks sit on a soft patch of the live background so the road passes "under" them */
+    .chapter.solo .text, .bring-title, .contact-inner { background: var(--bg); box-shadow: 0 0 50px 44px var(--bg); border-radius: 48px; }
+    .bring-title { width: fit-content; margin-left: auto; margin-right: auto; }
+
+    /* speaking collage */
+    .photo-stack { position: relative; padding-bottom: 14%; }
+    .photo-stack .photo.inset { position: absolute; width: 46%; aspect-ratio: 1; right: -4%; bottom: 0; border: 4px solid var(--bg); box-shadow: 0 24px 50px -20px rgba(0,0,0,.6); }
+    .photo-stack .photo.inset img { height: 100%; }
+    .photo-stack > .photo:first-child .photo-cap { top: .9rem; bottom: auto; }
+
+    /* closing sunrise: the road ends here */
+    .contact { padding-bottom: 0; }
+    .contact-inner { max-width: 48rem; margin: 0 auto; padding: 1rem 1.5rem; }
+    .horizon { --sw: min(560px, 88vw); position: relative; height: calc(var(--sw) / 2); margin-top: 5rem; overflow: hidden; }
+    .horizon::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 100% at 50% 100%, rgba(246,178,94,.4), transparent 100%); opacity: var(--glow, 0); }
+    .horizon::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: color-mix(in srgb, var(--ink) 18%, transparent); }
+    .sunrise { position: absolute; left: 50%; top: 0; width: var(--sw); aspect-ratio: 1; border-radius: 50%; margin-left: calc(var(--sw) / -2); background: radial-gradient(circle at 50% 28%, #FFE6A3, #F6B25E 45%, #E8844B 80%); transform: translateY(var(--rise, 100%)); will-change: transform; }
     .hero-sun::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #F39A55, #C9432F 85%); opacity: var(--dusk, 0); }
     /* stadium floodlights over the coaching chapter */
     #leadership::before { content: ''; position: absolute; inset: -15% -30% 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 40% 55% at 18% 0%, rgba(255,248,225,.17), transparent 70%), radial-gradient(ellipse 40% 55% at 82% 0%, rgba(255,248,225,.17), transparent 70%); opacity: 0; transition: opacity 1.6s ease; }
@@ -143,7 +168,7 @@
     .chips.in .chip { opacity: 1; transform: none; }
 
     .contact { text-align: center; padding: 7rem 1.5rem 5rem; }
-    .contact h2 { font-size: clamp(2.5rem, 9vw, 7rem); text-transform: lowercase; margin-bottom: 1.5rem; }
+    .contact h2 { font-size: clamp(2.5rem, 7vw, 5.5rem); text-transform: lowercase; margin-bottom: 1.5rem; }
     .contact p { color: var(--muted); max-width: 32rem; margin: 0 auto 2rem; }
     .btn { display: inline-block; font-weight: 600; font-size: .9rem; padding: .85rem 1.75rem; border-radius: 100px; background: var(--amber); color: #0C0C0C; transition: transform .2s, box-shadow .2s; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -10px var(--amber); }
@@ -168,9 +193,9 @@
 
     /* what I bring */
     .bring { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
-    .bring-title { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: lowercase; text-align: center; margin-bottom: 3rem; }
+    .bring-title { font-size: clamp(2.5rem, 8vw, 6rem); text-align: center; margin-bottom: 3rem; }
     .bring-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
-    .bring-item { padding: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+    .bring-item { padding: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: color-mix(in srgb, var(--bg) 92%, var(--ink)); }
     .bring-item h3 { font-size: 1.25rem; margin-bottom: .6rem; }
     .bring-item p { color: var(--muted); font-size: .95rem; }
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
@@ -227,10 +252,10 @@
       <a href="index.html" class="nav-logo">Alex Gutierrez</a>
       <span class="era-pill" id="era">The story</span>
       <ul class="nav-links">
-        <li><a href="#experience">Career</a></li>
-        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#roots">Story</a></li>
+        <li><a href="#impact">Community</a></li>
         <li><a href="#leadership">Coaching</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Say hello</a></li>
       </ul>
     </div>
   </nav>
@@ -252,11 +277,13 @@
     </div>
   </header>
 
-  <main class="timeline" id="timeline">
-    <svg class="road" id="road" aria-hidden="true">
+  <div class="journey" id="journey">
+  <svg class="road" id="road" aria-hidden="true">
       <defs><linearGradient id="roadGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#E8B84B"/><stop offset=".55" stop-color="#E8844B"/><stop offset="1" stop-color="#E8B84B"/></linearGradient></defs>
       <path class="road-ahead" id="roadAhead"/><path class="road-done" id="roadDone"/><circle class="traveler" id="traveler" r="6" cx="-20" cy="-20"/>
     </svg>
+
+  <main class="timeline" id="timeline">
 
     <!-- HOME -->
     <section class="chapter" data-bg="#F1E3CA" data-era="Roots" id="roots">
@@ -297,12 +324,13 @@
       <div class="node"></div>
       <div class="text">
         <div class="year">Impact</div>
-        <span class="tag">Policy &amp; nonprofits</span>
-        <h2>Working for change on the ground.</h2>
-        <p>I worked in the community impact sector alongside nonprofits pushing for local and state policy changes that improve living conditions in marginalized communities, including youth leadership programs built on research, community organizing and policy.</p>
+        <span class="tag">Sons and Brothers</span>
+        <h2>Where my story met my training.</h2>
+        <p>I led the Sons and Brothers program, working alongside young men to improve living conditions in their own communities by bringing their voices to local and state policymakers.</p>
+        <p>It was the first time my experience growing up as a young Latino in a rural community and my policy background came together. They've been part of the same work ever since.</p>
       </div>
       <div class="media">
-        <div class="photo zoomable"><img src="images/IMG_AEF038AA2735-1-p-800.jpeg" data-full="images/IMG_AEF038AA2735-1.jpeg" alt="Alex speaking at a public meeting" loading="lazy" tabindex="0" data-parallax><span class="photo-cap">Speaking up for the community</span></div>
+        <div class="photo zoomable"><img src="images/sons-and-brothers-ceremony.jpg" data-full="images/sons-and-brothers-ceremony.jpg" alt="An elder blessing Alex with a feather during a Sons and Brothers ceremony" loading="lazy" tabindex="0" data-parallax><span class="photo-cap">Sons and Brothers ceremony</span></div>
       </div>
     </section>
 
@@ -335,8 +363,26 @@
       </div>
     </section>
 
+    <!-- SPEAKING -->
+    <section class="chapter flip" data-bg="#161626" data-era="Speaking" id="speaking">
+      <div class="node"></div>
+      <div class="text">
+        <div class="year">Voice</div>
+        <span class="tag">Keynotes &amp; advocacy</span>
+        <h2>Different rooms, one message.</h2>
+        <p>I've given keynotes at youth programming events, spoken to rooms of government and nonprofit leaders and policymakers, and stood in front of tech leaders to talk about access to technology for Latino communities.</p>
+        <p>The rooms change. The message doesn't: our communities belong in these conversations.</p>
+      </div>
+      <div class="media">
+        <div class="photo-stack">
+          <div class="photo zoomable"><img src="images/alex-clylp-2-p-800.jpg" data-full="images/alex-clylp-2.jpg" alt="Alex giving a keynote at the Chicano Latino Youth Leadership Project" loading="lazy" tabindex="0" data-parallax><span class="photo-cap">Youth leadership keynote</span></div>
+          <div class="photo inset zoomable"><img src="images/IMG_AEF038AA2735-1-p-500.jpeg" data-full="images/IMG_AEF038AA2735-1.jpeg" alt="Alex speaking at a public meeting" loading="lazy" tabindex="0"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- PRODUCT LEADERSHIP -->
-    <section class="chapter flip" data-bg="#11131D" data-era="Product leadership" id="lead">
+    <section class="chapter" data-bg="#11131D" data-era="Product leadership" id="lead">
       <div class="node"></div>
       <div class="text">
         <div class="year">2022</div>
@@ -351,13 +397,14 @@
     </section>
 
     <!-- COACH -->
-    <section class="chapter" data-bg="#4A1119" data-era="On the pitch" id="leadership">
+    <section class="chapter flip" data-bg="#4A1119" data-era="On the pitch" id="leadership">
       <div class="node"></div>
       <div class="text">
         <div class="year">Coach</div>
         <span class="tag">Sanger High School</span>
         <h2>Section champions. State champions.</h2>
-        <p>Off the clock, I coach high school soccer. I built the Sanger Apaches boys program into a multi-time section champion and a California state champion, with a culture built on discipline, belonging and showing kids what they're capable of.</p>
+        <p>I've always used sport as a way to develop young men into future leaders. I built the Sanger Apaches boys program into a multi-time section champion and a California state champion, with a culture built on discipline, belonging and showing kids what they're capable of.</p>
+        <p>I also founded a youth club soccer program in Southeast Fresno, giving young athletes a competitive pathway to develop, compete and pursue higher education.</p>
       </div>
       <div class="media">
         <div class="photo zoomable"><img src="images/sangerchamps-1080.jpeg" data-full="images/sangerchamps-2400.jpeg" alt="Sanger Apaches soccer team holding a CIF championship plaque" loading="lazy" tabindex="0" data-parallax><span class="photo-cap">CIF champions, Sanger Apaches</span></div>
@@ -365,7 +412,7 @@
     </section>
 
     <!-- ORANJ -->
-    <section class="chapter flip" data-bg="#111827" data-era="Oranj Technologies" id="oranj">
+    <section class="chapter" data-bg="#111827" data-era="Oranj Technologies" id="oranj">
       <div class="node"></div>
       <div class="text">
         <div class="year">2023</div>
@@ -373,7 +420,6 @@
         <h2>Founding Oranj Technologies.</h2>
         <p>In 2023 I started Oranj to do this work on my own terms. I partner with organizations in agriculture, construction, nonprofits, government and startups, helping turn their ideas into products and staying alongside them as they grow.</p>
         <p>The work travels mostly by referral, because the relationships matter as much as the code.</p>
-        <a class="link-arrow" href="projects.html">See some of the work →</a>
       </div>
       <div class="media">
         <div class="photo square zoomable"><img src="images/oranj-logo.png" data-full="images/oranj-logo.png" alt="Oranj Consulting &amp; Technologies logo" loading="lazy" tabindex="0"></div>
@@ -391,32 +437,30 @@
     </section>
   </main>
 
-  <section class="bring" data-bg="#0C0C0C" data-era="Strengths">
-    <h2 class="bring-title reveal">what I bring.</h2>
+  <section class="bring" data-bg="#0C0C0C" data-era="Beliefs">
+    <h2 class="bring-title reveal">what I believe.</h2>
     <div class="bring-grid">
-      <div class="bring-item reveal"><h3>Bridging worlds</h3><p>I speak both community and code, and I translate between the people who need something and the people who build it.</p></div>
-      <div class="bring-item reveal"><h3>Building people</h3><p>Mentoring, coaching and leading teams is where I do my best work.</p></div>
-      <div class="bring-item reveal"><h3>Owning outcomes</h3><p>I take responsibility for the whole picture, not only my part of it.</p></div>
-      <div class="bring-item reveal"><h3>Leading with heart</h3><p>Intention, honesty and a drive to bring out the best in the people around me.</p></div>
+      <div class="bring-item reveal"><h3>Community first</h3><p>The people closest to a challenge should help shape the solution. I build with communities, not only for them.</p></div>
+      <div class="bring-item reveal"><h3>Lift as you climb</h3><p>Every door that opened for me is one I want to hold open for the next person.</p></div>
+      <div class="bring-item reveal"><h3>Develop leaders</h3><p>On a field, in a classroom or on a team, the goal is the same: grow the next generation of leaders.</p></div>
+      <div class="bring-item reveal"><h3>Lead with heart</h3><p>Intention, honesty and a belief in bringing out the best in others.</p></div>
     </div>
   </section>
 
-  <section class="contact" id="contact" data-bg="#0C0C0C" data-era="Let's talk">
-    <h2>let's work together.</h2>
-    <p>I'm open to a range of opportunities. If something here resonates, I'd love to hear what you have in mind.</p>
-    <div class="chips" id="chips">
-      <span class="chip">Consulting &amp; product engineering</span><span class="chip">Technical &amp; product leadership</span><span class="chip">Speaking &amp; mentoring</span><span class="chip">Community partnerships</span><span class="chip">Something else entirely</span>
+  <section class="contact" id="contact" data-bg="#F6E6D6" data-era="Say hello">
+    <div class="contact-inner">
+      <h2>let's connect.</h2>
+      <p>If something in this story resonated with you, whether you're building something for your community, have an idea worth exploring together, or just want to trade stories, I'd love to hear from you.</p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:alex@oranjtechnologies.com?subject=Hello%20Alex">Say hello</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
-    <div class="cta-row">
-      <a class="btn" href="mailto:alex@oranjtechnologies.com?subject=Let's work together">Start a conversation</a>
-      <a class="btn ghost" href="projects.html">See the work</a>
-    </div>
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/alexg1021" target="_blank" rel="noopener">GitHub</a>
-    </div>
+    <div class="horizon" id="horizon" aria-hidden="true"><div class="sunrise" id="sunrise"></div></div>
   </section>
-  <footer data-bg="#0C0C0C">&copy; 2026 Alex Gutierrez · Oranj Technologies</footer>
+  </div>
+
+  <footer data-bg="#F6E6D6">&copy; 2026 Alex Gutierrez · Oranj Technologies</footer>
 
   <script>
     (function () {
@@ -450,20 +494,13 @@
       }, { threshold: 0.25 });
       chapters.forEach(function (c) { revealIO.observe(c); });
 
-      var chips = document.getElementById('chips');
-      new IntersectionObserver(function (en, io) {
-        if (en[0].isIntersecting) {
-          chips.classList.add('in');
-          [].forEach.call(chips.children, function (c, i) { c.style.transitionDelay = (i * 40) + 'ms'; });
-          io.disconnect();
-        }
-      }, { threshold: 0.3 }).observe(chips);
 
       // ── Measurements (cached; rebuilt on resize / late layout) ──
       var road = document.getElementById('road'), roadAhead = document.getElementById('roadAhead'), roadDone = document.getElementById('roadDone');
       var traveler = document.getElementById('traveler'), roadGrad = road.querySelector('linearGradient');
       var skySun = document.getElementById('skySun'), stars = document.getElementById('stars'), heroSun = document.querySelector('.hero-sun');
-      var hero = document.querySelector('.hero');
+      var hero = document.querySelector('.hero'), journey = document.getElementById('journey');
+      var horizon = document.getElementById('horizon'), sunrise = document.getElementById('sunrise'), dawnIndex = 0;
       var nodes = [].slice.call(document.querySelectorAll('.chapter .node'));
       var stops = [], timelineTop = 0, roadLen = 0, samples = null;
 
@@ -472,9 +509,9 @@
       function smooth(a, b, v) { var t = clamp((v - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
 
       function buildRoad() {
-        var tr = timeline.getBoundingClientRect();
+        var tr = journey.getBoundingClientRect();
         timelineTop = tr.top + window.scrollY;
-        var W = tr.width, H = timeline.offsetHeight;
+        var W = tr.width, H = journey.offsetHeight;
         road.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
         roadGrad.setAttribute('y2', H);
         var pts = nodes.map(function (n) { var r = n.getBoundingClientRect(); return { x: r.left + r.width / 2 - tr.left, y: r.top + r.height / 2 - tr.top }; });
@@ -487,7 +524,9 @@
           d += ' C' + (prev.x + a) + ' ' + (prev.y + dy / 3) + ' ' + (p.x + a) + ' ' + (p.y - dy / 3) + ' ' + p.x + ' ' + p.y;
           sign = -sign; prev = p;
         });
-        d += ' L' + prev.x + ' ' + H;
+        // last stretch: from the final chapter down to the top of the rising sun
+        var hz = horizon.getBoundingClientRect(), end = { x: hz.left + hz.width / 2 - tr.left, y: hz.top - tr.top }, dy = end.y - prev.y;
+        d += ' C' + prev.x + ' ' + (prev.y + dy * .55) + ' ' + end.x + ' ' + (end.y - dy * .45) + ' ' + end.x + ' ' + end.y;
         roadAhead.setAttribute('d', d); roadDone.setAttribute('d', d);
         roadLen = roadDone.getTotalLength();
         roadDone.style.strokeDasharray = roadLen;
@@ -496,6 +535,7 @@
       }
 
       function measure() {
+        dawnIndex = themed.indexOf(document.getElementById('contact'));
         stops = themed.map(function (el) {
           var r = el.getBoundingClientRect();
           return { el: el, c: r.top + window.scrollY + r.height / 2, rgb: hex(el.dataset.bg) };
@@ -536,7 +576,8 @@
         skySun.style.transform = 'translateY(' + (sunP * 75).toFixed(2) + 'vh)';
         skySun.style.opacity = (1 - smooth(.7, 1, sunP)).toFixed(3);
         skySun.style.setProperty('--dusk', smooth(.35, .9, sunP).toFixed(3));
-        stars.style.opacity = smooth(3.5, 4.6, f).toFixed(3);
+        // night falls after the early chapters, and lifts again at the closing sunrise
+        stars.style.opacity = (smooth(3.5, 4.6, f) * (1 - smooth(dawnIndex - .9, dawnIndex - .15, f))).toFixed(3);
       }
 
       // generic reveals
@@ -607,7 +648,8 @@
 
         // road drawn up to the viewport midpoint, traveler riding its tip
         if (samples) {
-          var target = y + vh * 0.5 - timelineTop, Y = samples.y, lo = 0, hi = Y.length - 1;
+          var maxY = document.documentElement.scrollHeight - vh;
+          var target = y + vh * (0.5 + 0.5 * smooth(maxY - vh * 0.6, maxY, y)) - timelineTop, Y = samples.y, lo = 0, hi = Y.length - 1;
           if (target <= Y[0]) hi = 0; else if (target >= Y[hi]) lo = hi;
           else { while (hi - lo > 1) { var m = (lo + hi) >> 1; if (Y[m] < target) lo = m; else hi = m; } }
           var k = hi === lo ? 0 : (target - Y[lo]) / (Y[hi] - Y[lo]);
@@ -619,6 +661,10 @@
         }
 
         daylight(y, vh);
+        var hzr = horizon.getBoundingClientRect();
+        var risen = reduce ? 1 : smooth(0, 1, (vh - hzr.top) / (hzr.height * 0.9));
+        sunrise.style.setProperty('--rise', ((1 - risen) * 100).toFixed(2) + '%');
+        horizon.style.setProperty('--glow', risen.toFixed(3));
         heroSun.style.setProperty('--dusk', clamp(y / (hero.offsetHeight * 0.8), 0, 1).toFixed(3));
 
         if (!reduce) parallax.forEach(function (img) {
@@ -631,7 +677,7 @@
       function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
       window.addEventListener('scroll', onScroll, { passive: true });
       var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(measure, 120); });
-      if (window.ResizeObserver) new ResizeObserver(function () { clearTimeout(rt); rt = setTimeout(measure, 120); }).observe(timeline);
+      if (window.ResizeObserver) new ResizeObserver(function () { clearTimeout(rt); rt = setTimeout(measure, 120); }).observe(journey);
       window.addEventListener('load', measure);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
       measure();
