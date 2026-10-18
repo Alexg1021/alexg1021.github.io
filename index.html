@@ -31,13 +31,14 @@
       --spine: 50%;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.6;
-      overflow-x: hidden;
+      overflow-x: clip;
       transition: color .5s ease;
     }
     body.dark { --ink: #F5F4EF; --muted: #B5B0A8; --card: rgba(255,255,255,.07); --line: rgba(245,244,239,.18); }
@@ -110,15 +111,21 @@
 
 
     /* closing sunrise: the road ends here */
-    .contact { padding-bottom: 0; }
+    .contact { padding-bottom: 0; overflow: hidden; }
     .contact-inner { max-width: 48rem; margin: 0 auto; padding: 1rem 1.5rem; }
-    .horizon { --sw: min(560px, 88vw); position: relative; height: calc(var(--sw) / 2); margin-top: 5rem; overflow: hidden; }
-    .horizon::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 100% at 50% 100%, rgba(246,178,94,.4), transparent 100%); opacity: var(--glow, 0); }
+    .horizon { --sw: min(520px, 80vw); position: relative; height: calc(var(--sw) / 2); margin-top: 6rem; clip-path: inset(-200% -100% 0 -100%); }
     .horizon::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: color-mix(in srgb, var(--ink) 18%, transparent); }
-    .sunrise { position: absolute; left: 50%; top: 0; width: var(--sw); aspect-ratio: 1; border-radius: 50%; margin-left: calc(var(--sw) / -2); background: radial-gradient(circle at 50% 28%, #FFE6A3, #F6B25E 45%, #E8844B 80%); transform: translateY(var(--rise, 100%)); will-change: transform; }
+    .sunrise { position: absolute; left: 50%; top: 0; width: var(--sw); aspect-ratio: 1; margin-left: calc(var(--sw) / -2); transform: translateY(var(--rise, 100%)); will-change: transform; }
+    .sunrise::before { content: ''; position: absolute; inset: -45%; border-radius: 50%; background: radial-gradient(circle, rgba(255,201,112,.6) 28%, rgba(255,168,88,.22) 46%, transparent 68%); opacity: var(--glow, 0); }
+    .sun-rays { position: absolute; inset: -60%; border-radius: 50%; background: repeating-conic-gradient(rgba(246,170,80,.2) 0deg 3.5deg, transparent 3.5deg 15deg); -webkit-mask-image: radial-gradient(circle, #000 30%, transparent 62%); mask-image: radial-gradient(circle, #000 30%, transparent 62%); opacity: var(--glow, 0); animation: spin 140s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    /* flat disk, gold at the top warming toward the horizon, with sunrise bands near the line */
+    .sun-disk { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(to bottom, #FFE08A 0%, #FDBE5C 22%, #F69A4C 40%, #EC7444 50%);
+      -webkit-mask-image: linear-gradient(to bottom, #000 0 31%, transparent 31% 33%, #000 33% 38.5%, transparent 38.5% 41%, #000 41% 44.5%, transparent 44.5% 47.5%, #000 47.5%);
+      mask-image: linear-gradient(to bottom, #000 0 31%, transparent 31% 33%, #000 33% 38.5%, transparent 38.5% 41%, #000 41% 44.5%, transparent 44.5% 47.5%, #000 47.5%); }
     .hero-sun::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #F39A55, #C9432F 85%); opacity: var(--dusk, 0); }
     /* stadium floodlights over the coaching chapter */
-    #leadership::before { content: ''; position: absolute; inset: -25% -30% 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 38% 50% at 18% 30%, rgba(255,248,225,.13), transparent 70%), radial-gradient(ellipse 38% 50% at 82% 30%, rgba(255,248,225,.13), transparent 70%); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); opacity: 0; transition: opacity 1.6s ease; }
+    #leadership::before { content: ''; position: absolute; inset: -25% 0 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 38% 50% at 18% 30%, rgba(255,248,225,.13), transparent 70%), radial-gradient(ellipse 38% 50% at 82% 30%, rgba(255,248,225,.13), transparent 70%); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); opacity: 0; transition: opacity 1.6s ease; }
     #leadership.in::before { opacity: 1; }
 
     .chapter { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center; min-height: 70vh; padding: 3.5rem 0; }
@@ -260,6 +267,7 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .hero h1 span, .hero-sub, .cut, .hero-sun, .reveal, .chapter .text, .chapter .media, .chip { opacity: 1 !important; transform: none !important; }
+      .sun-rays { animation: none !important; }
       .star { opacity: .7; }
     }
   </style>
@@ -494,11 +502,11 @@
         <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener">LinkedIn</a>
       </span>
     </div>
-    <div class="horizon" id="horizon" aria-hidden="true"><div class="sunrise" id="sunrise"></div></div>
+    <div class="horizon" id="horizon" aria-hidden="true"><div class="sunrise" id="sunrise"><i class="sun-rays"></i><i class="sun-disk"></i></div></div>
   </section>
   </div>
 
-  <footer data-bg="#F6E6D6">&copy; 2026 Alex Gutierrez · Oranj Technologies</footer>
+  <footer data-bg="#F6E6D6" data-era="Say hello">&copy; 2026 Alex Gutierrez · Oranj Technologies</footer>
 
   <script>
     (function () {
@@ -746,7 +754,7 @@
         var hzr = horizon.getBoundingClientRect();
         var risen = reduce ? 1 : smooth(0, 1, (vh - hzr.top) / (hzr.height * 0.9));
         sunrise.style.setProperty('--rise', ((1 - risen) * 100).toFixed(2) + '%');
-        horizon.style.setProperty('--glow', risen.toFixed(3));
+        sunrise.style.setProperty('--glow', risen.toFixed(3));
         heroSun.style.setProperty('--dusk', clamp(y / (hero.offsetHeight * 0.8), 0, 1).toFixed(3));
 
         if (!reduce) parallax.forEach(function (img) {
