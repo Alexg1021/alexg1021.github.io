@@ -55,13 +55,19 @@
     .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--amber); transform-origin: 0 50%; transform: scaleX(0); z-index: 60; }
 
     /* ── HERO ── */
-    .hero { min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 6rem 1.5rem 7rem; position: relative; }
+    .hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; padding-top: 5rem; }
+    .hero-inner { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1.15fr 1fr; gap: 2rem; align-items: end; }
+    .hero-copy { align-self: center; padding-bottom: 3rem; }
+    .hero-figure { position: relative; align-self: end; height: min(80svh, 780px); display: flex; justify-content: center; align-items: flex-end; }
+    .hero-figure img { position: relative; z-index: 1; height: 100%; width: auto; max-width: none; -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 99%), linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 76%, transparent 99%), linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%); mask-composite: intersect; opacity: 0; transform: translateY(70px); animation: rise 1.2s .35s cubic-bezier(.2,.8,.2,1) forwards; }
+    .hero-sun { position: absolute; left: 8%; top: 10%; width: 84%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #F4CD6E, #E8844B 85%); opacity: 0; transform: scale(.55); animation: sun 1.4s .1s cubic-bezier(.2,.8,.2,1) forwards; }
+    @keyframes sun { to { opacity: .92; transform: none; } }
     .hero-kicker { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 100px; padding: .4rem 1rem; margin-bottom: 1.75rem; }
-    .hero h1 { font-size: clamp(3rem, 13vw, 10.5rem); text-transform: lowercase; line-height: .88; }
+    .hero h1 { font-size: clamp(3.2rem, 8.6vw, 8.5rem); line-height: .9; }
     .hero h1 span { display: block; opacity: 0; transform: translateY(40px); animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards; }
     .hero h1 span:nth-child(2) { animation-delay: .12s; color: transparent; -webkit-text-stroke: 2px var(--ink); }
-    .hero-sub { max-width: 34rem; margin: 2rem auto 0; font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--muted); opacity: 0; animation: rise .9s .4s cubic-bezier(.2,.8,.2,1) forwards; }
-    .scroll-cue { position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    .hero-sub { max-width: 34rem; margin: 2rem 0 0; font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--muted); opacity: 0; animation: rise .9s .4s cubic-bezier(.2,.8,.2,1) forwards; }
+    .scroll-cue { margin-top: 3rem; display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
     .scroll-cue i { width: 1px; height: 48px; background: linear-gradient(var(--ink), transparent); animation: drip 1.8s ease-in-out infinite; transform-origin: top; }
     @keyframes drip { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
     @keyframes rise { to { opacity: 1; transform: none; } }
@@ -123,10 +129,6 @@
     .socials a:hover { color: var(--ink); }
     footer { text-align: center; font-size: .75rem; color: var(--muted); padding: 0 0 2rem; }
 
-    /* hero portrait */
-    .hero-portrait { width: 124px; height: 124px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--amber); opacity: 0; transform: scale(.7); animation: pop .8s cubic-bezier(.3,1.5,.5,1) .05s forwards; box-shadow: 0 18px 40px -18px rgba(0,0,0,.5); }
-    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
-    @keyframes pop { to { opacity: 1; transform: none; } }
 
     /* story pieces */
     .degrees { margin-top: 1.5rem; display: grid; gap: .9rem; }
@@ -171,7 +173,12 @@
       .chapter.solo { text-align: left; }
       .mission h2 { margin-left: 0; }
       .pull { font-size: 2.1rem; }
-      .hero-portrait { width: 104px; height: 104px; }
+      .hero { padding-top: 4.5rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: .5rem; text-align: center; }
+      .hero-copy { padding: 2rem 0 0; }
+      .hero-sub { margin: 1.25rem auto 0; }
+      .hero-figure { height: 46svh; }
+      .scroll-cue { display: none; }
       .chapter.solo p { margin: 0; }
       .chapter .media { order: 2; }
       .timeline { padding-left: 1rem; padding-right: 1rem; }
@@ -182,7 +189,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .hero h1 span, .hero-sub, .hero-portrait, .reveal, .chapter .text, .chapter .media, .chip { opacity: 1 !important; transform: none !important; }
+      .hero h1 span, .hero-sub, .hero-figure img, .hero-sun, .reveal, .chapter .text, .chapter .media, .chip { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
@@ -203,13 +210,18 @@
   </nav>
 
   <header class="hero" data-bg="#F3EBDD" data-era="The story">
-    <div>
-      <div class="hero-portrait zoomable"><img src="images/My-project-p-500.jpg" data-full="images/My-project.jpg" alt="Portrait of Alex Gutierrez" tabindex="0"></div>
-      <span class="hero-kicker">Fresno, California · Central Valley</span>
-      <h1><span>alex</span><span>gutiérrez</span></h1>
-      <p class="hero-sub">policy advocate · engineer · founder</p>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-kicker">Fresno, California · Central Valley</span>
+        <h1><span>Alex</span><span>Gutiérrez</span></h1>
+        <p class="hero-sub">policy advocate · engineer · founder</p>
+        <div class="scroll-cue"><span>Scroll</span><i></i></div>
+      </div>
+      <div class="hero-figure" aria-hidden="true">
+        <div class="hero-sun"></div>
+        <img src="images/alex-cutout.png" alt="" width="953" height="1000">
+      </div>
     </div>
-    <div class="scroll-cue"><span>Scroll</span><i></i></div>
   </header>
 
   <main class="timeline" id="timeline">
