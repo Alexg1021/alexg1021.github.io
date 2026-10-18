@@ -196,7 +196,30 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
     .bring-item:nth-child(2) { transition-delay: .08s; } .bring-item:nth-child(3) { transition-delay: .16s; } .bring-item:nth-child(4) { transition-delay: .24s; }
-    .contact .chips { max-width: 760px; margin: 0 auto 2rem; }
+    /* connect: photo + form */
+    .connect { max-width: 960px; margin: 1rem auto 0; display: grid; grid-template-columns: 1fr 1.1fr; gap: 4.5rem; align-items: center; text-align: left; }
+    .connect-photo { aspect-ratio: 1; }
+    .connect-photo img { height: 100%; }
+    .connect-card { background: color-mix(in srgb, var(--bg) 82%, #fff); border: 1px solid var(--line); border-radius: 20px; padding: 1.75rem; box-shadow: 0 30px 60px -36px rgba(0,0,0,.35); }
+    .connect-form { display: grid; gap: 1rem; }
+    .connect-form label { display: grid; gap: .4rem; font-size: .8rem; font-weight: 600; letter-spacing: .02em; color: var(--ink); }
+    .connect-form input, .connect-form textarea { font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: color-mix(in srgb, var(--bg) 55%, #fff); border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); border-radius: 12px; padding: .75rem .9rem; width: 100%; transition: border-color .2s, box-shadow .2s; }
+    .connect-form textarea { resize: vertical; min-height: 7.5rem; }
+    .connect-form input:focus, .connect-form textarea:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 3px color-mix(in srgb, var(--amber) 35%, transparent); }
+    .connect-form .btn { justify-self: start; border: 0; cursor: pointer; font-family: inherit; }
+    .connect-form .btn[disabled] { opacity: .6; cursor: progress; transform: none; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .form-status { font-size: .85rem; color: var(--muted); min-height: 1.2em; margin: 0 !important; max-width: none !important; }
+    .form-status.err { color: #B3402F; }
+    .connect-thanks { padding: 2.5rem .5rem; text-align: center; }
+    .connect-thanks:focus { outline: none; }
+    .connect-thanks h3 { font-size: 1.8rem; margin-bottom: .75rem; }
+    .connect-thanks p { margin: 0 auto !important; }
+    .connect-alt { margin-top: 2.25rem; display: grid; gap: .9rem; justify-items: center; font-size: .9rem; }
+    .book-link { font-weight: 600; border-bottom: 2px solid var(--amber); padding-bottom: 2px; }
+    .alt-row { display: flex; gap: 1.5rem; align-items: center; color: var(--muted); flex-wrap: wrap; justify-content: center; }
+    .alt-row a:hover, .copy-email:hover { color: var(--ink); }
+    .copy-email { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; border-bottom: 1px dashed currentColor; }
     .cta-row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
     .btn.ghost { margin-left: 0; }
 
@@ -217,6 +240,9 @@
       .mission h2 { margin-left: 0; }
       .pull { font-size: 2.1rem; }
       .hero { padding: 5.5rem 0 3rem; }
+      .connect { grid-template-columns: 1fr; gap: 1.75rem; }
+      .connect-photo { aspect-ratio: 4 / 3; }
+      .connect-card { padding: 1.25rem; }
       .hero-inner { grid-template-columns: 1fr; gap: .5rem; text-align: center; }
       .hero-copy { padding: 2rem 0 0; }
       .hero-sub { margin: 1.25rem auto 0; }
@@ -443,10 +469,30 @@
     <div class="contact-inner">
       <h2>let's connect.</h2>
       <p>If something in this story resonated with you, whether you're building something for your community, have an idea worth exploring together, or just want to trade stories, I'd love to hear from you.</p>
-      <div class="cta-row">
-        <a class="btn" href="mailto:alex@oranjtechnologies.com?subject=Hello%20Alex">Say hello</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="connect">
+      <div class="photo connect-photo zoomable"><img src="images/IMG_AEF038AA2735-1-p-800.jpeg" data-full="images/IMG_AEF038AA2735-1.jpeg" alt="Alex speaking at a public meeting" loading="lazy" tabindex="0"></div>
+      <div class="connect-card">
+        <form class="connect-form" id="connectForm">
+          <label>Your name<input type="text" name="name" autocomplete="name" required maxlength="120"></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required maxlength="200"></label>
+          <label>What's on your mind?<textarea name="message" rows="5" required maxlength="5000"></textarea></label>
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn" type="submit">Say hello</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+        <div class="connect-thanks" id="connectThanks" hidden tabindex="-1">
+          <h3>Thank you<span id="thanksName"></span>.</h3>
+          <p>Your message is on its way. I'll get back to you soon.</p>
+        </div>
       </div>
+    </div>
+    <div class="connect-alt">
+      <a class="book-link" id="bookLink" href="#" target="_blank" rel="noopener" hidden>Or book a time with me →</a>
+      <span class="alt-row">
+        <button type="button" class="copy-email" id="copyEmail" data-email="alex@oranjtechnologies.com">alex@oranjtechnologies.com</button>
+        <a href="https://www.linkedin.com/in/alex-gutierrez-mpa-6ba8bb34/" target="_blank" rel="noopener">LinkedIn</a>
+      </span>
     </div>
     <div class="horizon" id="horizon" aria-hidden="true"><div class="sunrise" id="sunrise"></div></div>
   </section>
@@ -628,6 +674,50 @@
       [].forEach.call(document.querySelectorAll('.zoomable img'), function (img) {
         img.addEventListener('click', function () { openZoom(img); });
         img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openZoom(img); } });
+      });
+
+      // ── Say hello: Web3Forms submission, booking link, copy-email ──
+      var WEB3FORMS_KEY = '7f47a5f4-765b-4036-bf6e-f44a6b89c033';
+      var BOOKING_URL = ''; // Google Calendar appointment page; the link stays hidden until this is set
+      var bookLink = document.getElementById('bookLink');
+      if (BOOKING_URL) { bookLink.href = BOOKING_URL; bookLink.hidden = false; }
+
+      var form = document.getElementById('connectForm'), statusEl = document.getElementById('formStatus');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var btn = form.querySelector('button[type=submit]'), fd = new FormData(form);
+        if (fd.get('botcheck')) return;
+        var name = String(fd.get('name') || '').trim();
+        btn.disabled = true; btn.textContent = 'Sending…';
+        statusEl.className = 'form-status'; statusEl.textContent = '';
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'New hello from alexgutierrez.tech' + (name ? ' — ' + name : ''),
+            from_name: 'alexgutierrez.tech',
+            name: name, email: fd.get('email'), message: fd.get('message'), replyto: fd.get('email')
+          })
+        }).then(function (r) { return r.json(); }).then(function (res) {
+          if (!res.success) throw new Error(res.message || 'failed');
+          document.getElementById('thanksName').textContent = name ? ', ' + name.split(' ')[0] : '';
+          form.hidden = true;
+          var t = document.getElementById('connectThanks'); t.hidden = false; t.focus({ preventScroll: true });
+        }).catch(function () {
+          btn.disabled = false; btn.textContent = 'Say hello';
+          statusEl.className = 'form-status err';
+          statusEl.textContent = "That didn't send. You can email me directly at alex@oranjtechnologies.com.";
+        });
+      });
+
+      var copyBtn = document.getElementById('copyEmail');
+      copyBtn.addEventListener('click', function () {
+        var email = copyBtn.dataset.email;
+        function done() { copyBtn.textContent = 'Copied to clipboard'; setTimeout(function () { copyBtn.textContent = email; }, 1800); }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(done, function () { location.href = 'mailto:' + email; });
+        else location.href = 'mailto:' + email;
       });
 
       var ticking = false;
