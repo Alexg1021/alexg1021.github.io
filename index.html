@@ -31,7 +31,7 @@
       color: var(--ink);
       line-height: 1.6;
       overflow-x: hidden;
-      transition: background-color .9s ease, color .9s ease;
+      transition: color .5s ease;
     }
     body.dark { --ink: #F5F4EF; --muted: #B5B0A8; --card: rgba(255,255,255,.07); --line: rgba(245,244,239,.18); }
     a { color: inherit; text-decoration: none; }
@@ -82,16 +82,31 @@
 
     /* ── TIMELINE ── */
     .timeline { position: relative; max-width: 1180px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
-    .spine, .spine-fill { position: absolute; top: 0; bottom: 0; left: var(--spine); width: 2px; transform: translateX(-50%); }
-    .spine { background: var(--line); }
-    .spine-fill { background: linear-gradient(var(--amber), #e8844b); transform-origin: top; transform: translateX(-50%) scaleY(0); bottom: 0; will-change: transform; }
+    /* the road: built in JS through every chapter node; winds through the early years, straightens into tech */
+    .road { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+    .road-ahead { fill: none; stroke: color-mix(in srgb, var(--ink) 30%, transparent); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 0.5 11; transition: stroke .5s; }
+    .road-done { fill: none; stroke: url(#roadGrad); stroke-width: 3.5; stroke-linecap: round; }
+    .traveler { fill: #FFD27A; filter: drop-shadow(0 0 6px rgba(255,190,90,.95)) drop-shadow(0 0 16px rgba(232,132,75,.7)); }
+
+    /* the sky: a sun that sets, then stars */
+    .sky { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .sky-sun { position: absolute; right: -18vmax; top: -14vmax; width: 70vmax; height: 70vmax; border-radius: 50%; background: radial-gradient(circle, rgba(255,205,110,.55), rgba(255,170,90,.18) 40%, transparent 68%); will-change: transform, opacity; }
+    .sky-sun::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(240,110,70,.55), rgba(200,60,50,.18) 40%, transparent 68%); opacity: var(--dusk, 0); }
+    .stars { position: absolute; inset: 0; opacity: 0; }
+    .star { position: absolute; border-radius: 50%; background: #fff; animation: twinkle 3.5s ease-in-out infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+    .hero, .timeline, .bring, .contact, footer { position: relative; z-index: 1; }
+    .hero-sun::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #F39A55, #C9432F 85%); opacity: var(--dusk, 0); }
+    /* stadium floodlights over the coaching chapter */
+    #leadership::before { content: ''; position: absolute; inset: -15% -30% 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 40% 55% at 18% 0%, rgba(255,248,225,.17), transparent 70%), radial-gradient(ellipse 40% 55% at 82% 0%, rgba(255,248,225,.17), transparent 70%); opacity: 0; transition: opacity 1.6s ease; }
+    #leadership.in::before { opacity: 1; }
 
     .chapter { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center; min-height: 70vh; padding: 3.5rem 0; }
     .chapter .node { position: absolute; left: var(--spine); top: 50%; width: 18px; height: 18px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line); transform: translate(-50%, -50%) scale(.6); transition: transform .6s cubic-bezier(.3,1.6,.5,1), background .4s, border-color .4s, box-shadow .6s; z-index: 2; }
     .chapter.in .node { background: var(--amber); border-color: var(--amber); transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 8px color-mix(in srgb, var(--amber) 25%, transparent); }
     .chapter .text, .chapter .media { opacity: 0; transition: opacity .9s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
-    .chapter .text { padding: 0 3.5rem; transform: translateX(-48px); }
-    .chapter .media { padding: 0 3.5rem; transform: translateX(48px); }
+    .chapter .text { padding: 0 4.75rem; transform: translateX(-48px); }
+    .chapter .media { padding: 0 4.75rem; transform: translateX(48px); }
     .chapter.flip .text { grid-column: 2; grid-row: 1; transform: translateX(48px); }
     .chapter.flip .media { grid-column: 1; grid-row: 1; transform: translateX(-48px); }
     .chapter.in .text, .chapter.in .media { opacity: 1; transform: none; }
@@ -199,10 +214,12 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .hero h1 span, .hero-sub, .cut, .hero-sun, .reveal, .chapter .text, .chapter .media, .chip { opacity: 1 !important; transform: none !important; }
+      .star { opacity: .7; }
     }
   </style>
 </head>
 <body>
+  <div class="sky" aria-hidden="true"><div class="sky-sun" id="skySun"></div><div class="stars" id="stars"></div></div>
   <div class="progress" id="progress"></div>
 
   <nav class="nav" id="nav">
@@ -218,7 +235,7 @@
     </div>
   </nav>
 
-  <header class="hero" data-bg="#F3EBDD" data-era="The story">
+  <header class="hero" data-bg="#F6E6D6" data-era="The story">
     <div class="hero-inner">
       <div class="hero-copy">
         <span class="hero-kicker">Fresno, California · Central Valley</span>
@@ -236,10 +253,13 @@
   </header>
 
   <main class="timeline" id="timeline">
-    <div class="spine"></div><div class="spine-fill" id="fill"></div>
+    <svg class="road" id="road" aria-hidden="true">
+      <defs><linearGradient id="roadGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#E8B84B"/><stop offset=".55" stop-color="#E8844B"/><stop offset="1" stop-color="#E8B84B"/></linearGradient></defs>
+      <path class="road-ahead" id="roadAhead"/><path class="road-done" id="roadDone"/><circle class="traveler" id="traveler" r="6" cx="-20" cy="-20"/>
+    </svg>
 
     <!-- HOME -->
-    <section class="chapter" data-bg="#EBDDC3" data-era="Roots" id="roots">
+    <section class="chapter" data-bg="#F1E3CA" data-era="Roots" id="roots">
       <div class="node"></div>
       <div class="text">
         <div class="year">Home</div>
@@ -255,7 +275,7 @@
     </section>
 
     <!-- FRESNO STATE -->
-    <section class="chapter flip" data-bg="#F3EBDD" data-era="Fresno State" id="education">
+    <section class="chapter flip" data-bg="#F5EEDF" data-era="Fresno State" id="education">
       <div class="node"></div>
       <div class="text">
         <div class="year">2011 → 2013</div>
@@ -273,7 +293,7 @@
     </section>
 
     <!-- COMMUNITY IMPACT -->
-    <section class="chapter" data-bg="#E7D3B0" data-era="Community impact" id="impact">
+    <section class="chapter" data-bg="#EBC994" data-era="Community impact" id="impact">
       <div class="node"></div>
       <div class="text">
         <div class="year">Impact</div>
@@ -287,7 +307,7 @@
     </section>
 
     <!-- BITWISE -->
-    <section class="chapter flip" data-bg="#14120F" data-dark="1" data-era="Into tech" id="experience">
+    <section class="chapter flip" data-bg="#2E2236" data-era="Into tech" id="experience">
       <div class="node"></div>
       <div class="text">
         <div class="year">2015</div>
@@ -302,7 +322,7 @@
     </section>
 
     <!-- MENTOR -->
-    <section class="chapter" data-bg="#1B1712" data-dark="1" data-era="Mentorship" id="mentor">
+    <section class="chapter" data-bg="#1A1828" data-era="Mentorship" id="mentor">
       <div class="node"></div>
       <div class="text">
         <div class="year">Mentor</div>
@@ -316,7 +336,7 @@
     </section>
 
     <!-- PRODUCT LEADERSHIP -->
-    <section class="chapter flip" data-bg="#14120F" data-dark="1" data-era="Product leadership" id="lead">
+    <section class="chapter flip" data-bg="#11131D" data-era="Product leadership" id="lead">
       <div class="node"></div>
       <div class="text">
         <div class="year">2022</div>
@@ -331,7 +351,7 @@
     </section>
 
     <!-- COACH -->
-    <section class="chapter" data-bg="#7A1620" data-dark="1" data-era="On the pitch" id="leadership">
+    <section class="chapter" data-bg="#4A1119" data-era="On the pitch" id="leadership">
       <div class="node"></div>
       <div class="text">
         <div class="year">Coach</div>
@@ -345,7 +365,7 @@
     </section>
 
     <!-- ORANJ -->
-    <section class="chapter flip" data-bg="#111827" data-dark="1" data-era="Oranj Technologies" id="oranj">
+    <section class="chapter flip" data-bg="#111827" data-era="Oranj Technologies" id="oranj">
       <div class="node"></div>
       <div class="text">
         <div class="year">2023</div>
@@ -361,7 +381,7 @@
     </section>
 
     <!-- MISSION -->
-    <section class="chapter solo mission" data-bg="#0C0C0C" data-dark="1" data-era="Mission">
+    <section class="chapter solo mission" data-bg="#0C0C0C" data-era="Mission">
       <div class="node"></div>
       <div class="text">
         <span class="tag">Mission</span>
@@ -371,7 +391,7 @@
     </section>
   </main>
 
-  <section class="bring" data-bg="#0C0C0C" data-dark="1" data-era="Strengths">
+  <section class="bring" data-bg="#0C0C0C" data-era="Strengths">
     <h2 class="bring-title reveal">what I bring.</h2>
     <div class="bring-grid">
       <div class="bring-item reveal"><h3>Bridging worlds</h3><p>I speak both community and code, and I translate between the people who need something and the people who build it.</p></div>
@@ -381,7 +401,7 @@
     </div>
   </section>
 
-  <section class="contact" id="contact" data-bg="#0C0C0C" data-dark="1" data-era="Let's talk">
+  <section class="contact" id="contact" data-bg="#0C0C0C" data-era="Let's talk">
     <h2>let's work together.</h2>
     <p>I'm open to a range of opportunities. If something here resonates, I'd love to hear what you have in mind.</p>
     <div class="chips" id="chips">
@@ -396,14 +416,13 @@
       <a href="https://github.com/alexg1021" target="_blank" rel="noopener">GitHub</a>
     </div>
   </section>
-  <footer data-bg="#0C0C0C" data-dark="1">&copy; 2026 Alex Gutierrez · Oranj Technologies</footer>
+  <footer data-bg="#0C0C0C">&copy; 2026 Alex Gutierrez · Oranj Technologies</footer>
 
   <script>
     (function () {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var nav = document.getElementById('nav');
       var progress = document.getElementById('progress');
-      var fill = document.getElementById('fill');
       var timeline = document.getElementById('timeline');
       var eraEl = document.getElementById('era');
       var chapters = [].slice.call(document.querySelectorAll('.chapter'));
@@ -440,14 +459,84 @@
         }
       }, { threshold: 0.3 }).observe(chips);
 
-      // Background / era follows the section nearest viewport center
-      var current = null;
-      function applyTheme(el) {
-        if (el === current) return;
-        current = el;
-        document.documentElement.style.setProperty('--bg', el.dataset.bg);
-        document.body.classList.toggle('dark', !!el.dataset.dark);
-        if (el.dataset.era) eraEl.textContent = el.dataset.era;
+      // ── Measurements (cached; rebuilt on resize / late layout) ──
+      var road = document.getElementById('road'), roadAhead = document.getElementById('roadAhead'), roadDone = document.getElementById('roadDone');
+      var traveler = document.getElementById('traveler'), roadGrad = road.querySelector('linearGradient');
+      var skySun = document.getElementById('skySun'), stars = document.getElementById('stars'), heroSun = document.querySelector('.hero-sun');
+      var hero = document.querySelector('.hero');
+      var nodes = [].slice.call(document.querySelectorAll('.chapter .node'));
+      var stops = [], timelineTop = 0, roadLen = 0, samples = null;
+
+      function hex(c) { var n = parseInt(c.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; }
+      function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+      function smooth(a, b, v) { var t = clamp((v - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
+
+      function buildRoad() {
+        var tr = timeline.getBoundingClientRect();
+        timelineTop = tr.top + window.scrollY;
+        var W = tr.width, H = timeline.offsetHeight;
+        road.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        roadGrad.setAttribute('y2', H);
+        var pts = nodes.map(function (n) { var r = n.getBoundingClientRect(); return { x: r.left + r.width / 2 - tr.left, y: r.top + r.height / 2 - tr.top }; });
+        if (!pts.length) return;
+        // farm-road meander early in the story, settling into a straight line once the career takes shape
+        var base = window.innerWidth <= 860 ? 24 : 82, amps = [1, 1, .8, .45, .15];
+        var prev = { x: pts[0].x, y: 0 }, sign = 1, d = 'M' + prev.x + ' 0';
+        pts.forEach(function (p, i) {
+          var a = base * (amps[i] || 0) * sign, dy = p.y - prev.y;
+          d += ' C' + (prev.x + a) + ' ' + (prev.y + dy / 3) + ' ' + (p.x + a) + ' ' + (p.y - dy / 3) + ' ' + p.x + ' ' + p.y;
+          sign = -sign; prev = p;
+        });
+        d += ' L' + prev.x + ' ' + H;
+        roadAhead.setAttribute('d', d); roadDone.setAttribute('d', d);
+        roadLen = roadDone.getTotalLength();
+        roadDone.style.strokeDasharray = roadLen;
+        var N = 700; samples = { l: new Float32Array(N + 1), x: new Float32Array(N + 1), y: new Float32Array(N + 1) };
+        for (var i = 0; i <= N; i++) { var l = roadLen * i / N, pt = roadDone.getPointAtLength(l); samples.l[i] = l; samples.x[i] = pt.x; samples.y[i] = pt.y; }
+      }
+
+      function measure() {
+        stops = themed.map(function (el) {
+          var r = el.getBoundingClientRect();
+          return { el: el, c: r.top + window.scrollY + r.height / 2, rgb: hex(el.dataset.bg) };
+        });
+        buildRoad();
+        update();
+      }
+
+      // stars for the night half of the story
+      for (var si = 0; si < 90; si++) {
+        var st = document.createElement('i'); st.className = 'star';
+        var sz = Math.random() < .15 ? 2.5 : 1.5;
+        st.style.cssText = 'left:' + (Math.random() * 100) + '%;top:' + (Math.random() * 100) + '%;width:' + sz + 'px;height:' + sz + 'px;animation-delay:' + (Math.random() * -3.5) + 's;animation-duration:' + (2.5 + Math.random() * 3) + 's';
+        stars.appendChild(st);
+      }
+
+      // ── Daylight: blend continuously between neighbouring sections ──
+      var lastEra = '', lastDark = null;
+      function daylight(y, vh) {
+        if (!stops.length) return;
+        var mid = y + vh / 2, i = 0;
+        while (i < stops.length - 2 && stops[i + 1].c <= mid) i++;
+        var A = stops[i], B = stops[i + 1] || A;
+        var t = B === A ? 0 : smooth(.25, .75, (mid - A.c) / (B.c - A.c));
+        if (mid < A.c) t = 0;
+        var rgb = [0, 1, 2].map(function (k) { return Math.round(A.rgb[k] + (B.rgb[k] - A.rgb[k]) * t); });
+        var col = 'rgb(' + rgb.join(',') + ')';
+        document.documentElement.style.setProperty('--bg', col);
+        document.body.style.backgroundColor = col;
+        var lum = (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+        var dark = lum < 0.42;
+        if (dark !== lastDark) { document.body.classList.toggle('dark', dark); lastDark = dark; }
+        var era = (t < .5 ? A : B).el.dataset.era;
+        if (era && era !== lastEra) { eraEl.textContent = era; lastEra = era; }
+
+        // f: position in the story (0 = hero, 4 = into tech); the sun sets across the first four stops
+        var f = i + t, sunP = clamp(f / 4, 0, 1);
+        skySun.style.transform = 'translateY(' + (sunP * 75).toFixed(2) + 'vh)';
+        skySun.style.opacity = (1 - smooth(.7, 1, sunP)).toFixed(3);
+        skySun.style.setProperty('--dusk', smooth(.35, .9, sunP).toFixed(3));
+        stars.style.opacity = smooth(3.5, 4.6, f).toFixed(3);
       }
 
       // generic reveals
@@ -516,21 +605,21 @@
         progress.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
         nav.classList.toggle('scrolled', y > 40);
 
-        // spine fill: from top of timeline to viewport midpoint
-        var r = timeline.getBoundingClientRect();
-        var p = Math.max(0, Math.min(1, (vh * 0.5 - r.top) / r.height));
-        fill.style.transform = 'translateX(-50%) scaleY(' + p + ')';
+        // road drawn up to the viewport midpoint, traveler riding its tip
+        if (samples) {
+          var target = y + vh * 0.5 - timelineTop, Y = samples.y, lo = 0, hi = Y.length - 1;
+          if (target <= Y[0]) hi = 0; else if (target >= Y[hi]) lo = hi;
+          else { while (hi - lo > 1) { var m = (lo + hi) >> 1; if (Y[m] < target) lo = m; else hi = m; } }
+          var k = hi === lo ? 0 : (target - Y[lo]) / (Y[hi] - Y[lo]);
+          var len = samples.l[lo] + (samples.l[hi] - samples.l[lo]) * k;
+          roadDone.style.strokeDashoffset = (roadLen - len).toFixed(1);
+          traveler.setAttribute('cx', (samples.x[lo] + (samples.x[hi] - samples.x[lo]) * k).toFixed(1));
+          traveler.setAttribute('cy', (Y[lo] + (Y[hi] - Y[lo]) * k).toFixed(1));
+          traveler.style.opacity = target > 0 ? 1 : 0;
+        }
 
-        var mid = vh / 2, best = null, bestD = Infinity;
-        themed.forEach(function (el) {
-          var b = el.getBoundingClientRect();
-          if (b.top <= mid && b.bottom >= mid) { best = el; bestD = 0; }
-          else if (bestD > 0) {
-            var d = Math.min(Math.abs(b.top - mid), Math.abs(b.bottom - mid));
-            if (d < bestD) { bestD = d; best = el; }
-          }
-        });
-        if (best) applyTheme(best);
+        daylight(y, vh);
+        heroSun.style.setProperty('--dusk', clamp(y / (hero.offsetHeight * 0.8), 0, 1).toFixed(3));
 
         if (!reduce) parallax.forEach(function (img) {
           var b = img.parentElement.getBoundingClientRect();
@@ -541,8 +630,11 @@
       }
       function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
       window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-      update();
+      var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(measure, 120); });
+      if (window.ResizeObserver) new ResizeObserver(function () { clearTimeout(rt); rt = setTimeout(measure, 120); }).observe(timeline);
+      window.addEventListener('load', measure);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+      measure();
     })();
   </script>
 </body>
