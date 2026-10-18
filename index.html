@@ -136,6 +136,8 @@
       .timeline { padding-left: 1rem; padding-right: 1rem; }
       .photo.tall { max-width: 300px; margin: 0; }
     }
+    @media (min-width: 861px) { .edu-stats { justify-content: center; } }
+    @media (max-width: 860px) { .chapter .node { top: 4.6rem; } .chapter.solo .node { top: 4.6rem; } }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -196,7 +198,7 @@
         <p>Learning how cities, counties and states actually work, and why they sometimes don't.</p>
       </div>
       <div class="media">
-        <div class="stats" style="justify-content:center">
+        <div class="stats edu-stats">
           <div class="stat"><b>BA</b><span>History · Math minor</span></div>
           <div class="stat"><b>MPA</b><span>Public Administration</span></div>
         </div>
