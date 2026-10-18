@@ -123,7 +123,7 @@
     .sunrise { position: absolute; left: 50%; top: 0; width: var(--sw); aspect-ratio: 1; border-radius: 50%; margin-left: calc(var(--sw) / -2); background: radial-gradient(circle at 50% 28%, #FFE6A3, #F6B25E 45%, #E8844B 80%); transform: translateY(var(--rise, 100%)); will-change: transform; }
     .hero-sun::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #F39A55, #C9432F 85%); opacity: var(--dusk, 0); }
     /* stadium floodlights over the coaching chapter */
-    #leadership::before { content: ''; position: absolute; inset: -15% -30% 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 40% 55% at 18% 0%, rgba(255,248,225,.17), transparent 70%), radial-gradient(ellipse 40% 55% at 82% 0%, rgba(255,248,225,.17), transparent 70%); opacity: 0; transition: opacity 1.6s ease; }
+    #leadership::before { content: ''; position: absolute; inset: -25% -30% 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 38% 50% at 18% 30%, rgba(255,248,225,.13), transparent 70%), radial-gradient(ellipse 38% 50% at 82% 30%, rgba(255,248,225,.13), transparent 70%); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); opacity: 0; transition: opacity 1.6s ease; }
     #leadership.in::before { opacity: 1; }
 
     .chapter { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center; min-height: 70vh; padding: 3.5rem 0; }
@@ -183,7 +183,7 @@
     .degrees div { border-left: 3px solid var(--amber); padding-left: .9rem; }
     .degrees b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; letter-spacing: -.02em; }
     .degrees span { font-size: .8rem; color: var(--muted); letter-spacing: .04em; }
-    .pull { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(2rem, 4.4vw, 3.4rem); line-height: 1.02; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--ink); padding-left: 1.25rem; border-left: 4px solid var(--amber); }
+    .pull { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 3.6vw, 3rem); line-height: 1.02; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--ink); padding-left: 1.25rem; border-left: 4px solid var(--amber); }
     .photo.square { aspect-ratio: 1; max-width: 340px; margin: 0 auto; }
     .photo.square img { height: 100%; object-fit: cover; }
     .mission h2 { font-size: clamp(2rem, 5.2vw, 4rem); max-width: 18ch; margin: 0 auto 1.5rem; }
